@@ -15,6 +15,8 @@ import CardDisplay from "@/components/CardDisplay";
 import InfographicPillars from "@/components/InfographicPillars";
 import InfographicOctopusArms from "@/components/InfographicOctopusArms";
 import InfographicProcessFlow from "@/components/InfographicProcessFlow";
+import InfographicArchitectureStack from "@/components/InfographicArchitectureStack";
+import PhotographicProof from "@/components/PhotographicProof";
 import InteractiveMotionGraphic from "@/components/InteractiveMotionGraphic";
 import {
   ArrowRight,
@@ -30,22 +32,24 @@ import {
   Target,
   ShieldCheck,
   Award,
+  Mic,
+  Presentation,
 } from "lucide-react";
 
 export default function HomePage() {
   return (
     <div className="bg-white text-navy-950 space-y-20 sm:space-y-28 pb-16">
       {/* =========================================================
-          HERO SECTION: WHITE BG + PHOTO OF ANUJ + LEAST TEXT
+          HERO SECTION: WHITE BG + KEYNOTE PODIUM PHOTO + LEAST TEXT
       ========================================================= */}
       <section className="relative pt-6 pb-14 px-4 sm:px-6 lg:px-8 bg-light-grid overflow-hidden border-b border-slate-100">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Punchy Headline & CTAs */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Punchy Headline & CTAs (Least Text) */}
           <div className="lg:col-span-7 space-y-6">
             {/* Eyebrow Chip */}
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-gold-300 bg-gold-50/80 text-gold-800 text-[11px] font-mono font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-              <span>AI ENGINEERING • PRODUCT THINKING • EXECUTION</span>
+              <span>AI ENGINEERING • PITCH DEFENSIBILITY • EXECUTION</span>
             </div>
 
             {/* Main Headline */}
@@ -56,14 +60,14 @@ export default function HomePage() {
               </span>
             </h1>
 
-            {/* Punchy Supporting Copy (Least Text) */}
+            {/* Punchy Supporting Copy */}
             <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl">
               Practical guidance for engineers and founders across AI architecture, startup pitching, and execution discipline.
             </p>
 
             {/* Quick Metrics Infographic Row */}
             <div className="grid grid-cols-3 gap-3 pt-2 max-w-lg">
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
                 <div className="text-[10px] uppercase font-mono font-bold text-gold-600">
                   Engineering
                 </div>
@@ -71,20 +75,20 @@ export default function HomePage() {
                   AI & ML Systems
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
                 <div className="text-[10px] uppercase font-mono font-bold text-gold-600">
-                  Clarity
+                  Defensibility
                 </div>
                 <div className="font-bold text-sm text-navy-950 mt-0.5">
                   Pitch & Strategy
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
                 <div className="text-[10px] uppercase font-mono font-bold text-gold-600">
-                  Delivery
+                  Accountability
                 </div>
                 <div className="font-bold text-sm text-navy-950 mt-0.5">
-                  Accountability
+                  30-Day Velocity
                 </div>
               </div>
             </div>
@@ -106,52 +110,99 @@ export default function HomePage() {
                 <ArrowUpRight className="w-4 h-4 text-slate-500" />
               </Link>
             </div>
+
+            {/* Trust Desk Notice */}
+            <div className="pt-1 flex items-center space-x-3 text-xs text-slate-500">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span className="font-mono text-[11px]">
+                Coordinated strictly via <strong>Circle13 Management</strong>
+              </span>
+            </div>
           </div>
 
-          {/* Right Column: High Quality Photograph of Anuj Dwivedi */}
+          {/* Right Column: Hero Keynote Photograph Frame */}
           <div className="lg:col-span-5 relative flex justify-center">
-            <div className="relative w-full max-w-sm sm:max-w-md">
-              {/* Decorative Gold Ring Accent */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-gold-400 via-amber-200 to-gold-500 rounded-3xl blur-xl opacity-30 transform -rotate-3" />
+            <div className="relative w-full max-w-md">
+              {/* Decorative Gold Ambient Ring */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-gold-400 via-amber-200 to-gold-500 rounded-3xl blur-xl opacity-30 transform -rotate-2" />
 
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100 via-white to-slate-50 border border-slate-200 shadow-2xl p-4">
-                <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-100">
+              <div className="relative rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-2xl p-3 sm:p-4">
+                {/* 16:11 Aspect Frame fitting the 1024x681 Keynote Podium Image */}
+                <div className="relative aspect-[16/11] w-full rounded-2xl overflow-hidden bg-slate-900 border border-gold-400/40 group">
                   <Image
-                    src="/images/anuj-profile.png"
-                    alt="Anuj Dwivedi - AI Engineer & Generative AI Specialist"
+                    src="/images/anuj-keynote.png"
+                    alt="Anuj Dwivedi speaking at keynote podium with microphone in black suit and sunglasses"
                     fill
-                    className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
+
+                  {/* Gradient Vignette for Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-black/20 pointer-events-none" />
+
+                  {/* Live Speaking Status Pill */}
+                  <div className="absolute top-3 left-3 flex items-center space-x-2">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-navy-950/90 backdrop-blur-md text-white border border-gold-400/50 text-[10px] font-mono font-bold">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>KEYNOTE STAGE</span>
+                    </span>
+                  </div>
+
+                  {/* Bottom Text Pill on Image */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white pointer-events-none">
+                    <div>
+                      <div className="text-[10px] uppercase font-mono text-gold-300 font-bold">
+                        Bangalore Keynote Address
+                      </div>
+                      <div className="font-serif text-sm sm:text-base font-bold">
+                        Anuj Dwivedi
+                      </div>
+                    </div>
+                    <div className="text-[10px] font-mono text-slate-200 bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm border border-white/10">
+                      Verified Podium
+                    </div>
+                  </div>
                 </div>
 
-                {/* Verified Identity Badge Strip */}
-                <div className="pt-3 pb-1 flex items-center justify-between">
+                {/* Identity Strip Below Image */}
+                <div className="pt-3 pb-1 px-1 flex items-center justify-between">
                   <div>
                     <h3 className="font-serif text-base font-bold text-navy-950">
                       Anuj Dwivedi
                     </h3>
-                    <p className="text-[11px] text-slate-500">
-                      Founder, Archzos • AI Engineer
+                    <p className="text-[11px] text-slate-500 font-mono">
+                      Founder, Archzos • AI Engineer & Speaker
                     </p>
                   </div>
-                  <VerificationNotice status="verified" label="Authentic Profile" />
+                  <VerificationNotice status="verified" label="Authentic Evidence" />
                 </div>
               </div>
 
               {/* Floating Stat Chip */}
-              <div className="absolute -bottom-4 -left-4 bg-white border border-gold-300 p-3 rounded-2xl shadow-xl flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 font-bold">
+              <div className="absolute -bottom-4 -left-4 bg-white border border-gold-300 p-2.5 sm:p-3 rounded-2xl shadow-xl flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-full bg-gold-50 border border-gold-300 flex items-center justify-center text-gold-700 font-bold text-sm">
                   ★
                 </div>
                 <div className="text-xs">
                   <div className="font-bold text-navy-950">Bangalore, India</div>
-                  <div className="text-[10px] text-slate-500 font-mono">Managed by Circle13</div>
+                  <div className="text-[10px] text-slate-500 font-mono">Circle13 Exclusive</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* =========================================================
+          AUTHENTIC PHOTOGRAPHIC PROOF STRIP (USER REQUEST)
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <SectionHeader
+          eyebrow="STAGE & LAB EVIDENCE"
+          title="Commanding The Room Across Every Format"
+          subtitle="Direct photographic record of Anuj's keynote addresses, university engineering masterclasses, and technical architecture practice."
+        />
+        <PhotographicProof />
       </section>
 
       {/* =========================================================
@@ -179,9 +230,21 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          INFOGRAPHIC SECTION 3: OCTOPUS TANK 8-ARMS
+          INFOGRAPHIC SECTION 3: THE AI SYSTEMS STACK
       ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="TECHNICAL SPECIFICATION"
+          title="The 4-Layer AI Systems Engineering Stack"
+          subtitle="From vector data pipelines and inference optimization to agentic loops and defensible commercial production."
+        />
+        <InfographicArchitectureStack />
+      </section>
+
+      {/* =========================================================
+          INFOGRAPHIC SECTION 4: OCTOPUS TANK 8-ARMS
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <SectionHeader
             eyebrow="CAMPUS INITIATIVE • DSU"
@@ -201,7 +264,7 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          INFOGRAPHIC SECTION 4: THE 10 RECOGNITION CARDS
+          INFOGRAPHIC SECTION 5: THE 10 RECOGNITION CARDS
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -213,7 +276,7 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          SECTION 5: SIGNATURE ADVISORY OFFERS (CONCISE & VISUAL)
+          SECTION 6: SIGNATURE ADVISORY OFFERS (CONCISE & VISUAL)
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -309,7 +372,7 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          SECTION 6: VERIFIED CODE & PUBLIC REPOSITORIES
+          SECTION 7: VERIFIED CODE & PUBLIC REPOSITORIES
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -327,7 +390,7 @@ export default function HomePage() {
         <SectionHeader
           eyebrow="INTERACTIVE VISUAL EXPERIENCE"
           title="Algorithmic Velocity in Motion"
-          subtitle="Explore the real-time interactive motion engine. Switch modes between 8-Arm Wave, Neural Mesh, and Orbital Core."
+          subtitle="Interactive real-time kinetic motion engine. Switch modes between 8-Arm Wave, Neural Mesh, and Orbital Core."
         />
         <InteractiveMotionGraphic />
       </section>
@@ -350,20 +413,18 @@ export default function HomePage() {
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/book"
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-wider font-bold px-8 py-4 rounded-xl bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all shadow-lg"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-wider font-bold px-8 py-4 rounded-xl bg-gold-500 text-navy-950 hover:bg-gold-400 transition-colors shadow-lg"
               >
-                <span>Book an Engagement</span>
+                <span>Book an Advisory Engagement</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-wider font-bold px-8 py-4 rounded-xl border border-white/20 text-white hover:bg-white/10 transition-all"
+                href="/institutions"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-wider font-bold px-8 py-4 rounded-xl border border-white/20 text-white hover:bg-white/10 transition-colors"
               >
-                <span>Contact Desk</span>
+                <span>Campus & Corporate RFP</span>
+                <ArrowUpRight className="w-4 h-4 text-slate-300" />
               </Link>
-            </div>
-            <div className="pt-2 text-[11px] text-slate-400 font-mono">
-              Direct liaison: {SITE_CONFIG.management.entity} ({SITE_CONFIG.contact.email})
             </div>
           </div>
         </div>

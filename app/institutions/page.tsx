@@ -84,18 +84,51 @@ export default function InstitutionsPage() {
   return (
     <div className="bg-white text-navy-950 py-12 sm:py-20 space-y-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Header */}
-        <div className="max-w-3xl space-y-3">
-          <VerificationNotice
-            status="supplied_proposal"
-            label="Institutional RFP Portal"
-          />
-          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08]">
-            Institutional Programmes & Judging.
-          </h1>
-          <p className="text-base text-slate-600 font-light">
-            Hands-on AI workshops, pitch bootcamps, and hackathon evaluation for engineering universities and incubation centers.
-          </p>
+        {/* Split Header with Live Workshop Photo */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <VerificationNotice
+              status="supplied_proposal"
+              label="Institutional RFP Portal"
+            />
+            <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08]">
+              Institutional Programmes & Judging.
+            </h1>
+            <p className="text-base text-slate-600 font-light leading-relaxed max-w-xl">
+              Hands-on AI workshops, pitch bootcamps, and hackathon evaluation for engineering universities, developer clubs, and incubation centers.
+            </p>
+            <div className="flex items-center space-x-3 text-xs text-slate-500 pt-2 font-mono">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span>Campus Partner: Dayananda Sagar University (DSU) • Managed by Circle13</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-md rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-xl p-3">
+              <div className="relative aspect-[16/11] w-full rounded-2xl overflow-hidden bg-slate-900 border border-gold-400/40 group">
+                <img
+                  src="/images/anuj-workshop-event-opt.jpg"
+                  alt="Anuj Dwivedi speaking into microphone with DSU lanyard at engineering AI workshop"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-black/20 pointer-events-none" />
+                <div className="absolute top-3 left-3 flex items-center space-x-2">
+                  <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-navy-950/90 text-white text-[10px] font-mono border border-gold-400/40">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>LIVE CAMPUS STAGE</span>
+                  </span>
+                </div>
+                <div className="absolute bottom-3 left-3 text-white pointer-events-none">
+                  <div className="text-[10px] font-mono text-gold-300">DSU School of Engineering</div>
+                  <div className="font-serif text-sm font-bold">Anuj Dwivedi • Speaker</div>
+                </div>
+              </div>
+              <div className="pt-2.5 px-1 flex items-center justify-between text-[11px] text-slate-500 font-mono">
+                <span>AI Masterclass & Hackathon Judging</span>
+                <span className="text-gold-700 font-bold">Verified In-Person</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Audience Chips */}
