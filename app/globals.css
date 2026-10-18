@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,8 +11,8 @@
 
 @layer base {
   body {
-    background-color: #07111F;
-    color: #F6F2E8;
+    background-color: #FFFFFF;
+    color: #07111F;
     font-family: var(--font-inter);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -24,30 +24,37 @@
   }
 }
 
-/* Subtle architectural grid background utility */
-.bg-grid-pattern {
+/* Crisp Clean Light Background Grids */
+.bg-light-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(217, 170, 67, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(217, 170, 67, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(7, 17, 31, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(7, 17, 31, 0.04) 1px, transparent 1px);
 }
 
-.bg-dot-pattern {
+.bg-light-dots {
   background-size: 24px 24px;
-  background-image: radial-gradient(circle, rgba(217, 170, 67, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(217, 170, 67, 0.15) 1.5px, transparent 1.5px);
 }
 
-/* Restrained Gold Border & Glow effects */
-.gold-border {
-  border: 1px solid rgba(217, 170, 67, 0.22);
+/* Premium Card Styles on White */
+.white-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(7, 17, 31, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(7, 17, 31, 0.05), 0 0 0 1px rgba(217, 170, 67, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gold-border-strong {
-  border: 1px solid rgba(217, 170, 67, 0.45);
+.white-card:hover {
+  border-color: rgba(217, 170, 67, 0.5);
+  box-shadow: 0 16px 36px -4px rgba(217, 170, 67, 0.12), 0 0 0 1px rgba(217, 170, 67, 0.4);
+  transform: translateY(-2px);
 }
 
-.gold-glow {
-  box-shadow: 0 0 25px -5px rgba(217, 170, 67, 0.15);
+.gold-badge {
+  background: linear-gradient(135deg, #FFF9EA 0%, #FDF3D6 100%);
+  border: 1px solid rgba(217, 170, 67, 0.35);
+  color: #8C6518;
 }
 
 /* Editorial selection */
@@ -61,12 +68,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #05070B;
+  background: #F8FAFC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F3F6D;
+  background: #CBD5E1;
   border-radius: 4px;
-  border: 2px solid #05070B;
+  border: 2px solid #F8FAFC;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #D9AA43;

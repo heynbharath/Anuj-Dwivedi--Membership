@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import SectionHeader from "@/components/SectionHeader";
 import VerificationNotice from "@/components/VerificationNotice";
-import { SERVICES_CATALOGUE } from "@/lib/config";
+import { SERVICES_CATALOGUE, SITE_CONFIG } from "@/lib/config";
 import { formatINR } from "@/lib/utils";
 import {
   Check,
@@ -10,7 +10,7 @@ import {
   ArrowRight,
   ShieldCheck,
   AlertCircle,
-  HelpCircle,
+  Sparkles,
 } from "lucide-react";
 
 export const metadata = {
@@ -21,177 +21,157 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-20">
-      {/* Header */}
-      <div className="max-w-3xl">
-        <VerificationNotice
-          status="supplied_proposal"
-          label="Advisory Structure & Reference Terms"
-          className="mb-3"
-        />
-        <h1 className="font-serif text-4xl sm:text-6xl font-bold text-ivory-100 tracking-tight">
-          Advisory & Consultancy.
-        </h1>
-        <p className="mt-4 text-base sm:text-lg text-silver-400 font-light leading-relaxed">
-          Structured engagements designed to solve architectural bottlenecks, evaluate startup pitch defensibility, and instill disciplined execution.
-        </p>
-      </div>
-
-      {/* Loss Aversion & Provocative Questions */}
-      <div className="p-8 rounded-2xl bg-navy-900/50 border border-gold-500/20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-4">
-          <span className="text-xs uppercase font-mono tracking-widest text-gold-500">
-            THE REAL COST OF UNVETTED EXECUTION
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ivory-100 leading-snug">
-            Before investing another month in code, verify the premise.
-          </h2>
-          <p className="text-xs sm:text-sm text-silver-400 leading-relaxed">
-            How much time and capital have you spent learning new frameworks or rewriting features without determining whether your core assumption is sound?
+    <div className="bg-white text-navy-950 py-12 sm:py-20 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        {/* Header */}
+        <div className="max-w-3xl">
+          <VerificationNotice
+            status="supplied_proposal"
+            label="Advisory Architecture & Scope"
+            className="mb-3"
+          />
+          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08]">
+            Advisory & Consultancy.
+          </h1>
+          <p className="mt-3 text-base text-slate-600 font-light">
+            Clear scopes, transparent reference pricing, and structured expectations.
           </p>
         </div>
-        <div className="p-5 rounded-xl bg-black/40 border border-white/5 space-y-3 text-xs text-silver-300">
-          <p className="flex items-start space-x-2">
-            <span className="text-gold-400 font-bold">•</span>
-            <span>A single unexamined architectural flaw can require weeks of rewriting later.</span>
-          </p>
-          <p className="flex items-start space-x-2">
-            <span className="text-gold-400 font-bold">•</span>
-            <span>A convoluted pitch deck obscures technical capability in front of judges or partners.</span>
-          </p>
-          <p className="flex items-start space-x-2">
-            <span className="text-gold-400 font-bold">•</span>
-            <span>Objective evaluation early in the sprint prevents months of directionless effort.</span>
-          </p>
+
+        {/* Visual Comparison Infographic Bar */}
+        <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200/80 space-y-1 shadow-sm">
+            <span className="text-[10px] uppercase font-mono text-gold-700 font-bold">Offer 01</span>
+            <div className="font-serif font-bold text-base text-navy-950">Personal Consultancy</div>
+            <p className="text-xs text-slate-500">Single high-leverage evaluation session</p>
+            <div className="font-mono text-sm font-bold text-navy-950 pt-2">₹40,000</div>
+          </div>
+          <div className="p-4 rounded-2xl bg-white border border-gold-300 space-y-1 shadow-sm">
+            <span className="text-[10px] uppercase font-mono text-gold-700 font-bold">Offer 02</span>
+            <div className="font-serif font-bold text-base text-navy-950">1:1 Mentorship (4 Sessions)</div>
+            <p className="text-xs text-slate-500">Diagnose, Prioritise, Review & Plan</p>
+            <div className="font-mono text-sm font-bold text-navy-950 pt-2">₹40,000</div>
+          </div>
+          <div className="p-4 rounded-2xl bg-navy-950 text-white border border-gold-500 space-y-1 shadow-md">
+            <span className="text-[10px] uppercase font-mono text-gold-400 font-bold">Offer 03 (Anchor)</span>
+            <div className="font-serif font-bold text-base text-white">30-Day Premium Mentorship</div>
+            <p className="text-xs text-slate-300">Intensive month of execution accountability</p>
+            <div className="font-mono text-sm font-bold text-gold-400 pt-2">₹75,000 (Card Eligible)</div>
+          </div>
         </div>
-      </div>
 
-      {/* Services List */}
-      <div className="space-y-12">
-        {SERVICES_CATALOGUE.map((service, index) => {
-          const isAnchor = service.id === "thirty-day-premium-mentorship";
+        {/* Detailed Service Cards */}
+        <div className="space-y-10">
+          {SERVICES_CATALOGUE.map((service) => {
+            const isAnchor = service.id === "thirty-day-premium-mentorship";
 
-          return (
-            <div
-              key={service.id}
-              id={service.slug}
-              className={`rounded-2xl p-8 sm:p-12 border transition-all scroll-mt-28 ${
-                isAnchor
-                  ? "bg-gradient-to-br from-navy-900 via-navy-950 to-obsidian border-gold-500/80 shadow-2xl shadow-gold-500/10"
-                  : "bg-navy-950 border-white/10"
-              }`}
-            >
-              <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 pb-8 border-b border-white/10">
-                <div className="space-y-3 max-w-2xl">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-xs font-mono uppercase tracking-widest text-gold-500 font-bold">
-                      {service.eyebrow}
-                    </span>
-                    {service.badge && (
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider bg-gold-500 text-navy-950">
-                        {service.badge}
+            return (
+              <div
+                key={service.id}
+                id={service.slug}
+                className={`rounded-3xl p-8 sm:p-10 border transition-all scroll-mt-28 ${
+                  isAnchor
+                    ? "bg-navy-950 text-white border-gold-500 shadow-xl"
+                    : "bg-white text-navy-950 border-slate-200 shadow-sm"
+                }`}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-current/10">
+                  <div className="space-y-2 max-w-2xl">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-gold-600 font-bold">
+                        {service.eyebrow}
                       </span>
-                    )}
-                  </div>
-                  <h3 className="font-serif text-3xl sm:text-4xl font-bold text-ivory-100">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-silver-300 font-light leading-relaxed">
-                    {service.headline}
-                  </p>
-                </div>
-
-                {/* Price Display */}
-                <div className="lg:text-right shrink-0 p-5 rounded-xl bg-black/40 border border-white/5 space-y-1">
-                  <div className="text-xs uppercase font-mono tracking-wider text-slate-400">
-                    Reference Pricing
-                  </div>
-                  <div className="font-serif text-3xl sm:text-4xl font-bold text-ivory-100">
-                    {service.referencePriceINR
-                      ? formatINR(service.referencePriceINR)
-                      : "Custom Quote"}
-                  </div>
-                  <p className="text-[11px] text-slate-400 max-w-xs leading-snug">
-                    {service.priceNote}
-                  </p>
-                </div>
-              </div>
-
-              {/* Scope Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-8 border-b border-white/10">
-                <div className="space-y-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-ivory-100">
-                    The Problem It Addresses
-                  </h4>
-                  <p className="text-xs text-silver-400 leading-relaxed">
-                    {service.problem}
-                  </p>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-ivory-100 pt-2">
-                    Ideal Audience
-                  </h4>
-                  <p className="text-xs text-silver-400 leading-relaxed">
-                    {service.audience}
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
-                    What Is Included
-                  </h4>
-                  <ul className="space-y-2">
-                    {service.included.map((inc, i) => (
-                      <li key={i} className="flex items-start space-x-2 text-xs text-silver-400">
-                        <Check className="w-3.5 h-3.5 text-gold-400 shrink-0 mt-0.5" />
-                        <span>{inc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="space-y-3">
-                  {service.excluded && (
-                    <>
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        What Is Excluded
-                      </h4>
-                      <ul className="space-y-2">
-                        {service.excluded.map((exc, i) => (
-                          <li key={i} className="flex items-start space-x-2 text-xs text-slate-400">
-                            <CloseIcon className="w-3.5 h-3.5 text-rose-500/70 shrink-0 mt-0.5" />
-                            <span>{exc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                  <div className="pt-2 text-xs text-slate-400 space-y-1">
-                    <div>
-                      <strong className="text-silver-300">Duration:</strong> {service.duration}
+                      {service.badge && (
+                        <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider ${
+                          isAnchor ? "bg-gold-500 text-navy-950" : "bg-gold-100 text-gold-900 border border-gold-300"
+                        }`}>
+                          {service.badge}
+                        </span>
+                      )}
                     </div>
-                    <div>
-                      <strong className="text-silver-300">Format:</strong> {service.deliveryFormat}
+                    <h3 className="font-serif text-3xl font-bold">
+                      {service.title}
+                    </h3>
+                    <p className={`text-xs sm:text-sm ${isAnchor ? "text-slate-300" : "text-slate-600"}`}>
+                      {service.headline}
+                    </p>
+                  </div>
+
+                  {/* Pricing Chip */}
+                  <div className={`p-4 rounded-2xl border shrink-0 text-left lg:text-right ${
+                    isAnchor ? "bg-black/40 border-white/10" : "bg-slate-50 border-slate-200"
+                  }`}>
+                    <div className="text-[10px] uppercase font-mono text-slate-400">
+                      Reference Fee
+                    </div>
+                    <div className="font-serif text-3xl font-bold mt-0.5">
+                      {service.referencePriceINR
+                        ? formatINR(service.referencePriceINR)
+                        : "Custom RFP"}
+                    </div>
+                    <p className="text-[10px] text-slate-400 max-w-xs mt-1">
+                      {service.priceNote}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Scope Breakdown */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-6 border-b border-current/10 text-xs">
+                  <div className="space-y-2">
+                    <h4 className="font-bold uppercase tracking-wider text-gold-600">
+                      Audience & Problem
+                    </h4>
+                    <p className={isAnchor ? "text-slate-300" : "text-slate-600"}>
+                      {service.problem}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="font-bold uppercase tracking-wider text-emerald-600">
+                      Included Scope
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {service.included.map((inc, i) => (
+                        <li key={i} className="flex items-start space-x-2">
+                          <Check className="w-3.5 h-3.5 text-gold-500 shrink-0 mt-0.5" />
+                          <span className={isAnchor ? "text-slate-300" : "text-slate-600"}>{inc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="font-bold uppercase tracking-wider text-slate-400">
+                      Execution Logistics
+                    </h4>
+                    <div className="space-y-1">
+                      <div><strong className={isAnchor ? "text-white" : "text-navy-950"}>Duration:</strong> {service.duration}</div>
+                      <div><strong className={isAnchor ? "text-white" : "text-navy-950"}>Format:</strong> {service.deliveryFormat}</div>
+                      <div><strong className={isAnchor ? "text-white" : "text-navy-950"}>Intake:</strong> {service.bookingRequirement}</div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Booking Action */}
-              <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-slate-400 flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-gold-500" />
-                  <span>Requirement: {service.bookingRequirement}</span>
+                <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <span className="text-[11px] text-slate-400">
+                    Coordinated via {SITE_CONFIG.management.entity}
+                  </span>
+                  <Link
+                    href={`/book?service=${service.id}`}
+                    className={`inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-bold px-7 py-3 rounded-xl transition-all ${
+                      isAnchor
+                        ? "bg-gold-500 text-navy-950 hover:bg-gold-400"
+                        : "bg-navy-950 text-white hover:bg-gold-500 hover:text-navy-950"
+                    }`}
+                  >
+                    <span>{service.ctaText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
-                <Link
-                  href={`/book?service=${service.id}`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-wider font-bold px-7 py-3.5 rounded bg-gold-500 text-navy-950 hover:bg-gold-400 transition-colors"
-                >
-                  <span>{service.ctaText}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

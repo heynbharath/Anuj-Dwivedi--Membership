@@ -10,15 +10,14 @@ export const metadata: Metadata = {
     template: "%s | Anuj Dwivedi",
   },
   description:
-    "Explore practical guidance across AI engineering, system architecture, startup pitching, and execution discipline with Anuj Dwivedi. Advisory, 1:1 mentorship, and institutional programmes.",
+    "Practical guidance across AI engineering, startup pitching, and execution discipline with Anuj Dwivedi. Advisory, 1:1 mentorship, and institutional programmes.",
   keywords: [
     "Anuj Dwivedi",
-    "AI Engineering",
-    "Generative AI",
+    "AI Engineer",
+    "Generative AI Specialist",
     "Startup Pitching",
     "Technical Mentorship",
     "Octopus Tank 2026",
-    "Dayananda Sagar University",
     "Circle13 Management",
   ],
   authors: [{ name: "Anuj Dwivedi" }],
@@ -47,11 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="light scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="min-h-screen flex flex-col bg-navy-950 text-ivory-100 antialiased selection:bg-gold-500 selection:text-navy-950">
+      <body className="min-h-screen flex flex-col bg-white text-navy-900 antialiased selection:bg-gold-500 selection:text-white">
         <Navbar />
         <main className="flex-grow pt-20">{children}</main>
         <Footer />
