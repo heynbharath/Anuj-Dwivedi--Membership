@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/config";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import { Mail, Phone, MapPin, Linkedin, Github, Instagram, ShieldCheck, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
@@ -10,13 +11,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/5">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="font-serif text-2xl font-bold tracking-wider text-ivory-100">
-                {SITE_CONFIG.brandName}
-              </span>
-              <p className="text-[11px] tracking-[0.25em] text-gold-500 font-semibold uppercase mt-0.5">
-                {SITE_CONFIG.subwordmark}
-              </p>
+            <Link href="/" className="inline-block space-y-3 group">
+              <VeerbhogyaLogo
+                variant="lockup_reverse_on_black"
+                width={220}
+                title="Veerbhogya Vasundhara"
+                className="opacity-95 group-hover:opacity-100 transition-opacity"
+              />
+              <div>
+                <span className="font-serif text-2xl font-bold tracking-wider text-ivory-100">
+                  {SITE_CONFIG.brandName}
+                </span>
+                <p className="text-[11px] tracking-[0.25em] text-gold-500 font-semibold uppercase mt-0.5">
+                  {SITE_CONFIG.subwordmark}
+                </p>
+              </div>
             </Link>
             <p className="text-sm text-silver-400 max-w-sm leading-relaxed">
               &ldquo;{SITE_CONFIG.editorialCampaignLine}&rdquo;

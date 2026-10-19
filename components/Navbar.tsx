@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/config";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Wordmark with mini avatar */}
+          {/* Brand Wordmark with mini avatar & Veerbhogya insignia */}
           <Link href="/" className="group flex items-center space-x-3">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold-500/50 shadow-sm shrink-0">
               <Image
@@ -50,6 +51,9 @@ export default function Navbar() {
                 fill
                 className="object-cover"
               />
+            </div>
+            <div className="hidden sm:flex items-center justify-center w-7 h-7 rounded-lg bg-warmIvory border border-gold-300 shadow-2xs group-hover:border-gold-500 transition-colors">
+              <VeerbhogyaLogo variant="symbol_color" size={18} title="Veerbhogya Vasundhara" />
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg sm:text-xl font-bold tracking-wider text-navy-950 group-hover:text-gold-600 transition-colors">

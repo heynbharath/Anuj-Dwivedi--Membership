@@ -15,6 +15,7 @@ import VerificationNotice from "@/components/VerificationNotice";
 import ImageLightbox from "@/components/ImageLightbox";
 import RecognitionTokenCard from "@/components/RecognitionTokenCard";
 import BookingCTA from "@/components/BookingCTA";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import {
   Award,
   ShieldCheck,
@@ -160,8 +161,20 @@ export default function RecognitionPage() {
 
                   {!cardBackMode ? (
                     <div className="text-center my-auto space-y-3">
-                      <div className="w-14 h-14 mx-auto rounded-full flex items-center justify-center font-serif text-2xl font-bold border-2 shadow-md bg-gradient-to-br from-gold-300 to-gold-600 text-navy-950 border-gold-400">
-                        V
+                      <div className="w-20 h-20 mx-auto flex items-center justify-center">
+                        <VeerbhogyaLogo
+                          variant={
+                            activeToken.tier === "GOLD"
+                              ? "token_seal_gold"
+                              : activeToken.tier === "SILVER"
+                              ? "token_seal_silver"
+                              : activeToken.tier === "BRONZE"
+                              ? "token_seal_bronze"
+                              : "token_seal_gold"
+                          }
+                          size={76}
+                          title={`${activeToken.title} - Veerbhogya Insignia`}
+                        />
                       </div>
                       <div className="space-y-1">
                         <div className="text-[11px] font-mono font-bold tracking-[0.2em] text-slate-500 uppercase">
@@ -180,6 +193,21 @@ export default function RecognitionPage() {
                     </div>
                   ) : (
                     <div className="text-center my-auto space-y-3 bg-white/90 p-5 rounded-2xl border border-gold-300 shadow-sm backdrop-blur-xs">
+                      <div className="w-12 h-12 mx-auto flex items-center justify-center">
+                        <VeerbhogyaLogo
+                          variant={
+                            activeToken.tier === "GOLD"
+                              ? "symbol_gold"
+                              : activeToken.tier === "SILVER"
+                              ? "symbol_silver"
+                              : activeToken.tier === "BRONZE"
+                              ? "symbol_bronze"
+                              : "symbol_color"
+                          }
+                          size={46}
+                          title="Veerbhogya Vasundhara"
+                        />
+                      </div>
                       <div className="text-[10px] uppercase font-mono text-slate-400">
                         Official Back Specification
                       </div>

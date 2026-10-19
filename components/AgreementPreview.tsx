@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { DOCUMENT_TEMPLATES, IMAGE_ASSETS } from "@/lib/config";
 import ImageLightbox from "@/components/ImageLightbox";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import {
   FileText,
   ShieldCheck,
@@ -128,8 +129,12 @@ export default function AgreementPreview() {
 
             {/* Document Header with Archzos Emblem */}
             <div className="text-center space-y-2 pb-6 border-b border-current/10">
-              <div className="w-12 h-12 mx-auto rounded-full flex items-center justify-center font-serif text-xl font-bold border-2 shadow-xs bg-gradient-to-br from-gold-300 to-gold-600 text-navy-950 border-gold-400">
-                V
+              <div className="w-16 h-16 mx-auto flex items-center justify-center">
+                <VeerbhogyaLogo
+                  variant={isBlackAgreement ? "symbol_white_gold" : "symbol_color"}
+                  size={52}
+                  title="Veerbhogya Vasundhara Insignia"
+                />
               </div>
               <div className="text-[11px] font-mono tracking-[0.25em] uppercase font-bold text-gold-600">
                 ARCHZOS TECHNOLOGIES PVT LTD
@@ -244,16 +249,14 @@ export default function AgreementPreview() {
                 </div>
               </div>
 
-              {/* Seal Stamp Placeholder */}
+              {/* Authentic Archzos Veerbhogya Seal Stamp */}
               <div className="flex justify-end">
                 <div className="w-20 h-20 rounded-full border-2 border-gold-500/80 p-1 flex flex-col items-center justify-center text-center shadow-inner bg-gold-50/20">
-                  <div className="text-[7px] font-mono uppercase tracking-widest text-gold-600 font-bold">
+                  <VeerbhogyaLogo variant="symbol_gold" size={24} title="Archzos Veerbhogya Seal" />
+                  <div className="text-[6px] font-mono tracking-widest text-gold-700 uppercase mt-0.5 font-bold">
                     ARCHZOS
                   </div>
-                  <div className="text-xs font-serif font-bold text-gold-700">
-                    SEAL
-                  </div>
-                  <div className="text-[6px] font-mono text-slate-400">
+                  <div className="text-[5px] font-mono text-slate-400">
                     PVT LTD
                   </div>
                 </div>

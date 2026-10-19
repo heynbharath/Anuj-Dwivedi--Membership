@@ -14,6 +14,7 @@ import SectionHeader from "@/components/SectionHeader";
 import VerificationNotice from "@/components/VerificationNotice";
 import AgreementPreview from "@/components/AgreementPreview";
 import SealGallery from "@/components/SealGallery";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import ImageLightbox from "@/components/ImageLightbox";
 import BookingCTA from "@/components/BookingCTA";
 import {
@@ -81,6 +82,10 @@ export default function AgreementsPage() {
               status="supplied_proposal"
               label="Visual Concepts From Images 3 & 4"
             />
+            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-navy-950 text-white text-[11px] font-mono font-bold border border-gold-500/40 shadow-xs">
+              <VeerbhogyaLogo variant="symbol_gold" width={16} height={11} />
+              <span className="text-gold-300">Veerbhogya Seal</span>
+            </div>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-navy-950 leading-[1.08]">

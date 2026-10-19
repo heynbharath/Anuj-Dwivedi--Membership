@@ -10,6 +10,8 @@ import InfographicOctopusArms from "@/components/InfographicOctopusArms";
 import InfographicProcessFlow from "@/components/InfographicProcessFlow";
 import ImageLightbox from "@/components/ImageLightbox";
 import BookingCTA from "@/components/BookingCTA";
+import OctopusTicket from "@/components/OctopusTicket";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import {
   OCTOPUS_TANK_CONFIG,
   SITE_CONFIG,
@@ -89,6 +91,10 @@ export default function OctopusTankPage() {
               <span className="text-[11px] font-mono text-gold-700 px-2.5 py-0.5 rounded-full bg-gold-50 border border-gold-300 font-bold">
                 {OCTOPUS_TANK_CONFIG.status}
               </span>
+              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-navy-950 text-white text-[10px] font-mono font-bold border border-gold-500/40 shadow-xs">
+                <VeerbhogyaLogo variant="symbol_gold" width={16} height={11} />
+                <span className="text-gold-300 tracking-wider">VEERBHOGYA SECURED</span>
+              </div>
             </div>
 
             <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-navy-950 leading-[1.08]">
@@ -624,6 +630,18 @@ export default function OctopusTankPage() {
           <p className="text-xs text-slate-500 font-mono text-center">
             Gold is rank-based (3 podium spots). Silver is personally selected. Bronze is the individual-interest pathway.
           </p>
+        </section>
+
+        {/* =========================================================
+            STAGE PITCH PASS & ADMISSION TICKET (Veerbhogya Seal)
+        ========================================================= */}
+        <section className="space-y-8 border-t border-slate-200 pt-16">
+          <SectionHeader
+            eyebrow="EVENT CREDENTIALING"
+            title="Stage Pitch Pass & Official Admission Ticket"
+            subtitle="The physical-digital credential for participating student teams and podium finalists, secured with the authentic Veerbhogya gold seal and gate barcode."
+          />
+          <OctopusTicket />
         </section>
 
         {/* =========================================================

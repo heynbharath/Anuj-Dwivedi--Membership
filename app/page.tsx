@@ -21,6 +21,7 @@ import RecognitionTokenCard from "@/components/RecognitionTokenCard";
 import ImageLightbox from "@/components/ImageLightbox";
 import AgreementPreview from "@/components/AgreementPreview";
 import SealGallery from "@/components/SealGallery";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import BookingCTA from "@/components/BookingCTA";
 import PhotographicProof from "@/components/PhotographicProof";
 import EvidenceModule from "@/components/EvidenceModule";
@@ -98,6 +99,10 @@ export default function HomePage() {
               <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200 font-bold">
                 {SITE_CONFIG.programmeName}
               </span>
+              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-navy-950 text-white text-[10px] font-mono font-bold border border-gold-500/40 shadow-xs">
+                <VeerbhogyaLogo variant="symbol_gold" width={16} height={11} />
+                <span className="text-gold-300 tracking-wider">VEERBHOGYA</span>
+              </div>
             </div>
 
             {/* Main Required Headline (Section 4) */}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { SEALS_AND_SIGNING_CONFIG, IMAGE_ASSETS } from "@/lib/config";
 import ImageLightbox from "@/components/ImageLightbox";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import {
   ShieldCheck,
   ZoomIn,
@@ -38,8 +39,8 @@ export default function SealGallery() {
                     // Wax Seal Style Mockup
                     <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-red-700 via-red-800 to-red-950 p-2 shadow-lg flex items-center justify-center border-4 border-red-900 ring-2 ring-red-600/40">
                       <div className="w-16 h-16 rounded-full border border-red-400/40 flex flex-col items-center justify-center text-gold-300 font-serif font-bold text-center">
-                        <span className="text-[14px]">V</span>
-                        <span className="text-[6px] font-mono tracking-widest text-gold-200 uppercase">
+                        <VeerbhogyaLogo variant="symbol_gold" size={26} title="Veerbhogya Wax Seal" />
+                        <span className="text-[6px] font-mono tracking-widest text-gold-200 uppercase mt-1">
                           ARCHZOS
                         </span>
                       </div>
@@ -48,8 +49,8 @@ export default function SealGallery() {
                     // Blind Emboss Dry Seal
                     <div className="w-24 h-24 rounded-full bg-ivory-100 border border-slate-300 shadow-inner flex items-center justify-center p-2">
                       <div className="w-18 h-18 rounded-full border border-dashed border-slate-400/60 flex flex-col items-center justify-center text-slate-500 font-serif font-bold">
-                        <span className="text-[14px] opacity-60">V</span>
-                        <span className="text-[6px] font-mono tracking-widest uppercase opacity-70">
+                        <VeerbhogyaLogo variant="symbol_black" size={26} className="opacity-40" title="Veerbhogya Dry Emboss" />
+                        <span className="text-[6px] font-mono tracking-widest uppercase opacity-70 mt-1">
                           DRY EMBOSS
                         </span>
                       </div>
@@ -58,19 +59,19 @@ export default function SealGallery() {
                     // Blue Ink Seal
                     <div className="w-24 h-24 rounded-full border-2 border-[#152D50] p-1.5 flex items-center justify-center shadow-xs bg-blue-50/20">
                       <div className="w-18 h-18 rounded-full border border-[#152D50] flex flex-col items-center justify-center text-[#152D50] font-serif font-bold">
-                        <span className="text-[14px]">V</span>
-                        <span className="text-[6px] font-mono tracking-widest uppercase">
+                        <VeerbhogyaLogo variant="symbol_black" size={26} className="text-[#152D50]" title="Veerbhogya Blue Seal" />
+                        <span className="text-[6px] font-mono tracking-widest uppercase text-[#152D50] mt-1">
                           ARCHZOS
                         </span>
-                        <span className="text-[5px] font-mono">PVT LTD</span>
+                        <span className="text-[5px] font-mono text-[#152D50]">PVT LTD</span>
                       </div>
                     </div>
                   ) : (
                     // Gold Ink Seal
                     <div className="w-24 h-24 rounded-full border-2 border-gold-500 p-1.5 flex items-center justify-center shadow-xs bg-gold-50/30">
                       <div className="w-18 h-18 rounded-full border border-gold-500 flex flex-col items-center justify-center text-gold-700 font-serif font-bold">
-                        <span className="text-[14px]">V</span>
-                        <span className="text-[6px] font-mono tracking-widest uppercase text-gold-800">
+                        <VeerbhogyaLogo variant="symbol_gold" size={26} title="Veerbhogya Gold Seal" />
+                        <span className="text-[6px] font-mono tracking-widest uppercase text-gold-800 mt-1">
                           ARCHZOS
                         </span>
                         <span className="text-[5px] font-mono text-gold-600">

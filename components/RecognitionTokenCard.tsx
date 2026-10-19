@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TokenDesign } from "@/types";
+import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
 import {
   Award,
   Sparkles,
@@ -66,21 +67,21 @@ export default function RecognitionTokenCard({
         {/* Front or Back Interactive Display */}
         {!isFlipped ? (
           <div className="relative z-10 my-auto text-center space-y-3 py-4">
-            {/* Archzos Emblem / Logo Placeholder */}
-            <div className="w-12 h-12 mx-auto relative flex items-center justify-center">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-serif text-lg font-bold border-2 shadow-sm ${
+            {/* Authentic Veerbhogya Insignia Seal */}
+            <div className="w-16 h-16 mx-auto relative flex items-center justify-center">
+              <VeerbhogyaLogo
+                variant={
                   isGold
-                    ? "bg-gradient-to-br from-gold-300 to-gold-600 text-navy-950 border-gold-400"
+                    ? "token_seal_gold"
                     : isSilver
-                    ? "bg-gradient-to-br from-silver-300 to-silver-500 text-navy-950 border-silver-400"
+                    ? "token_seal_silver"
                     : isBronze
-                    ? "bg-gradient-to-br from-bronze-400 to-bronze-600 text-white border-bronze-500"
-                    : "bg-navy-950 text-gold-400 border-gold-400"
-                }`}
-              >
-                V
-              </div>
+                    ? "token_seal_bronze"
+                    : "token_seal_gold"
+                }
+                size={58}
+                title={`${token.title} - Veerbhogya Insignia`}
+              />
             </div>
 
             {/* Emblem / Rank Callout */}
@@ -104,6 +105,21 @@ export default function RecognitionTokenCard({
         ) : (
           /* Back of Token View */
           <div className="relative z-10 my-auto text-center space-y-3 py-4 bg-white/90 p-4 rounded-2xl border border-slate-200 backdrop-blur-xs">
+            <div className="w-10 h-10 mx-auto relative flex items-center justify-center">
+              <VeerbhogyaLogo
+                variant={
+                  isGold
+                    ? "symbol_gold"
+                    : isSilver
+                    ? "symbol_silver"
+                    : isBronze
+                    ? "symbol_bronze"
+                    : "symbol_color"
+                }
+                size={36}
+                title="Veerbhogya Vasundhara"
+              />
+            </div>
             <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
               Card Reverse Specification
             </div>
