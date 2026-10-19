@@ -1,23 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
-import { SERVICES_CATALOGUE, RECOGNITION_CARDS } from "@/lib/config";
+import {
+  SERVICES_CATALOGUE,
+  RECOGNITION_CARDS,
+  COMMERCIAL_OFFER_ROUTES,
+} from "@/lib/config";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const {
       serviceId,
+      routeKey,
       cardId,
       clientName,
       clientEmail,
       clientPhone,
       problemStatement,
+      teamName,
+      tokenIdentifier,
     } = body;
 
-    // Validate service
-    const service = SERVICES_CATALOGUE.find((s) => s.id === serviceId);
-    if (!service) {
+    // Resolve offer either from COMMERCIAL_OFFER_ROUTES or SERVICES_CATALOGUE
+    let selectedTitle = "";
+    let basePriceINR = 0;
+    let isAnchorMentorship = false;
+    let isBronzeRoute = false;
+
+    const commercialMatch = COMMERCIAL_OFFER_ROUTES.find(
+      (r) => r.id === serviceId || r.routeKey === routeKey || r.routeKey === serviceId
+    );
+
+    const serviceMatch = SERVICES_CATALOGUE.find((s) => s.id === serviceId);
+
+    if (commercialMatch) {
+      selectedTitle = commercialMatch.name;
+      basePriceINR = commercialMatch.referencePriceINR;
+      isAnchorMentorship = commercialMatch.routeKey === "route-c";
+      isBronzeRoute = commercialMatch.routeKey === "route-b";
+    } else if (serviceMatch) {
+      selectedTitle = serviceMatch.title;
+      basePriceINR = serviceMatch.referencePriceINR || 0;
+      isAnchorMentorship = serviceMatch.id === "thirty-day-premium-mentorship";
+    } else {
       return NextResponse.json(
-        { error: "Invalid service selected" },
+        { error: "Invalid service or commercial route selected" },
         { status: 400 }
       );
     }
@@ -30,12 +56,12 @@ export async function POST(req: NextRequest) {
     }
 
     // Server-determined price calculation (NEVER trust client-provided price)
-    let finalAmountINR = service.referencePriceINR || 0;
+    let finalAmountINR = basePriceINR;
     let appliedCard = null;
 
     if (cardId) {
       const card = RECOGNITION_CARDS.find((c) => c.id === cardId);
-      if (card && serviceId === "thirty-day-premium-mentorship") {
+      if (card && (isAnchorMentorship || serviceId === "thirty-day-premium-mentorship")) {
         appliedCard = card;
         finalAmountINR = card.studentPayableINR;
       }
@@ -51,14 +77,16 @@ export async function POST(req: NextRequest) {
         message:
           "Razorpay payment keys are currently being finalised with Circle13 management. Your engagement application has been recorded in our booking queue.",
         bookingSummary: {
-          serviceId: service.id,
-          serviceName: service.title,
+          serviceId: serviceId || commercialMatch?.id,
+          serviceName: selectedTitle,
           finalAmountINR,
           clientName,
           clientEmail,
           clientPhone,
+          teamName: teamName || null,
+          tokenIdentifier: tokenIdentifier || (appliedCard ? appliedCard.rankTitle : null),
           cardApplied: appliedCard ? appliedCard.rankTitle : null,
-          status: "Application Received (Pending Management Review)",
+          status: "Application Received (Pending Circle13 Management Review)",
         },
       });
     }
@@ -78,7 +106,8 @@ export async function POST(req: NextRequest) {
         currency: "INR",
         receipt: `rcpt_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
         notes: {
-          serviceId: service.id,
+          serviceId: serviceId || "unknown",
+          serviceName: selectedTitle,
           clientName,
           clientEmail,
           cardApplied: appliedCard ? appliedCard.id : "none",
@@ -103,7 +132,7 @@ export async function POST(req: NextRequest) {
       amount: orderData.amount,
       currency: orderData.currency,
       keyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || keyId,
-      serviceName: service.title,
+      serviceName: selectedTitle,
     });
   } catch (error: any) {
     console.error("Checkout order error:", error);

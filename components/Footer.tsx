@@ -67,32 +67,32 @@ export default function Footer() {
           {/* Engagements */}
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-ivory-100 uppercase tracking-widest">
-              Advisory & Offers
+              Advisory & Pathways
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/services#personal-consultancy" className="hover:text-gold-400 transition-colors">
-                  Personal Consultancy
+                <Link href="/offers" className="hover:text-gold-400 transition-colors flex items-center space-x-1 font-medium text-gold-300">
+                  <span>Commercial Offers (Route A/B/C)</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/recognition" className="hover:text-gold-400 transition-colors">
+                  Recognition Tokens Gallery
+                </Link>
+              </li>
+              <li>
+                <Link href="/agreements" className="hover:text-gold-400 transition-colors">
+                  Agreements & Seals
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-gold-400 transition-colors">
+                  Services Catalogue
                 </Link>
               </li>
               <li>
                 <Link href="/mentorship" className="hover:text-gold-400 transition-colors">
-                  1:1 Mentorship (4 Sessions)
-                </Link>
-              </li>
-              <li>
-                <Link href="/mentorship#thirty-day" className="hover:text-gold-400 transition-colors">
-                  30-Day Premium Mentorship
-                </Link>
-              </li>
-              <li>
-                <Link href="/institutions" className="hover:text-gold-400 transition-colors">
-                  Institutional Workshops
-                </Link>
-              </li>
-              <li>
-                <Link href="/membership" className="hover:text-gold-400 transition-colors">
-                  Membership Tiers
+                  1:1 & 30-Day Mentorship
                 </Link>
               </li>
             </ul>
@@ -107,7 +107,7 @@ export default function Footer() {
               <li>
                 <Link href="/octopus-tank" className="hover:text-gold-400 transition-colors flex items-center space-x-1">
                   <span>Octopus Tank 2026</span>
-                  <span className="text-[10px] text-gold-500 font-bold px-1 py-0.2 border border-gold-500/40 rounded">New</span>
+                  <span className="text-[10px] text-gold-500 font-bold px-1 py-0.2 border border-gold-500/40 rounded">Event</span>
                 </Link>
               </li>
               <li>
@@ -116,18 +116,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/institutions" className="hover:text-gold-400 transition-colors">
+                  Institutional Workshops
+                </Link>
+              </li>
+              <li>
                 <Link href="/resources" className="hover:text-gold-400 transition-colors">
                   Frameworks & Checklists
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-gold-400 transition-colors">
-                  Professional Narrative
-                </Link>
-              </li>
-              <li>
                 <Link href="/book" className="hover:text-gold-400 transition-colors">
-                  Booking Engine
+                  Managed Booking Desk
                 </Link>
               </li>
             </ul>

@@ -5,10 +5,17 @@ import {
   RecognitionCard,
   GitHubProofConfig,
   EditorialArticle,
+  OfferPathway,
+  TokenDesign,
+  TokenRecord,
+  AgreementTemplate,
+  SealDesign,
 } from "@/types";
 
 export const SITE_CONFIG = {
   brandName: "ANUJ DWIVEDI",
+  associatedBrand: "ARCHZOS TECHNOLOGIES",
+  programmeName: "OCTOPUS TANK",
   subwordmark: "THINK / BUILD / EXECUTE",
   proposedDescriptor:
     "AI ENGINEERING / GENERATIVE AI / PRODUCT THINKING / STARTUP PITCHING / ADVISORY",
@@ -16,9 +23,9 @@ export const SITE_CONFIG = {
     "Proposed descriptor — editable and subject to Anuj's final confirmation.",
   coreIdea: "Think Clearly. Build Intentionally.",
   editorialCampaignLine: "Less noise. Better decisions. Stronger execution.",
-  heroHeadline: "Knowledge is everywhere. Clarity is the advantage.",
+  heroHeadline: "Recognition is the beginning. Execution is what comes next.",
   heroSupporting:
-    "Explore practical guidance across AI engineering, technical architecture, startup pitching, and execution discipline. Work with Anuj through focused advisory, structured mentorship, and institutional programmes.",
+    "Explore structured mentorship, consultancy, recognition programmes, and professional engagements designed around ideas, technical learning, and execution.",
 
   // Contact details verified from public profile and Linktree
   contact: {
@@ -672,3 +679,532 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     ],
   },
 ];
+
+// Visual Reference Assets from User Images
+export const IMAGE_ASSETS = {
+  offerStructure: {
+    src: "/images/octopus-tank-offer-structure.jpg",
+    alt: "Octopus Tank Offer Structure Infographic - 3 Gates, Session Logic, Recognition Architecture, Offer Pathways, Management Route, and Agreements",
+    title: "Octopus Tank Offer Structure",
+    caption: "The 3 Gates, 2-Hour Session Logic, 10 Recognition Cards, 3 Commercial Routes, and Management Flow.",
+  },
+  recognitionTokens: {
+    src: "/images/archzos-recognition-tokens.jpg",
+    alt: "Archzos Technologies Pvt Ltd Recognition Tokens - Gold 1st, 2nd, 3rd Place, Silver Token, Bronze Token, and Card Back Design",
+    title: "Archzos Technologies Recognition Tokens",
+    caption: "Gold (1st, 2nd, 3rd), Silver (Selected by Anuj), Bronze (Individual Interest Pass), and Card Back design.",
+  },
+  offerLetterStationery: {
+    src: "/images/archzos-offer-letter-stationery.jpg",
+    alt: "Archzos Technologies Formal Offer Letter, Branded Envelope, Black Presentation Folder, and Embossed Seal Detail",
+    title: "Formal Offer Letter & Stationery Suite",
+    caption: "Formal offer letter layout, company-branded envelope, black presentation folder, and embossed seal details.",
+  },
+  officialSealSigning: {
+    src: "/images/archzos-official-seal-signing.jpg",
+    alt: "Archzos Technologies Official Seal & Signing System - Gold Ink, Blue Ink, Blind Emboss, Ceremonial Wax Seal, and Gold Fountain Pen",
+    title: "Official Seal & Signing System",
+    caption: "Gold ink, blue ink, blind emboss, and ceremonial wax seal applications with gold fountain pen signing.",
+  },
+};
+
+// 5-Step Operational Process Flow (From Image 1)
+export const PROCESS_FIVE_STEPS = [
+  {
+    step: "01",
+    title: "EVALUATE",
+    headline: "Rigorous Pitch & Idea Audit",
+    description: "Ideas and pitches are assessed against real friction, technical defensibility, and market economics during the session.",
+  },
+  {
+    step: "02",
+    title: "RECOGNISE",
+    headline: "Merit-Based Token Allocation",
+    description: "Eligible participants receive the applicable recognition token (Gold, Silver, or Bronze pass) corresponding to their performance.",
+  },
+  {
+    step: "03",
+    title: "DEFINE",
+    headline: "Offer Scope & Terms Established",
+    description: "The relevant engagement pathway (Team Consultancy, Individual Bronze, or Premium Mentorship) and clear parameters are established.",
+  },
+  {
+    step: "04",
+    title: "DOCUMENT",
+    headline: "Formal Agreement Preparation",
+    description: "The approved offer agreement or letter is prepared with recipient details, serial numbering, and clear terms.",
+  },
+  {
+    step: "05",
+    title: "ONBOARD",
+    headline: "Circle13 Booking Confirmation",
+    description: "Circle13 management confirms calendar scheduling, onboarding coordination, and payment processing on Anuj's behalf.",
+  },
+];
+
+// Three Distinct Commercial Offer Routes (From Image 1)
+export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
+  {
+    id: "team-consultancy-entry",
+    routeKey: "route-a",
+    name: "Team Consultancy Entry",
+    referencePriceINR: 15000,
+    priceDisplay: "₹15,000 total",
+    headline: "Structured guidance accessible to a group working towards a shared objective.",
+    audience: "Teams of up to 5 people seeking structured acceleration and architectural direction.",
+    teamMaxMembers: 5,
+    perPersonEquivalentINR: 3000,
+    description:
+      "A team-oriented consultancy entry designed to make structured guidance accessible to a group working towards a shared objective. When a team of 5 participates, the effective per-head investment is ₹3,000 each.",
+    duration: "Structured focused consultation session for the entire team",
+    focusAreas: [
+      "Shared architectural diagnosis & technical bottleneck review",
+      "Team pitch defensibility & multi-role positioning",
+      "Prioritised execution roadmap for the upcoming development sprint",
+      "Structured group follow-up action summary",
+    ],
+    eligibilityNotice:
+      "Open to self-formed teams of up to 5 members. Lower per-head cost applies when the team is full (₹3,000/head at 5 participants). Final session scope and scheduling confirmed by Circle13 management.",
+    managementNote:
+      "Coordinated via Circle13 management. Bookings and calendar slots are scheduled upon team application review.",
+    approvalStatus: "proposed_infographic_v2",
+    ctaText: "Explore Team Consultancy",
+    badge: "Route A — Team Route",
+  },
+  {
+    id: "individual-bronze-route",
+    routeKey: "route-b",
+    name: "Individual Bronze Route",
+    referencePriceINR: 12000,
+    priceDisplay: "₹12,000",
+    headline: "Individual engagement route associated with Bronze recognition and individual-interest pathway.",
+    audience: "Highly interested individuals and driven builders seeking personal execution direction.",
+    description:
+      "An individual engagement route associated with the Bronze recognition and individual-interest pathway. Designed to widen distribution and make high-leverage guidance accessible to promising solo builders.",
+    duration: "1-on-1 strategic advisory session with personalized diagnosis",
+    focusAreas: [
+      "Individual technical stack review & engineering trajectory",
+      "Project validation & hypothesis testing discipline",
+      "Direct feedback on problem framing and code architecture",
+      "Follow-up resource pointers and milestone tracking",
+    ],
+    eligibilityNotice:
+      "Eligibility, scope, and applicable Bronze token discount (e.g. 20% to 30% reduction, bringing the fee to ₹8,400–₹9,600) require confirmation by the programme owner.",
+    managementNote:
+      "Booking requests route through Circle13 management desk. Verified against issued token or submitted project context.",
+    approvalStatus: "proposed_infographic_v2",
+    ctaText: "Explore Individual Route",
+    badge: "Route B — Individual Route",
+  },
+  {
+    id: "premium-anchor-mentorship-pathway",
+    routeKey: "route-c",
+    name: "Premium Anchor Mentorship",
+    referencePriceINR: 75000,
+    priceDisplay: "₹75,000",
+    headline: "30-day premium mentorship centred on deeper guidance, execution support, and accountability.",
+    audience: "High-ambition builders and flagship teams preparing for serious launch, demo days, or investment scrutiny.",
+    duration: "30 days of deep engagement",
+    focusAreas: [
+      "Deep strategic and architectural engagement",
+      "Continuous execution support and sprint milestones",
+      "Relentless weekly accountability and obstacle clearing",
+      "Gold & Silver recognition token discount redemption applies here",
+    ],
+    description:
+      "A premium mentorship engagement centred on deeper guidance, execution support, and accountability. Serves as the anchor programme against which Octopus Tank Gold and Silver recognition cards are redeemable.",
+    eligibilityNotice:
+      "Qualifies for Octopus Tank Gold Cards (80%, 70%, 60% discount -> ₹15,000, ₹22,500, ₹30,000) and Silver Cards (50%/40% discount -> ₹37,500/₹45,000). Limited monthly cohort intake.",
+    managementNote:
+      "Circle13 management confirms onboarding, milestone scheduling, and formal documentation.",
+    approvalStatus: "proposed_infographic_v2",
+    ctaText: "Explore Premium Mentorship",
+    badge: "Route C — Anchor Mentorship",
+  },
+];
+
+// Official Recognition Tokens from Image 2
+export const TOKEN_DESIGNS: TokenDesign[] = [
+  {
+    id: "gold-token-1st",
+    rankKey: "gold-1",
+    tier: "GOLD",
+    title: "Gold Token — 1st Place",
+    subtitle: "Access Unlocked",
+    category: "1st Place Winner",
+    accessStatus: "ACCESS UNLOCKED",
+    recipientEligibility: "Awarded to the 1st Place champion team or builder at Octopus Tank.",
+    applicableDiscount: "80% Off Mentorship Anchor (Student/Team fee: ₹15,000)",
+    applicableOfferId: "premium-anchor-mentorship-pathway",
+    description:
+      "Represents the highest level of stage performance, problem defensibility, and execution rigor. Unlocks access to the flagship advisory track at the maximum 80% recognition tier.",
+    visualDescription: "Ivory card with polished antique gold frame, mountain with winding gold path, laurel wreath, Roman numeral 1ST, and Archzos emblem.",
+    actionNext: "Redeem against the 30-Day Premium Mentorship or Team Consultancy route through Circle13 management onboarding.",
+    colorScheme: {
+      bg: "from-[#FDFBF7] via-[#F7F2E7] to-[#EFE7D2]",
+      border: "border-gold-500",
+      text: "text-navy-950",
+      pill: "bg-gold-500 text-navy-950",
+      badgeBg: "bg-gold-100 border-gold-400 text-gold-900",
+    },
+  },
+  {
+    id: "gold-token-2nd",
+    rankKey: "gold-2",
+    tier: "GOLD",
+    title: "Gold Token — 2nd Place",
+    subtitle: "Priority Access",
+    category: "2nd Place Runner-Up",
+    accessStatus: "PRIORITY ACCESS",
+    recipientEligibility: "Awarded to the 2nd Place finalist team exhibiting robust defensibility and engineering depth.",
+    applicableDiscount: "70% Off Mentorship Anchor (Student/Team fee: ₹22,500)",
+    applicableOfferId: "premium-anchor-mentorship-pathway",
+    description:
+      "Conferred upon the second-ranked finalist team demonstrating substantial architectural validity and commercial clarity.",
+    visualDescription: "Ivory card with antique gold border, mountain ridge, laurel wreath, Roman numeral 2ND, and Archzos emblem.",
+    actionNext: "Submit token serial number during onboarding review with Circle13 management.",
+    colorScheme: {
+      bg: "from-[#FDFBF7] via-[#F7F2E7] to-[#EFE7D2]",
+      border: "border-gold-500/80",
+      text: "text-navy-950",
+      pill: "bg-gold-500/90 text-navy-950",
+      badgeBg: "bg-gold-100 border-gold-400 text-gold-900",
+    },
+  },
+  {
+    id: "gold-token-3rd",
+    rankKey: "gold-3",
+    tier: "GOLD",
+    title: "Gold Token — 3rd Place",
+    subtitle: "Selected Route",
+    category: "3rd Place Podium",
+    accessStatus: "SELECTED ROUTE",
+    recipientEligibility: "Awarded to the 3rd Place podium team exhibiting strong execution discipline.",
+    applicableDiscount: "60% Off Mentorship Anchor (Student/Team fee: ₹30,000)",
+    applicableOfferId: "premium-anchor-mentorship-pathway",
+    description:
+      "Recognizes the third podium finish in the live evaluation round, providing an earned gateway into structured advisory.",
+    visualDescription: "Ivory card with antique gold border, mountain ridge, laurel wreath, Roman numeral 3RD, and Archzos emblem.",
+    actionNext: "Present token credentials for verified placement into the structured mentorship cohort.",
+    colorScheme: {
+      bg: "from-[#FDFBF7] via-[#F7F2E7] to-[#EFE7D2]",
+      border: "border-gold-500/60",
+      text: "text-navy-950",
+      pill: "bg-gold-500/80 text-navy-950",
+      badgeBg: "bg-gold-100 border-gold-400 text-gold-900",
+    },
+  },
+  {
+    id: "silver-token-selected",
+    rankKey: "silver-anuj",
+    tier: "SILVER",
+    title: "Silver Token — Selected by Anuj",
+    subtitle: "Access Unlocked",
+    category: "Personal Selection",
+    accessStatus: "ACCESS UNLOCKED",
+    recipientEligibility: "Conferred upon teams or ideas that Anuj personally selects for high creative upside and curiosity.",
+    applicableDiscount: "50% or 40% Off (Fee: ₹37,500 or ₹45,000)",
+    applicableOfferId: "premium-anchor-mentorship-pathway",
+    description:
+      "Selected directly by Anuj for exceptional technical originality or builder curiosity, independent of final competition podium placement.",
+    visualDescription: "Subtle silver-frosted texture, midnight slate borders, laurel wreath, compass star, and mountain ridge.",
+    actionNext: "Engage with Circle13 management to activate team mentorship onboarding under the designated Silver category.",
+    colorScheme: {
+      bg: "from-[#F4F6F9] via-[#E8ECF2] to-[#DCE1E9]",
+      border: "border-silver-400",
+      text: "text-navy-950",
+      pill: "bg-silver-400 text-navy-950",
+      badgeBg: "bg-slate-100 border-silver-400 text-slate-800",
+    },
+  },
+  {
+    id: "bronze-token-interest",
+    rankKey: "bronze-interest",
+    tier: "BRONZE",
+    title: "Bronze Token — Individual Interest Pass",
+    subtitle: "Individual Route",
+    category: "Individual Interest",
+    accessStatus: "INDIVIDUAL ROUTE",
+    recipientEligibility: "Awarded to highly interested individual builders who demonstrate authentic hunger to build and learn.",
+    applicableDiscount: "30% or 20% Off Individual Route (Fee: ₹8,400 or ₹9,600)",
+    applicableOfferId: "individual-bronze-route",
+    description:
+      "An individual-interest pathway associated with Bronze recognition, designed to widen distribution and lower the barrier to personal guidance.",
+    visualDescription: "Warm metallic bronze frame, mountain summit, laurel wreath, compass star, and Archzos emblem.",
+    actionNext: "Submit individual enquiry with token serial number to claim individual advisory allocation.",
+    colorScheme: {
+      bg: "from-[#FAF6F2] via-[#F4EDE5] to-[#EBDCCF]",
+      border: "border-bronze-500",
+      text: "text-navy-950",
+      pill: "bg-bronze-500 text-white",
+      badgeBg: "bg-amber-50 border-bronze-500 text-amber-900",
+    },
+  },
+  {
+    id: "card-back-design",
+    rankKey: "card-back",
+    tier: "CARD_BACK",
+    title: "Token Back Design",
+    subtitle: "Verification & Serial Numbering",
+    category: "Official Back Architecture",
+    accessStatus: "AWARDED BY ANUJ DWIVEDI",
+    recipientEligibility: "Universal back layout for all issued Archzos Technologies tokens.",
+    applicableDiscount: "Includes serial authentication slot",
+    applicableOfferId: "all-routes",
+    description:
+      "The reverse face of every physical token features the Archzos Technologies Pvt Ltd seal, mountain watermark, official signature line, and sequential serial number slot.",
+    visualDescription: "Warm ivory card stock, gold double border, Archzos emblem, mountain watermark, Awarded by Anuj Dwivedi, and Serial No. slot.",
+    actionNext: "Use the sequential serial number printed on the back to verify token authenticity during onboarding.",
+    colorScheme: {
+      bg: "from-[#FAFAF7] via-[#F6F2E8] to-[#EDE5D4]",
+      border: "border-gold-400",
+      text: "text-navy-950",
+      pill: "bg-navy-950 text-white",
+      badgeBg: "bg-slate-100 border-slate-300 text-navy-950",
+    },
+  },
+];
+
+// Sample Illustrative Token Records for Future Verification Framework
+export const SAMPLE_TOKEN_RECORDS: TokenRecord[] = [
+  {
+    tokenId: "ARC-GLD-001",
+    category: "Gold Token — 1st Place",
+    recipientName: "Illustrative Recipient (Sample)",
+    teamName: "Team NeuralForge",
+    issueDate: "2026-10-31",
+    validityDate: "2026-12-31",
+    applicableOffer: "30-Day Premium Mentorship (80% Off)",
+    redemptionStatus: "unredeemed",
+    notes: "Sample illustrative record. Real recipient records require official issuance.",
+  },
+  {
+    tokenId: "ARC-GLD-002",
+    category: "Gold Token — 2nd Place",
+    recipientName: "Illustrative Recipient (Sample)",
+    teamName: "Team VisionSense",
+    issueDate: "2026-10-31",
+    validityDate: "2026-12-31",
+    applicableOffer: "30-Day Premium Mentorship (70% Off)",
+    redemptionStatus: "unredeemed",
+    notes: "Sample illustrative record. Issued upon live judging.",
+  },
+  {
+    tokenId: "ARC-SLV-004",
+    category: "Silver Token — Selected by Anuj",
+    recipientName: "Illustrative Recipient (Sample)",
+    teamName: "Team AeroCompute",
+    issueDate: "2026-10-31",
+    validityDate: "2026-12-31",
+    applicableOffer: "Team Mentorship Route (50% Off)",
+    redemptionStatus: "unredeemed",
+    notes: "Sample record. Awarded via personal selection.",
+  },
+  {
+    tokenId: "ARC-BRZ-008",
+    category: "Bronze Token — Individual Interest Pass",
+    recipientName: "Illustrative Recipient (Sample)",
+    teamName: "Individual Builder",
+    issueDate: "2026-10-31",
+    validityDate: "2026-12-31",
+    applicableOffer: "Individual Bronze Route (30% Off)",
+    redemptionStatus: "unredeemed",
+    notes: "Sample record for individual interest pathway.",
+  },
+];
+
+// Document and Agreement Templates (From Image 3 & Image 1)
+export const DOCUMENT_TEMPLATES: AgreementTemplate[] = [
+  {
+    id: "gold-agreement",
+    title: "Gold Agreement",
+    type: "gold_agreement",
+    headline: "Ceremonial Offer Letter for Top Recognition & Special Access",
+    description:
+      "Rendered on gold-laced textured paper stock with an embossed seal, sequential serial numbering, and metallic gold signature treatment. Commemorates podium finishes and top-tier access.",
+    paperStock: "Heavyweight 350gsm warm ivory linen with gold metallic foiled border accents.",
+    sealType: "Blind Emboss with Gold Foil Accent",
+    signatureStyle: "Founder Signature in metallic gold ink via signing pen.",
+    sampleFields: {
+      recipientName: "Aravind Sharma",
+      teamName: "Team NeuralForge",
+      recognitionCategory: "Gold Token — 1st Place (Octopus Tank 2026)",
+      offerTitle: "Flagship 30-Day Premium Mentorship",
+      offerDetails: "Special Access Route with 80% Recognition Merit. Structured weekly sprints, system audits, and execution oversight.",
+      serialNumber: "ARC-2026-0001",
+      validUntil: "31 December 2026",
+      approvedSignatory: "Anuj Dwivedi (Founder, Archzos Technologies Pvt Ltd)",
+    },
+    disclaimer:
+      "Document designs are illustrative proposed brand concepts. Final terms, conditions, and official corporate authorization must be approved before these documents are formally issued.",
+  },
+  {
+    id: "black-agreement",
+    title: "Black Agreement",
+    type: "black_agreement",
+    headline: "Premium-Styled Signed Offer Document for Serious Entry & Commitment",
+    description:
+      "Deep obsidian black presentation document accented with warm gold metallic calligraphy, serial stamping, and counter-signature for committed advisory engagements.",
+    paperStock: "Deep obsidian matte finish stock with metallic gold typography and gold-gilt edges.",
+    sealType: "Gold Ink Seal or Ceremonial Wax Seal",
+    signatureStyle: "Metallic gold calligraphy signature.",
+    sampleFields: {
+      recipientName: "Priya Sundaram",
+      teamName: "PulseDynamics Labs",
+      recognitionCategory: "Team Consultancy Entry (Route A)",
+      offerTitle: "Team Acceleration Engagement",
+      offerDetails: "Up to 5 team participants. Architectural diagnosis, pitch defensibility stress-testing, and milestone locking.",
+      serialNumber: "ARC-2026-0002",
+      validUntil: "31 December 2026",
+      approvedSignatory: "Anuj Dwivedi (Founder, Archzos Technologies Pvt Ltd)",
+    },
+    disclaimer:
+      "Document designs are illustrative proposed brand concepts. Final terms, conditions, and official corporate authorization must be approved before these documents are formally issued.",
+  },
+  {
+    id: "formal-offer-letter",
+    title: "Formal Offer Letter",
+    type: "offer_letter",
+    headline: "Archzos Technologies Pvt Ltd Formal Offer Letter Layout",
+    description:
+      "As depicted in Image 3, featuring company masthead, preamble of recognition, structured recipient/team fields, serial authentication number, valid-until date, and founder signature block.",
+    paperStock: "Warm ivory textured stationery with fine gold ornamental corner borders.",
+    sealType: "Embossed Seal with Archzos Emblem",
+    signatureStyle: "Fountain pen signature with official signatory stamp.",
+    sampleFields: {
+      recipientName: "Karthik Raja",
+      teamName: "OmniFlow Systems",
+      recognitionCategory: "Silver Token — Selected by Anuj",
+      offerTitle: "Structured Mentorship Pathway",
+      offerDetails: "We are pleased to extend this offer in recognition of your valuable contribution and exceptional potential.",
+      serialNumber: "ARC-2026-0003",
+      validUntil: "31 December 2026",
+      approvedSignatory: "Anuj Dwivedi (Founder, Archzos Technologies Pvt Ltd)",
+    },
+    disclaimer:
+      "Document designs are illustrative proposed brand concepts. Final terms, conditions, and official corporate authorization must be approved before these documents are formally issued.",
+  },
+  {
+    id: "branded-envelope",
+    title: "Company-Branded Envelope",
+    type: "branded_envelope",
+    headline: "Ceremonial Presentation Envelope with Gold Trim",
+    description:
+      "Warm ivory envelope featuring the Archzos Technologies wordmark, triangular emblem, gold border piping, and rear flap sealed with a ceremonial red wax seal.",
+    paperStock: "250gsm warm ivory matching letterhead stock.",
+    sealType: "Ceremonial Red Wax Seal with Gold Inlaid Insignia",
+    signatureStyle: "Addressed to recipient with custom calligraphy typography.",
+    sampleFields: {
+      recipientName: "Recipient Name",
+      teamName: "Designated Team",
+      recognitionCategory: "Official Correspondence",
+      offerTitle: "Confidential Offer Envelope",
+      offerDetails: "Archzos Technologies Pvt Ltd • A Brighter Tomorrow Together",
+      serialNumber: "ENV-2026-0001",
+      validUntil: "N/A",
+      approvedSignatory: "Archzos Technologies Desk",
+    },
+    disclaimer:
+      "Proposed stationery concept. Physical production subject to company authorization.",
+  },
+  {
+    id: "presentation-folder",
+    title: "Black Presentation Folder",
+    type: "presentation_folder",
+    headline: "Obsidian Presentation Folder with Gold Button Tie",
+    description:
+      "Premium heavy black presentation folder with embossed gold foil Archzos Technologies logo, circular gold button closure, and dedicated internal sleeves for tokens and agreements.",
+    paperStock: "Heavy 450gsm obsidian buckram textured board.",
+    sealType: "Gold Foil Stamped Emblem & Metallic Brass Button",
+    signatureStyle: "Laser-etched metal or foil serial plate.",
+    sampleFields: {
+      recipientName: "Recipient Name",
+      teamName: "Octopus Tank Finalists",
+      recognitionCategory: "Executive Portfolio",
+      offerTitle: "Presentation Suite",
+      offerDetails: "Archzos Technologies Pvt Ltd • People, Ideas, Possibilities",
+      serialNumber: "FLD-2026-0001",
+      validUntil: "N/A",
+      approvedSignatory: "Archzos Technologies Desk",
+    },
+    disclaimer:
+      "Proposed presentation folder design. Physical production subject to corporate approval.",
+  },
+];
+
+// Official Seals and Signing System Configuration (From Image 4)
+export const SEALS_AND_SIGNING_CONFIG = {
+  seals: [
+    {
+      id: "gold-ink-seal",
+      name: "Gold Ink Seal",
+      sealType: "gold_ink" as const,
+      description: "Metallic gold stamped ink seal featuring the Archzos Technologies Pvt Ltd circular ring and central emblem.",
+      application: "Primary stamp on white and ivory official agreements and formal offer letters.",
+      colorHex: "#C9A04A",
+      placementRule: "Bottom-right corner adjacent to founder authorized signature.",
+    },
+    {
+      id: "blue-ink-seal",
+      name: "Blue Ink Seal",
+      sealType: "blue_ink" as const,
+      description: "Deep midnight blue corporate ink seal for institutional documentation, formal university filings, and administrative records.",
+      application: "Institutional filings, academic transcripts, and partner agreements.",
+      colorHex: "#152D50",
+      placementRule: "Lower-center or counter-signatory column.",
+    },
+    {
+      id: "blind-emboss",
+      name: "Blind Emboss (Dry Seal)",
+      sealType: "blind_emboss" as const,
+      description: "Colorless dimensional relief impression into paper fiber creating a tactile, unforgeable watermark effect.",
+      application: "Exclusive ceremonial offer letters, high-denomination certificates, and permanent credentials.",
+      colorHex: "#DDD2BC",
+      placementRule: "Centered or lower right watermark zone.",
+    },
+    {
+      id: "wax-seal",
+      name: "Ceremonial Wax Seal",
+      sealType: "ceremonial_wax" as const,
+      description: "Deep crimson sealing wax stamped with the Archzos emblem and gold metallic powder finish.",
+      application: "Securing ceremonial presentation envelopes and folder bindings.",
+      colorHex: "#991B1B",
+      placementRule: "Directly over the triangular closure flap of presentation envelopes.",
+    },
+  ],
+  signingPen: {
+    model: "Archzos Signature Edition Gold Fountain Pen",
+    inkColor: "Metallic Gold & Archival Black",
+    description: "High-precision fountain pen with black resin barrel, 18k gold-plated accents, and Archzos emblem engraving.",
+    standard: "Sign-off by Anuj Dwivedi using a gold ink fountain pen as per proposed company standard.",
+  },
+  usageGuidelines: [
+    {
+      step: "1",
+      title: "Seal Placement",
+      description: "Place the official seal on authorised documents, agreements, and official correspondence.",
+    },
+    {
+      step: "2",
+      title: "Serial Numbering",
+      description: "Use sequential serial numbers (e.g. No. 0001) on key documents for authentication and tracking.",
+    },
+    {
+      step: "3",
+      title: "Authorized Signature",
+      description: "Final sign-off by Anuj Dwivedi using a gold ink fountain pen as per proposed company standard.",
+    },
+    {
+      step: "4",
+      title: "Official Application",
+      description: "Use the seal across documents, envelopes, and official materials as shown in brand references.",
+    },
+  ],
+};
+
+// Clear Harmonization Notice
+export const PRICING_HARMONIZATION_NOTE = {
+  notice:
+    "The new Octopus Tank infographic supplies three commercial offer routes: Route A (Team Consultancy Entry at ₹15,000 total for up to 5 people), Route B (Individual Bronze Route at ₹12,000), and Route C (Premium Anchor Mentorship at ₹75,000). Previous website materials also referenced individual 1-on-1 consultancy (₹40,000) and 4-session mentorship (₹40,000). To avoid contradictory prices, all offerings are clearly labeled with their offer pathway, target audience, and approval status pending final confirmation from Anuj Dwivedi.",
+};
+

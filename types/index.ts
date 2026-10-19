@@ -90,3 +90,91 @@ export interface EditorialArticle {
   content: string[];
   takeaways: string[];
 }
+
+export interface OfferPathway {
+  id: string;
+  routeKey: "route-a" | "route-b" | "route-c";
+  name: string;
+  referencePriceINR: number;
+  priceDisplay: string;
+  headline: string;
+  audience: string;
+  teamMaxMembers?: number;
+  perPersonEquivalentINR?: number;
+  description: string;
+  duration?: string;
+  focusAreas: string[];
+  eligibilityNotice: string;
+  managementNote: string;
+  approvalStatus: "proposed_infographic_v2" | "owner_review_required";
+  ctaText: string;
+  badge: string;
+}
+
+export interface TokenDesign {
+  id: string;
+  rankKey: "gold-1" | "gold-2" | "gold-3" | "silver-anuj" | "bronze-interest" | "card-back";
+  tier: "GOLD" | "SILVER" | "BRONZE" | "CARD_BACK";
+  title: string;
+  subtitle: string;
+  category: string;
+  accessStatus: string;
+  recipientEligibility: string;
+  applicableDiscount?: string;
+  applicableOfferId: string;
+  description: string;
+  visualDescription: string;
+  actionNext: string;
+  colorScheme: {
+    bg: string;
+    border: string;
+    text: string;
+    pill: string;
+    badgeBg: string;
+  };
+}
+
+export interface TokenRecord {
+  tokenId: string;
+  category: string;
+  recipientName: string;
+  teamName?: string;
+  issueDate: string;
+  validityDate: string;
+  applicableOffer: string;
+  redemptionStatus: "unredeemed" | "claimed" | "expired";
+  notes?: string;
+}
+
+export interface AgreementTemplate {
+  id: string;
+  title: string;
+  type: "gold_agreement" | "black_agreement" | "offer_letter" | "branded_envelope" | "presentation_folder";
+  headline: string;
+  description: string;
+  paperStock: string;
+  sealType: string;
+  signatureStyle: string;
+  sampleFields: {
+    recipientName: string;
+    teamName: string;
+    recognitionCategory: string;
+    offerTitle: string;
+    offerDetails: string;
+    serialNumber: string;
+    validUntil: string;
+    approvedSignatory: string;
+  };
+  disclaimer: string;
+}
+
+export interface SealDesign {
+  id: string;
+  name: string;
+  sealType: "gold_ink" | "blue_ink" | "blind_emboss" | "ceremonial_wax";
+  description: string;
+  application: string;
+  colorHex: string;
+  placementRule: string;
+}
+

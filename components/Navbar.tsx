@@ -21,13 +21,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "/work", label: "Work" },
-    { href: "/services", label: "Services" },
-    { href: "/mentorship", label: "Mentorship" },
-    { href: "/membership", label: "Membership" },
-    { href: "/institutions", label: "For Institutions" },
+    { href: "/offers", label: "Offers" },
+    { href: "/recognition", label: "Recognition" },
+    { href: "/agreements", label: "Agreements" },
     { href: "/octopus-tank", label: "Octopus Tank" },
-    { href: "/resources", label: "Resources" },
+    { href: "/services", label: "Services" },
+    { href: "/work", label: "Work" },
+    { href: "/institutions", label: "Institutions" },
     { href: "/about", label: "About" },
   ];
 

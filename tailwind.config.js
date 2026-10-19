@@ -17,6 +17,7 @@ module.exports = {
           600: "#1F3F6D",
         },
         gold: {
+          300: "#E5C66E", // Deep/Bright Gold
           400: "#F0D58A", // Soft Gold
           500: "#D9AA43", // Antique Gold
           600: "#B88628",
@@ -33,6 +34,18 @@ module.exports = {
           400: "#C7CDD5", // Silver
           500: "#A3ACB9",
         },
+        bronze: {
+          400: "#C58B5C",
+          500: "#A96F43", // Bronze
+          600: "#8C552D",
+          700: "#6B3E1C",
+        },
+        obsidian: "#101114",
+        midnight: "#0B1726",
+        warmIvory: "#F6F1E5",
+        antiqueGold: "#C9A04A",
+        deepGold: "#E5C66E",
+        mutedText: "#65615A",
         slate: {
           400: "#8792A3", // Slate
           500: "#637083",
