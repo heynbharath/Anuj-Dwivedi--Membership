@@ -3,11 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { formatINR } from "@/lib/utils";
-import { Check, X, ArrowRight, Award, Users, ShieldCheck } from "lucide-react";
+import { Check, X, ArrowRight, Award, Users, ShieldCheck, AlertCircle } from "lucide-react";
 
 export default function OfferComparison() {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-lg">
+    <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-xl">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse min-w-[760px]">
           <thead>
@@ -21,7 +21,7 @@ export default function OfferComparison() {
                 </span>
                 <span>Team Consultancy Entry</span>
                 <div className="font-sans font-bold text-lg text-navy-950 mt-1">
-                  ₹15,000 <span className="text-xs font-normal text-slate-500">total</span>
+                  ₹15,000 <span className="text-xs font-normal text-slate-500">total for team</span>
                 </div>
               </th>
               <th className="p-5 font-serif text-base font-bold text-navy-950 w-1/4 border-l border-slate-200">
@@ -30,7 +30,7 @@ export default function OfferComparison() {
                 </span>
                 <span>Individual Bronze Route</span>
                 <div className="font-sans font-bold text-lg text-navy-950 mt-1">
-                  ₹12,000 <span className="text-xs font-normal text-slate-500">base</span>
+                  ₹12,000 <span className="text-xs font-normal text-slate-500">individual base</span>
                 </div>
               </th>
               <th className="p-5 font-serif text-base font-bold text-white w-1/4 border-l border-gold-500/60 bg-navy-950">
@@ -39,25 +39,50 @@ export default function OfferComparison() {
                 </span>
                 <span>Premium Anchor Mentorship</span>
                 <div className="font-sans font-bold text-lg text-gold-400 mt-1">
-                  ₹75,000 <span className="text-xs font-normal text-slate-400">anchor</span>
+                  ₹75,000 <span className="text-xs font-normal text-slate-400">anchor / 30 days</span>
                 </div>
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            {/* Approval Status */}
+            <tr className="hover:bg-slate-50/60">
+              <td className="p-4 font-mono font-bold text-navy-950 uppercase text-[11px]">
+                Commercial Status
+              </td>
+              <td className="p-4 border-l border-slate-200">
+                <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-900 border border-amber-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>Awaiting Approval (Planning Term)</span>
+                </span>
+              </td>
+              <td className="p-4 border-l border-slate-200">
+                <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-900 border border-amber-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>Awaiting Approval (Planning Term)</span>
+                </span>
+              </td>
+              <td className="p-4 border-l border-slate-200 bg-slate-900/5">
+                <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-900 border border-amber-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>Awaiting Approval (Planning Term)</span>
+                </span>
+              </td>
+            </tr>
+
             {/* Target Audience */}
             <tr className="hover:bg-slate-50/60">
               <td className="p-4 font-mono font-bold text-navy-950 uppercase text-[11px]">
                 Target Audience
               </td>
               <td className="p-4 border-l border-slate-200">
-                Teams of up to 5 people working toward a shared technical objective.
+                Teams of up to 5 people working toward a shared technical or pitch milestone.
               </td>
               <td className="p-4 border-l border-slate-200">
-                Highly interested individual builders seeking personal execution direction.
+                Individual builders and students seeking direct personal execution direction.
               </td>
               <td className="p-4 border-l border-slate-200 bg-slate-900/5 font-medium text-navy-950">
-                High-ambition builders and flagship teams preparing for serious launch.
+                High-ambition builders and flagship teams preparing for serious launch or scrutiny.
               </td>
             </tr>
 
@@ -70,29 +95,29 @@ export default function OfferComparison() {
                 <span className="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   ₹3,000 each
                 </span>{" "}
-                (when team of 5 is full)
+                (when 5-member team is full). Total remains ₹15,000 for 2, 3, or 4 members.
               </td>
               <td className="p-4 border-l border-slate-200 font-mono">
-                ₹12,000 (or ₹8,400–₹9,600 with Bronze pass)
+                ₹12,000 individual rate (or ₹8,400–₹9,600 with confirmed Bronze discount).
               </td>
               <td className="p-4 border-l border-slate-200 bg-slate-900/5 font-mono">
-                ₹15,000 to ₹30,000 with Gold card
+                ₹15,000, ₹22,500, or ₹30,000 with judged Gold cards.
               </td>
             </tr>
 
-            {/* Engagement Window */}
+            {/* Delivery Format */}
             <tr className="hover:bg-slate-50/60">
               <td className="p-4 font-mono font-bold text-navy-950 uppercase text-[11px]">
-                Engagement Window
+                Delivery Format
               </td>
               <td className="p-4 border-l border-slate-200">
-                Single structured intensive group consultation session.
+                Private team-exclusive consultation session (online or in Bangalore).
               </td>
               <td className="p-4 border-l border-slate-200">
-                1-on-1 personalized advisory session.
+                Explicit individual format. Consensual; never silently replaced with group.
               </td>
               <td className="p-4 border-l border-slate-200 bg-slate-900/5 font-bold text-navy-950">
-                30-day continuous intensive mentorship.
+                30-day intensive hybrid mentorship with scheduled weekly review checkpoints.
               </td>
             </tr>
 
@@ -102,20 +127,20 @@ export default function OfferComparison() {
                 Primary Deliverable
               </td>
               <td className="p-4 border-l border-slate-200">
-                Team architectural review, pitch stress-testing, sprint roadmap.
+                Team architectural review, pitch stress-testing, sprint backlog roadmap.
               </td>
               <td className="p-4 border-l border-slate-200">
-                Personalized technical stack diagnosis and hypothesis validation.
+                Personalized technical stack diagnosis and hypothesis validation rubric.
               </td>
               <td className="p-4 border-l border-slate-200 bg-slate-900/5">
-                Weekly strategic milestones, deep architecture audits, accountability.
+                Weekly strategic milestones, deep architecture audits, accountability checkpoints.
               </td>
             </tr>
 
             {/* Token Discount Eligibility */}
             <tr className="hover:bg-slate-50/60">
               <td className="p-4 font-mono font-bold text-navy-950 uppercase text-[11px]">
-                Recognition Token Eligibility
+                Token Eligibility
               </td>
               <td className="p-4 border-l border-slate-200 text-slate-500">
                 Stand-alone flat team rate. Does not require token.
@@ -124,7 +149,23 @@ export default function OfferComparison() {
                 Associated with Bronze Token (Individual Interest Pass).
               </td>
               <td className="p-4 border-l border-slate-200 bg-slate-900/5 text-gold-800 font-bold">
-                Gold Cards (80%, 70%, 60%) & Silver Cards (50%/40%) redeemable.
+                Gold Cards (80%, 70%, 60%) & Silver Cards (50%/40%) redeemable against anchor.
+              </td>
+            </tr>
+
+            {/* Non-Negotiable Boundaries */}
+            <tr className="hover:bg-slate-50/60">
+              <td className="p-4 font-mono font-bold text-navy-950 uppercase text-[11px]">
+                Governance Boundaries
+              </td>
+              <td className="p-4 border-l border-slate-200">
+                Up to 5 people only. No improvised extra seats without corporate authorization.
+              </td>
+              <td className="p-4 border-l border-slate-200">
+                Do not mistake ₹12,000 individual entry for daily personal hour without approved capacity.
+              </td>
+              <td className="p-4 border-l border-slate-200 bg-slate-900/5">
+                No guaranteed financial results, VC meetings, or employment promises.
               </td>
             </tr>
 
@@ -137,26 +178,10 @@ export default function OfferComparison() {
                 Circle13 Management desk schedules upon team intake review.
               </td>
               <td className="p-4 border-l border-slate-200">
-                Circle13 Management schedules individual session.
+                Circle13 Management schedules individual session upon fit review.
               </td>
               <td className="p-4 border-l border-slate-200 bg-slate-900/5">
-                Circle13 Management confirms cohort onboarding & weekly slots.
-              </td>
-            </tr>
-
-            {/* Document Ceremony */}
-            <tr className="hover:bg-slate-50/60">
-              <td className="p-4 font-mono font-bold text-navy-950 uppercase text-[11px]">
-                Associated Document
-              </td>
-              <td className="p-4 border-l border-slate-200">
-                Black Agreement / Team Offer Letter
-              </td>
-              <td className="p-4 border-l border-slate-200">
-                Bronze Interest Pass Letter
-              </td>
-              <td className="p-4 border-l border-slate-200 bg-slate-900/5 font-semibold text-navy-950">
-                Gold Agreement / Formal Offer Letter
+                Circle13 Management confirms monthly cohort availability & milestones.
               </td>
             </tr>
 
@@ -199,10 +224,10 @@ export default function OfferComparison() {
 
       <div className="p-4 bg-warmIvory/60 border-t border-slate-200 text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-mono text-[11px]">
-          Source: Octopus Tank Offer Structure (Image 1). Pricing represents proposed structure.
+          Source: Archzos Technologies Master Manual (19 Oct 2026) & Octopus Tank Infographic.
         </span>
         <span className="text-[11px] text-slate-500">
-          Booking requests route via Circle13 management.
+          Enquiries coordinated via Circle13 management desk.
         </span>
       </div>
     </div>

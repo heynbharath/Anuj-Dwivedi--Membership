@@ -10,6 +10,9 @@ import {
   PROCESS_FIVE_STEPS,
   IMAGE_ASSETS,
   PRICING_HARMONIZATION_NOTE,
+  MASTER_MANUAL_CONFIG,
+  RECOGNITION_RULES_CONFIG,
+  STATIONERY_SHOWCASE_ITEMS,
 } from "@/lib/config";
 import SectionHeader from "@/components/SectionHeader";
 import VerificationNotice from "@/components/VerificationNotice";
@@ -25,6 +28,7 @@ import InfographicPillars from "@/components/InfographicPillars";
 import InfographicProcessFlow from "@/components/InfographicProcessFlow";
 import InfographicOctopusArms from "@/components/InfographicOctopusArms";
 import InteractiveMotionGraphic from "@/components/InteractiveMotionGraphic";
+import EnquiryForm from "@/components/EnquiryForm";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -37,6 +41,11 @@ import {
   Layers,
   Users,
   Compass,
+  Code2,
+  Check,
+  Lock,
+  Clock,
+  HelpCircle,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -72,7 +81,7 @@ export default function HomePage() {
   return (
     <div className="bg-white text-navy-950 space-y-20 sm:space-y-28 pb-16">
       {/* =========================================================
-          SECTION A: PREMIUM HERO (Ivory, Obsidian, Gold Identity)
+          SECTION A: PREMIUM HERO (Warm Ivory, Obsidian, Gold Identity)
       ========================================================= */}
       <section className="relative pt-6 pb-16 px-4 sm:px-6 lg:px-8 bg-light-grid overflow-hidden border-b border-slate-100">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -91,17 +100,19 @@ export default function HomePage() {
               </span>
             </div>
 
-            {/* Main Required Headline */}
+            {/* Main Required Headline (Section 4) */}
             <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-navy-950 leading-[1.08]">
-              Recognition is the beginning. <br />
+              Ideas deserve more than applause. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-600 via-amber-600 to-yellow-600">
-                Execution is what comes next.
+                They deserve a path forward.
               </span>
             </h1>
 
-            {/* Supporting Copy */}
+            {/* Required Supporting Copy (Section 4) */}
             <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-xl">
-              {SITE_CONFIG.heroSupporting}
+              Explore the Octopus Tank recognition programme, professional
+              engagements, and structured guidance around ideas, technical
+              learning, and execution.
             </p>
 
             {/* Three Pillars Summary Infographic Chips */}
@@ -141,7 +152,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Required Action Buttons */}
+            {/* Required Action Buttons (Section 4) */}
             <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
               <Link
                 href="/offers"
@@ -155,7 +166,7 @@ export default function HomePage() {
                 className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-wider font-bold px-7 py-4 rounded-xl border border-gold-400 bg-white text-navy-950 hover:bg-gold-50 transition-all duration-200 shadow-sm"
               >
                 <Award className="w-4 h-4 text-gold-600" />
-                <span>DISCOVER RECOGNITION TOKENS</span>
+                <span>DISCOVER RECOGNITION</span>
               </Link>
             </div>
 
@@ -163,7 +174,7 @@ export default function HomePage() {
             <div className="pt-1 flex items-center space-x-3 text-xs text-slate-500">
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
               <span className="font-mono text-[11px]">
-                Coordinated strictly via <strong>{SITE_CONFIG.management.entity}</strong>
+                Coordinated strictly via <strong>{SITE_CONFIG.management.entity}</strong> (Platform Architecture & Operations)
               </span>
             </div>
           </div>
@@ -233,7 +244,7 @@ export default function HomePage() {
                 </div>
                 <div className="text-xs">
                   <div className="font-bold text-navy-950">Bangalore, India</div>
-                  <div className="text-[10px] text-slate-500 font-mono">Circle13 Exclusive</div>
+                  <div className="text-[10px] text-slate-500 font-mono">Circle13 Operational Desk</div>
                 </div>
               </div>
             </div>
@@ -242,14 +253,48 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          SECTION B: THE OFFER PATHWAYS (Image 1 Infographic)
+          SECTION B: VERIFIED PROFESSIONAL BACKGROUND
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <SectionHeader
+          eyebrow="VERIFIED PROFESSIONAL DOSSIER"
+          title="Commanding The Room Across Every Format"
+          subtitle="Direct photographic record and background of Anuj Dwivedi: keynote addresses, university engineering masterclasses, and technical architecture practice."
+        />
+        <PhotographicProof />
+      </section>
+
+      {/* =========================================================
+          SECTION C: WORK, PROJECTS, AND TECHNICAL CREDIBILITY
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <SectionHeader
+          eyebrow="EVIDENCE FIRST"
+          title="Look at the work. Then decide."
+          subtitle="Direct links to genuine GitHub repositories and active deployments built by Anuj Dwivedi. Zero unverified metrics."
+        />
+        <EvidenceModule />
+
+        {/* Kinetic Motion Graphic Preview */}
+        <div className="pt-8">
+          <SectionHeader
+            eyebrow="INTERACTIVE ALGORITHMIC ENGINE"
+            title="Algorithmic Velocity in Motion"
+            subtitle="Interactive real-time kinetic motion engine demonstrating multi-arm coordination and neural topology."
+          />
+          <InteractiveMotionGraphic />
+        </div>
+      </section>
+
+      {/* =========================================================
+          SECTION D: CONSULTANCY AND MENTORSHIP PATHWAYS
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <SectionHeader
             eyebrow="COMMERCIAL ARCHITECTURE"
             title="Choose the route that fits your next move."
-            subtitle="Three distinct pathways from the supplied infographic. Distinct needs, aligned value, and clear per-head economics."
+            subtitle="Three distinct pathways from the master infographic: Team Consultancy, Individual Engagement, and Anchor Mentorship."
             className="mb-0"
           />
           <Link
@@ -285,7 +330,29 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          SECTION C: RECOGNITION TOKENS GALLERY (Image 2)
+          SECTION E: OCTOPUS TANK INTRODUCTION
+      ========================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <SectionHeader
+            eyebrow="CAMPUS INITIATIVE • DSU"
+            title="Octopus Tank 2026: 8 Innovation Arms"
+            subtitle="8 Arms. Infinite Ideas. Pitch. Compete. Launch. Proposed student pitching competition with 50 team limit."
+            className="mb-0"
+          />
+          <Link
+            href="/octopus-tank"
+            className="inline-flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider text-gold-700 hover:text-gold-900 shrink-0"
+          >
+            <span>View Full Event Docket</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+        <InfographicOctopusArms />
+      </section>
+
+      {/* =========================================================
+          SECTION F: RECOGNITION-TOKEN GALLERY PREVIEW
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -329,59 +396,56 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Recognition Disclaimers */}
+        {/* Recognition Policy Notice */}
         <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-2">
           <div className="flex items-center space-x-2 text-navy-950 font-bold">
             <Award className="w-4 h-4 text-gold-600" />
-            <span>Merit Token & Commercial Independence Policy:</span>
+            <span>Merit Token & Commercial Independence Policy (10-Card Cap):</span>
           </div>
           <p>
-            • Tokens are awarded based on stage performance, technical curiosity, or individual drive. A recognition token does not guarantee commercial purchase, nor is purchasing consultancy a prerequisite for competition recognition.
+            • Tokens are awarded based on stage performance, technical curiosity, or individual drive. Exactly 10 physical cards are issued per edition ({RECOGNITION_RULES_CONFIG.goldCount} Gold, {RECOGNITION_RULES_CONFIG.silverCount} Silver, {RECOGNITION_RULES_CONFIG.bronzeCount} Bronze).
           </p>
           <p>
-            • All token records, serial numbering, and redemption statuses are maintained through Circle13 management onboarding.
+            • A recognition token does not guarantee commercial purchase or investment, nor is purchasing consultancy a prerequisite for competition recognition.
           </p>
         </div>
       </section>
 
       {/* =========================================================
-          SECTION D: THE PROCESS (5-Step Operational Timeline)
+          SECTION G: HOW THE PROGRAMME WORKS (Command Map)
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <SectionHeader
           eyebrow="OPERATIONAL FLOW"
           title="From evaluation to engagement."
-          subtitle="The structured five-step workflow translating pitch evaluation into verified advisory milestones."
+          subtitle="The structured workflow translating pitch evaluation into verified advisory milestones."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          {PROCESS_FIVE_STEPS.map((proc, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-3">
+          {MASTER_MANUAL_CONFIG.commandMap.map((cmd) => (
             <div
-              key={proc.step}
+              key={cmd.step}
               className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-gold-400 hover:shadow-md transition-all space-y-3 relative flex flex-col justify-between"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-gold-700 bg-gold-50 border border-gold-300 px-2 py-0.5 rounded">
-                    {proc.step}
+                  <span className="w-6 h-6 rounded-full bg-navy-950 text-gold-400 font-mono text-xs font-bold flex items-center justify-center">
+                    {cmd.step}
                   </span>
                   <span className="text-[10px] font-mono text-slate-400">
-                    Step {index + 1}
+                    Step {cmd.step}
                   </span>
                 </div>
-                <h4 className="font-serif text-lg font-bold text-navy-950">
-                  {proc.title}
+                <h4 className="font-serif text-sm font-bold text-navy-950">
+                  {cmd.action}
                 </h4>
-                <div className="text-[11px] font-mono text-gold-700 font-bold">
-                  {proc.headline}
-                </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  {proc.description}
+                  {cmd.detail}
                 </p>
               </div>
 
               <div className="pt-2 border-t border-slate-100 flex items-center text-[10px] font-mono text-slate-400">
-                <span>Verified Flow</span>
+                <span>Verified Protocol</span>
               </div>
             </div>
           ))}
@@ -393,133 +457,60 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================
-          SECTION E: DOCUMENT DESIGN (Image 3 Stationery & Agreements)
+          SECTION H: DOCUMENT AND STATIONERY SHOWCASE
       ========================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <SectionHeader
             eyebrow="STATIONERY & AGREEMENTS"
             title="Every offer deserves clarity."
-            subtitle="Concepts from Image 3: Gold agreement, Black agreement, formal offer letter, company-branded envelope, and black presentation folder."
+            subtitle="Concepts from Images 3 & 4: Gold agreement, Black agreement, formal offer letter, company-branded envelope, presentation folder, and the 4-seal signing system."
             className="mb-0"
           />
-          <button
-            onClick={() =>
-              openLightbox(
-                IMAGE_ASSETS.offerLetterStationery.src,
-                IMAGE_ASSETS.offerLetterStationery.alt,
-                IMAGE_ASSETS.offerLetterStationery.title,
-                IMAGE_ASSETS.offerLetterStationery.caption
-              )
-            }
-            className="inline-flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider px-4 py-2 rounded-xl bg-warmIvory border border-gold-400 text-gold-900 hover:bg-gold-100 transition-colors shrink-0 shadow-xs"
+          <Link
+            href="/agreements"
+            className="inline-flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider text-gold-700 hover:text-gold-900 shrink-0"
           >
-            <ZoomIn className="w-3.5 h-3.5 text-gold-700" />
-            <span>Enlarge Image 3 (Stationery)</span>
-          </button>
+            <span>View Full 12-Item Suite</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        {/* Mandatory Governance Notice */}
+        <div className="p-4 rounded-2xl bg-warmIvory/70 border border-gold-300 text-xs text-slate-800 leading-relaxed flex items-start space-x-3 shadow-xs">
+          <ShieldCheck className="w-4 h-4 text-gold-700 shrink-0 mt-0.5" />
+          <div>
+            <span className="font-bold text-navy-950">
+              Illustrative Design Concept Notice:
+            </span>{" "}
+            &ldquo;Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.&rdquo;
+          </div>
         </div>
 
         {/* Interactive Agreement Preview Component */}
         <AgreementPreview />
-      </section>
 
-      {/* =========================================================
-          SECTION F: THE SIGNING SYSTEM (Image 4 Official Seals)
-      ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        {/* Seal Gallery Component */}
+        <div className="pt-8">
           <SectionHeader
             eyebrow="OFFICIAL SEAL SYSTEM"
             title="A consistent identity across every document."
-            subtitle="The four seal concepts from Image 4: Gold ink seal, blue ink seal, blind emboss, and ceremonial wax seal, accompanied by standard signing guidelines."
-            className="mb-0"
+            subtitle="The four seal concepts from Image 4: Gold ink seal, blue ink seal, blind emboss, and ceremonial wax seal."
           />
-          <button
-            onClick={() =>
-              openLightbox(
-                IMAGE_ASSETS.officialSealSigning.src,
-                IMAGE_ASSETS.officialSealSigning.alt,
-                IMAGE_ASSETS.officialSealSigning.title,
-                IMAGE_ASSETS.officialSealSigning.caption
-              )
-            }
-            className="inline-flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider px-4 py-2 rounded-xl bg-warmIvory border border-gold-400 text-gold-900 hover:bg-gold-100 transition-colors shrink-0 shadow-xs"
-          >
-            <ZoomIn className="w-3.5 h-3.5 text-gold-700" />
-            <span>Enlarge Image 4 (Seals)</span>
-          </button>
+          <SealGallery />
         </div>
-
-        {/* Seal Gallery Component */}
-        <SealGallery />
       </section>
 
       {/* =========================================================
-          STAGE EVIDENCE & PHOTOGRAPHIC PROOF STRIP
+          SECTION I: ENQUIRY AND BOOKING SECTION
       ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 space-y-8">
         <SectionHeader
-          eyebrow="STAGE & LAB EVIDENCE"
-          title="Commanding The Room Across Every Format"
-          subtitle="Direct photographic record of Anuj's keynote addresses, university engineering masterclasses, and technical architecture practice."
+          eyebrow="COMMERCIAL INTAKE"
+          title="Find the right engagement."
+          subtitle="Select from 7 distinct categories. Track your request across 4 transparent lifecycle states from intake to formal onboarding."
         />
-        <PhotographicProof />
-      </section>
-
-      {/* =========================================================
-          OCTOPUS TANK 8-ARMS SUMMARY
-      ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <SectionHeader
-            eyebrow="CAMPUS INITIATIVE • DSU"
-            title="Octopus Tank 2026: 8 Innovation Arms"
-            subtitle="8 Arms. Infinite Ideas. Pitch. Compete. Launch. Proposed student pitching competition with 50 team limit."
-            className="mb-0"
-          />
-          <Link
-            href="/octopus-tank"
-            className="inline-flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider text-gold-700 hover:text-gold-900 shrink-0"
-          >
-            <span>View Full Event Docket</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-        <InfographicOctopusArms />
-      </section>
-
-      {/* =========================================================
-          VERIFIED CODE & PUBLIC REPOSITORIES
-      ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="EVIDENCE FIRST"
-          title="Look at the work. Then decide."
-          subtitle="Direct links to genuine GitHub repositories and active deployments built by Anuj."
-        />
-        <EvidenceModule />
-      </section>
-
-      {/* =========================================================
-          KINETIC MOTION GRAPHIC
-      ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <SectionHeader
-          eyebrow="INTERACTIVE VISUAL EXPERIENCE"
-          title="Algorithmic Velocity in Motion"
-          subtitle="Interactive real-time kinetic motion engine. Switch modes between 8-Arm Wave, Neural Mesh, and Orbital Core."
-        />
-        <InteractiveMotionGraphic />
-      </section>
-
-      {/* =========================================================
-          SECTION G: FINAL HIGH-CONTRAST CONVERSION CALL-TO-ACTION
-      ========================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <BookingCTA
-          headline="Find the right engagement."
-          supportingText="Bring your codebase, system architecture, or pitch deck. Explore available commercial routes or submit an enquiry to Circle13 management."
-        />
+        <EnquiryForm isCompact={false} />
       </section>
 
       {/* Reusable Image Lightbox Modal */}

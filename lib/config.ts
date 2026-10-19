@@ -10,6 +10,8 @@ import {
   TokenRecord,
   AgreementTemplate,
   SealDesign,
+  UnifiedOffer,
+  StationeryShowcaseItem,
 } from "@/types";
 
 export const SITE_CONFIG = {
@@ -23,9 +25,9 @@ export const SITE_CONFIG = {
     "Proposed descriptor — editable and subject to Anuj's final confirmation.",
   coreIdea: "Think Clearly. Build Intentionally.",
   editorialCampaignLine: "Less noise. Better decisions. Stronger execution.",
-  heroHeadline: "Recognition is the beginning. Execution is what comes next.",
+  heroHeadline: "Ideas deserve more than applause. They deserve a path forward.",
   heroSupporting:
-    "Explore structured mentorship, consultancy, recognition programmes, and professional engagements designed around ideas, technical learning, and execution.",
+    "Explore the Octopus Tank recognition programme, professional engagements, and structured guidance around ideas, technical learning, and execution.",
 
   // Contact details verified from public profile and Linktree
   contact: {
@@ -41,12 +43,16 @@ export const SITE_CONFIG = {
     vcardDownloadUrl: "https://vkardz.com/save-vcard/anujdwivedi",
   },
 
-  // Management entity from supplied infographic & poster
+  // Management & Operational attribution
   management: {
-    entity: "Circle13 Management",
-    partners: ["N Bharath", "Akhil Vipin Nair"],
-    role: "Manages bookings, scheduling, calendar availability, and commercial onboarding for Anuj Dwivedi.",
-    notice: "My team manages my time. Bookings and payment processing route through Circle13 management.",
+    entity: "Circle13 Platform Architecture",
+    leadership: "N. Bharath (CEO, Circle13)",
+    partners: ["N. Bharath (CEO, Circle13)"],
+    role: "Designs, builds, and maintains the digital platform experience, commercial presentation, and operational infrastructure.",
+    attributionNotice:
+      "Circle13 coordinates digital experience and operational infrastructure. Formal appointment as commercial management or payment authorization is subject to confirmed agreement.",
+    isFormallyAppointed: false,
+    canCollectPayments: false,
   },
 
   // Core brand positioning
@@ -133,8 +139,11 @@ export const SERVICES_CATALOGUE: ServiceOffer[] = [
     ],
     referencePriceINR: 40000,
     priceNote:
-      "Reference price indicated in supplied infographic. Final schedule and booking fee confirmed upon review.",
+      "Reference price indicated in earlier proposal materials. Not merged with current planning rates. Final schedule and booking fee confirmed upon review.",
     priceStatus: "reference_unconfirmed",
+    status: "draft",
+    statusLabel: "Draft Proposal (Historical Planning)",
+    sourceOrigin: "Earlier planning documents",
     duration: "Single in-depth strategy session (with pre-read analysis)",
     deliveryFormat: "Video consultation or in-person in Bangalore by arrangement",
     bookingRequirement: "Brief intake form detailing problem statement and existing materials",
@@ -145,7 +154,7 @@ export const SERVICES_CATALOGUE: ServiceOffer[] = [
     id: "one-to-one-mentorship",
     slug: "one-to-one-mentorship",
     title: "1:1 Mentorship (4 Sessions)",
-    badge: "Most Popular",
+    badge: "Historical Package",
     eyebrow: "STRUCTURED ENGAGEMENT",
     headline: "Four structured milestones to move from ambiguity to functional implementation.",
     audience: "Engineers, student founders, and technical entrepreneurs building high-ambition products.",
@@ -167,13 +176,16 @@ export const SERVICES_CATALOGUE: ServiceOffer[] = [
     ],
     referencePriceINR: 40000,
     priceNote:
-      "Reference price: ₹40,000 for the full 4-session programme (infographic source, subject to confirmation).",
+      "Reference price: ₹40,000 for the full 4-session programme from earlier proposals. Not automatically valid for the newer routes.",
     priceStatus: "reference_unconfirmed",
+    status: "draft",
+    statusLabel: "Draft Proposal (Historical Planning)",
+    sourceOrigin: "Earlier planning documents",
     duration: "4 dedicated 60-90 min sessions spread over 3-6 weeks",
     deliveryFormat: "Scheduled 1:1 sessions (remote or Bangalore offline by agreement)",
     bookingRequirement: "Approved mentorship application and project brief",
     ctaText: "Apply for 4-Session Mentorship",
-    featured: true,
+    featured: false,
   },
   {
     id: "thirty-day-premium-mentorship",
@@ -201,8 +213,11 @@ export const SERVICES_CATALOGUE: ServiceOffer[] = [
     ],
     referencePriceINR: 75000,
     priceNote:
-      "Anchor price: ₹75,000 (qualifies for Octopus Tank earned discount cards of 20% to 80%).",
+      "Anchor planning rate: ₹75,000 (qualifies for Octopus Tank earned discount cards of 20% to 80%).",
     priceStatus: "reference_unconfirmed",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
     duration: "30-day intensive engagement window",
     deliveryFormat: "Structured hybrid milestones with Circle13 coordination",
     bookingRequirement: "Comprehensive proposal review and founder alignment interview",
@@ -233,6 +248,9 @@ export const SERVICES_CATALOGUE: ServiceOffer[] = [
     referencePriceINR: null,
     priceNote: "Custom pricing structured around cohort size, duration, and logistics.",
     priceStatus: "custom_quote",
+    status: "approved",
+    statusLabel: "Approved Campus Format",
+    sourceOrigin: "Campus Partnerships & Hackathons",
     duration: "From 2-hour intensive masterclasses to multi-day hackathons",
     deliveryFormat: "On-campus keynote / workshop or high-fidelity virtual delivery",
     bookingRequirement: "Institutional RFP or event coordination lead time",
@@ -742,7 +760,7 @@ export const PROCESS_FIVE_STEPS = [
   },
 ];
 
-// Three Distinct Commercial Offer Routes (From Image 1)
+// Three Distinct Commercial Offer Routes (From Image 1 & Master Manual 19 Oct 2026)
 export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
   {
     id: "team-consultancy-entry",
@@ -755,7 +773,7 @@ export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
     teamMaxMembers: 5,
     perPersonEquivalentINR: 3000,
     description:
-      "A team-oriented consultancy entry designed to make structured guidance accessible to a group working towards a shared objective. When a team of 5 participates, the effective per-head investment is ₹3,000 each.",
+      "A team-oriented consultancy entry designed to make structured guidance accessible to a group working towards a shared objective. When a team of 5 participates, the effective per-head investment is ₹3,000 each. The total team package remains ₹15,000 even if 2, 3, or 4 members initially enroll. The precise scope, duration, and deliverables require approval.",
     duration: "Structured focused consultation session for the entire team",
     focusAreas: [
       "Shared architectural diagnosis & technical bottleneck review",
@@ -764,10 +782,13 @@ export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
       "Structured group follow-up action summary",
     ],
     eligibilityNotice:
-      "Open to self-formed teams of up to 5 members. Lower per-head cost applies when the team is full (₹3,000/head at 5 participants). Final session scope and scheduling confirmed by Circle13 management.",
+      "Open to self-formed teams of up to 5 members. Lower per-head cost applies when the team is full (₹3,000/head at 5 participants). The total team package remains ₹15,000. Scope, duration, and calendar availability require Anuj's approval.",
     managementNote:
-      "Coordinated via Circle13 management. Bookings and calendar slots are scheduled upon team application review.",
-    approvalStatus: "proposed_infographic_v2",
+      "Coordinated via Circle13 management desk. Bookings and calendar slots are scheduled upon team application review.",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
+    approvalStatus: "awaiting_approval",
     ctaText: "Explore Team Consultancy",
     badge: "Route A — Team Route",
   },
@@ -780,7 +801,7 @@ export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
     headline: "Individual engagement route associated with Bronze recognition and individual-interest pathway.",
     audience: "Highly interested individuals and driven builders seeking personal execution direction.",
     description:
-      "An individual engagement route associated with the Bronze recognition and individual-interest pathway. Designed to widen distribution and make high-leverage guidance accessible to promising solo builders.",
+      "An individual engagement route associated with the Bronze recognition and individual-interest pathway. Designed to widen distribution and make high-leverage guidance accessible to promising solo builders. The exact eligibility, delivery format, and scope require confirmation before accepting any payment.",
     duration: "1-on-1 strategic advisory session with personalized diagnosis",
     focusAreas: [
       "Individual technical stack review & engineering trajectory",
@@ -789,10 +810,13 @@ export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
       "Follow-up resource pointers and milestone tracking",
     ],
     eligibilityNotice:
-      "Eligibility, scope, and applicable Bronze token discount (e.g. 20% to 30% reduction, bringing the fee to ₹8,400–₹9,600) require confirmation by the programme owner.",
+      "Individual route associated with Bronze selection. Delivery format (private 1:1 vs group cohort) must remain explicit and consensual before payment. Terms require Anuj's sign-off.",
     managementNote:
       "Booking requests route through Circle13 management desk. Verified against issued token or submitted project context.",
-    approvalStatus: "proposed_infographic_v2",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
+    approvalStatus: "awaiting_approval",
     ctaText: "Explore Individual Route",
     badge: "Route B — Individual Route",
   },
@@ -812,14 +836,281 @@ export const COMMERCIAL_OFFER_ROUTES: OfferPathway[] = [
       "Gold & Silver recognition token discount redemption applies here",
     ],
     description:
-      "A premium mentorship engagement centred on deeper guidance, execution support, and accountability. Serves as the anchor programme against which Octopus Tank Gold and Silver recognition cards are redeemable.",
+      "A premium mentorship engagement centred on deeper guidance, execution support, and accountability. Serves as the anchor programme against which Octopus Tank Gold and Silver recognition cards are redeemable. Focus is on strategic milestones, system architecture, and execution discipline. Does not invent session counts, unlimited access, or guaranteed business outcomes.",
     eligibilityNotice:
-      "Qualifies for Octopus Tank Gold Cards (80%, 70%, 60% discount -> ₹15,000, ₹22,500, ₹30,000) and Silver Cards (50%/40% discount -> ₹37,500/₹45,000). Limited monthly cohort intake.",
+      "Qualifies for Octopus Tank Gold Cards (80%, 70%, 60% discount -> ₹15,000, ₹22,500, ₹30,000) and Silver Cards (50%/40% discount -> ₹37,500/₹45,000). Limited monthly cohort intake. Requires Anuj's final confirmation.",
     managementNote:
       "Circle13 management confirms onboarding, milestone scheduling, and formal documentation.",
-    approvalStatus: "proposed_infographic_v2",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
+    approvalStatus: "awaiting_approval",
     ctaText: "Explore Premium Mentorship",
     badge: "Route C — Anchor Mentorship",
+  },
+];
+
+// Unified Central Offers Configuration (All Offer Pathways & Catalogue Services in One Registry)
+export const CENTRAL_OFFERS: UnifiedOffer[] = [
+  {
+    id: "route-a-team",
+    slug: "team-consultancy-entry",
+    routeKey: "route-a",
+    title: "Team Consultancy Entry",
+    badge: "Route A — Team Route",
+    eyebrow: "TEAM ACCELERATION",
+    headline: "Structured guidance accessible to a group working towards a shared objective.",
+    targetAudience: "Teams of up to 5 people seeking structured acceleration and architectural direction.",
+    description:
+      "A team-oriented consultancy entry designed to make structured guidance accessible to a group working towards a shared objective. At 5 participants, the arithmetic equivalent is ₹3,000 per person. The total team package remains ₹15,000 even if 2, 3, or 4 members participate. The precise scope, duration, and deliverables require approval.",
+    referencePriceINR: 15000,
+    priceDisplay: "₹15,000 total",
+    perPersonEquivalentINR: 3000,
+    teamMaxMembers: 5,
+    duration: "Structured focused consultation session for the entire team",
+    deliveryFormat: "Private team-exclusive session or scheduled cohort (online or in Bangalore)",
+    focusAreas: [
+      "Shared architectural diagnosis & technical bottleneck review",
+      "Team pitch defensibility & multi-role positioning",
+      "Prioritised execution roadmap for the upcoming development sprint",
+      "Structured group follow-up action summary",
+    ],
+    inclusions: [
+      "Team-wide architectural diagnosis and system audit",
+      "Pitch deck stress-testing and narrative defense",
+      "Prioritized sprint backlog and technical decision rubric",
+      "Up to 5 participating team members under one flat fee",
+    ],
+    exclusions: [
+      "Hands-on custom software outsourcing or code implementation",
+      "Unlimited daily on-call inquiries",
+    ],
+    eligibilityNotice:
+      "Planning terms from Anuj. Open to teams of up to 5. Per-head cost decreases as team fills. Delivery format and calendar require sign-off.",
+    managementNote:
+      "Coordinated via Circle13 management desk. Verified team application required.",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
+    ctaText: "Request Team Consultancy",
+    ctaLink: "/book?route=route-a",
+    featured: true,
+  },
+  {
+    id: "route-b-individual",
+    slug: "individual-bronze-route",
+    routeKey: "route-b",
+    title: "Individual Bronze Route",
+    badge: "Route B — Individual Route",
+    eyebrow: "SOLO BUILDER ACCELERATION",
+    headline: "Individual engagement route associated with Bronze recognition and individual-interest pathway.",
+    targetAudience: "Highly interested individuals and driven builders seeking personal execution direction.",
+    description:
+      "An individual engagement route associated with the Bronze recognition and individual-interest pathway. Designed to widen distribution and make high-leverage guidance accessible to promising solo builders. The exact eligibility, delivery format, and scope require confirmation before accepting any payment.",
+    referencePriceINR: 12000,
+    priceDisplay: "₹12,000",
+    perPersonEquivalentINR: 12000,
+    teamMaxMembers: 1,
+    duration: "1-on-1 strategic advisory session with personalized diagnosis",
+    deliveryFormat: "Individual video consultation or in-person by arrangement",
+    focusAreas: [
+      "Individual technical stack review & engineering trajectory",
+      "Project validation & hypothesis testing discipline",
+      "Direct feedback on problem framing and code architecture",
+      "Follow-up resource pointers and milestone tracking",
+    ],
+    inclusions: [
+      "Personal code & architecture critique",
+      "Pitch & positioning stress-testing",
+      "Targeted technical learning roadmap",
+      "Bronze token pass redemption pathway if earned",
+    ],
+    exclusions: [
+      "Private daily access (do not mistake individual entry for daily personal hour)",
+      "Guaranteed employment, funding, or competition placement",
+    ],
+    eligibilityNotice:
+      "Planning terms from Anuj. Delivery format (private 1:1 vs group cohort) must be disclosed before payment. Terms require Anuj's sign-off.",
+    managementNote:
+      "Booking requests route through Circle13 management desk.",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
+    ctaText: "Request Individual Route",
+    ctaLink: "/book?route=route-b",
+    featured: false,
+  },
+  {
+    id: "route-c-anchor",
+    slug: "premium-anchor-mentorship",
+    routeKey: "route-c",
+    title: "Premium Anchor Mentorship",
+    badge: "Route C — Flagship Anchor",
+    eyebrow: "INTENSIVE ACCOUNTABILITY",
+    headline: "30-day premium mentorship centred on deeper guidance, execution support, and accountability.",
+    targetAudience: "High-ambition builders and flagship teams preparing for serious launch, demo days, or investment scrutiny.",
+    description:
+      "A premium mentorship engagement centred on deeper guidance, execution support, and accountability. Serves as the anchor programme against which Octopus Tank Gold and Silver recognition cards are redeemable. Focus is on strategic milestones, system architecture, and execution discipline. Does not invent session counts, unlimited access, or guaranteed business outcomes.",
+    referencePriceINR: 75000,
+    priceDisplay: "₹75,000",
+    perPersonEquivalentINR: null,
+    teamMaxMembers: 5,
+    duration: "30 days of deep engagement",
+    deliveryFormat: "Structured hybrid milestones with Circle13 coordination",
+    focusAreas: [
+      "Deep strategic and architectural engagement",
+      "Continuous execution support and sprint milestones",
+      "Relentless weekly accountability and obstacle clearing",
+      "Gold & Silver recognition token discount redemption applies here",
+    ],
+    inclusions: [
+      "Weekly strategic milestones and sprint reviews",
+      "System design and generative AI integration audits",
+      "Deck, messaging, and pitch presentation rehearsal",
+      "Dedicated review checkpoints between sessions",
+      "Eligible card discount redemption applies here (Gold/Silver/Bronze)",
+      "Dedicated Circle13 management liaison",
+    ],
+    exclusions: [
+      "Unlimited 24/7 on-call availability",
+      "Direct financial investment or investment brokerage",
+      "Guaranteed third-party outcomes",
+    ],
+    eligibilityNotice:
+      "Anchor planning rate: ₹75,000. Qualifies for Octopus Tank Gold Cards (80%, 70%, 60% discount -> ₹15,000, ₹22,500, ₹30,000) and Silver Cards (50%/40% discount -> ₹37,500/₹45,000). Limited monthly cohort intake.",
+    managementNote:
+      "Circle13 management confirms onboarding, milestone scheduling, and formal documentation.",
+    status: "awaiting_approval",
+    statusLabel: "Awaiting Approval (Planning Term)",
+    sourceOrigin: "Master Manual & Infographic (19 Oct 2026)",
+    ctaText: "Apply for 30-Day Mentorship",
+    ctaLink: "/book?route=route-c",
+    featured: true,
+  },
+  {
+    id: "historical-personal-consultancy",
+    slug: "historical-consultancy-40k",
+    routeKey: "consultancy-single",
+    title: "1:1 Personal Consultancy (Single Session)",
+    badge: "Draft Proposal",
+    eyebrow: "HISTORICAL ADVISORY",
+    headline: "Focused 1-on-1 diagnostic from previous proposal materials.",
+    targetAudience: "Solo founders or builders seeking an architectural critique.",
+    description:
+      "Single in-depth strategy session from earlier website planning documents (₹40,000 reference price). Preserved transparently in central configuration. Not automatically merged with current ₹15K team / ₹12K individual planning routes.",
+    referencePriceINR: 40000,
+    priceDisplay: "₹40,000",
+    perPersonEquivalentINR: 40000,
+    teamMaxMembers: 1,
+    duration: "Single in-depth strategy session (with pre-read analysis)",
+    deliveryFormat: "Video consultation or in-person in Bangalore by arrangement",
+    focusAreas: [
+      "Technical architecture review",
+      "Pitch deck & narrative stress-testing",
+      "Follow-up execution summary",
+    ],
+    inclusions: [
+      "1-on-1 strategy session with pre-read analysis",
+      "System design and AI pipeline audit",
+      "Written execution summary",
+    ],
+    exclusions: [
+      "Ongoing daily access",
+      "Custom software development",
+    ],
+    eligibilityNotice:
+      "Historical proposed package from earlier materials. Requires confirmation by Anuj before quoting.",
+    managementNote:
+      "Enquiries reviewed via Circle13 management desk.",
+    status: "draft",
+    statusLabel: "Draft Proposal (Historical Planning)",
+    sourceOrigin: "Earlier planning documents",
+    ctaText: "Enquire Regarding Consultancy",
+    ctaLink: "/book?service=personal-consultancy",
+    featured: false,
+  },
+  {
+    id: "historical-mentorship-4pack",
+    slug: "historical-mentorship-40k",
+    routeKey: "mentorship-4pack",
+    title: "1:1 Mentorship (4-Session Programme)",
+    badge: "Draft Proposal",
+    eyebrow: "HISTORICAL ENGAGEMENT",
+    headline: "Four-session milestone programme from previous proposal materials.",
+    targetAudience: "Engineers and founders building products over a multi-week window.",
+    description:
+      "A 4-part structured engagement mapping across Diagnosis, Prioritisation, In-depth Review, and Practical Execution Roadmap (₹40,000 reference price from earlier proposals). Kept unmerged from newer base rates.",
+    referencePriceINR: 40000,
+    priceDisplay: "₹40,000",
+    perPersonEquivalentINR: 40000,
+    teamMaxMembers: 1,
+    duration: "4 dedicated 60-90 min sessions spread over 3-6 weeks",
+    deliveryFormat: "Scheduled 1:1 sessions (remote or Bangalore offline by agreement)",
+    focusAreas: [
+      "Diagnose, Prioritise, Review, and Plan milestones",
+      "System design critique and obstacle removal",
+      "Long-term autonomous roadmap",
+    ],
+    inclusions: [
+      "4 structured advisory sessions",
+      "Roadmap documentation",
+      "Milestone reviews",
+    ],
+    exclusions: [
+      "Outsourced contract programming",
+      "Guaranteed venture investment",
+    ],
+    eligibilityNotice:
+      "Historical proposed package. Requires confirmation by Anuj before quoting.",
+    managementNote:
+      "Enquiries reviewed via Circle13 management desk.",
+    status: "draft",
+    statusLabel: "Draft Proposal (Historical Planning)",
+    sourceOrigin: "Earlier planning documents",
+    ctaText: "Enquire Regarding 4-Pack Mentorship",
+    ctaLink: "/book?service=one-to-one-mentorship",
+    featured: false,
+  },
+  {
+    id: "institutional-ecosystem-workshops",
+    slug: "institutional-programmes",
+    routeKey: "institutional-programmes",
+    title: "Institutional Workshops, Keynotes & Judging",
+    badge: "Approved Campus Format",
+    eyebrow: "B2B & CAMPUS INITIATIVES",
+    headline: "Hands-on AI workshops, hackathon judging, and startup pitch bootcamps for premier institutions.",
+    targetAudience: "Engineering universities, incubation centers, developer communities, and corporate innovation teams.",
+    description:
+      "Dynamic, hands-on programmes that train engineering students to build with modern AI architectures, build real software, and pitch with clarity. Verified across university campuses including Dayananda Sagar University (DSU).",
+    referencePriceINR: null,
+    priceDisplay: "Custom RFP Quote",
+    perPersonEquivalentINR: null,
+    teamMaxMembers: null,
+    duration: "From 2-hour intensive masterclasses to multi-day hackathons",
+    deliveryFormat: "On-campus keynote / workshop or high-fidelity virtual delivery",
+    focusAreas: [
+      "Generative AI, Autonomous Agents, and Production Pipelines",
+      "Pitch Defensibility and Startup Hackathon Judging",
+      "Octopus Tank format integration (Teach, Judge, Reward, Convert)",
+    ],
+    inclusions: [
+      "Custom curriculum tailored to student cohort",
+      "Interactive hackathon judging & live pitch evaluation",
+      "Institutional capability documentation",
+    ],
+    exclusions: [
+      "Pre-recorded static webinars",
+    ],
+    eligibilityNotice:
+      "Approved format. Custom proposals structured around university cohort size, duration, and campus logistics.",
+    managementNote:
+      "Formal institutional RFPs coordinated through Circle13 management.",
+    status: "approved",
+    statusLabel: "Approved Campus Format",
+    sourceOrigin: "DSU & Institutional Campus Deployments",
+    ctaText: "Request Institutional Proposal",
+    ctaLink: "/institutions",
+    featured: true,
   },
 ];
 
@@ -1205,6 +1496,431 @@ export const SEALS_AND_SIGNING_CONFIG = {
 // Clear Harmonization Notice
 export const PRICING_HARMONIZATION_NOTE = {
   notice:
-    "The new Octopus Tank infographic supplies three commercial offer routes: Route A (Team Consultancy Entry at ₹15,000 total for up to 5 people), Route B (Individual Bronze Route at ₹12,000), and Route C (Premium Anchor Mentorship at ₹75,000). Previous website materials also referenced individual 1-on-1 consultancy (₹40,000) and 4-session mentorship (₹40,000). To avoid contradictory prices, all offerings are clearly labeled with their offer pathway, target audience, and approval status pending final confirmation from Anuj Dwivedi.",
+    "The new Octopus Tank infographic and master manual supply three commercial offer routes: Route A (Team Consultancy Entry at ₹15,000 total for up to 5 people), Route B (Individual Bronze Route at ₹12,000), and Route C (Premium Anchor Mentorship at ₹75,000). Previous website materials referenced 1-on-1 consultancy (₹40,000) and 4-session mentorship (₹40,000). To avoid contradictory prices, all offerings are centralized with explicit statuses ('awaiting_approval', 'draft', or 'approved') pending final confirmation from Anuj Dwivedi. Earlier draft packages are not silently merged.",
 };
+
+// 10-Card Recognition Programme Rules & Allocation Architecture (Master Manual Page 5)
+export const RECOGNITION_RULES_CONFIG = {
+  totalCap: 10,
+  totalCardsPerEdition: 10,
+  goldCount: 3,
+  silverCount: 4,
+  bronzeCount: 3,
+  goldAllocation: {
+    count: 3,
+    type: "Strictly Judged Podium Places",
+    description: "Conferred exclusively upon 1st, 2nd, and 3rd place teams from live judged competition rounds.",
+    negotiable: false,
+  },
+  silverBronzeAllocation: {
+    count: 7,
+    type: "Flexible Allocation (Silver / Bronze)",
+    description: "The seven non-Gold cards can be split flexibly between Silver (standout teams Anuj personally selects) and Bronze (interested individuals). Never make or print extras unless Anuj formally revises the cap.",
+    negotiable: false,
+  },
+  coreRule:
+    "Cards signify a selection. They do not themselves guarantee funding, employment, private hours, or a special price. Offer entitlements must be confirmed in a named written offer letter.",
+  decisionRule:
+    "Do not push everyone into the same purchase. Match each person to their actual problem, offer only what Archzos can deliver, and allow a clear 'no'.",
+};
+
+// Master Manual Operating Architecture (Archzos Technologies Pvt Ltd Manual - 19 Oct 2026)
+export const MASTER_MANUAL_CONFIG = {
+  edition: "EDITION 01 · 19 October 2026",
+  authorityNote: "ANUJ SELECTS / MANAGEMENT SELLS / TERMS ARE WRITTEN / SIGNATURE IS PERSONAL",
+  
+  // 3 Gates Architecture (Manual Page 3)
+  threeGates: [
+    {
+      gate: "GATE 01",
+      name: "PSYCHOLOGY",
+      coreQuestion: "Is the friction worth removing?",
+      evidence: "Articulate problem, active questions, genuine desire to work on it.",
+      failSignal: "Attention without serious follow-up.",
+      actionPrinciple: "Prove relevant friction before offering a paid route.",
+    },
+    {
+      gate: "GATE 02",
+      name: "ECONOMICS",
+      coreQuestion: "Is contribution positive?",
+      evidence: "Revenue minus management, delivery, and other variable costs; students report useful progress.",
+      failSignal: "Hours consumed exceed realizable benefit.",
+      actionPrinciple: "Deliver positive value with transparent per-head unit economics.",
+    },
+    {
+      gate: "GATE 03",
+      name: "DISTRIBUTION",
+      coreQuestion: "Can the offer reach more people?",
+      evidence: "Referrals, team members, clear group cohorts, repeatable enrollment and delivery.",
+      failSignal: "Acquisition grows while results collapse.",
+      actionPrinciple: "Repeat without deception; maintain explicit consent on delivery format.",
+    },
+  ],
+
+  // 2-Hour Session Blueprint (Manual Page 2 & Page 9)
+  sessionStages: [
+    {
+      step: "01",
+      title: "Enter with Authority",
+      tagline: "COMMAND THE ROOM",
+      description: "Establish undeniable engineering credibility through demonstrated skills, actual software architectures, and zero theoretical posturing.",
+    },
+    {
+      step: "02",
+      title: "Expose the Friction",
+      tagline: "DIAGNOSE REAL BLOCKS",
+      description: "Ask tough questions that reveal why toy notebooks fail in production and why casual startup ideas flounder.",
+    },
+    {
+      step: "03",
+      title: "Teach What Matters",
+      tagline: "UNCOMPROMISING CURRICULUM",
+      description: "Impart fundamental principles: system design, defensible problem-solution fit, and real unit economics.",
+    },
+    {
+      step: "04",
+      title: "Judge the Pitches",
+      tagline: "RUTHLESS, CONSTRUCTIVE CRITIQUE",
+      description: "Evaluate multi-arm project pitches against actual viability, market friction, and technical architecture.",
+    },
+    {
+      step: "05",
+      title: "Reward and Convert",
+      tagline: "CONFER MERIT, HANDOFF TO DESK",
+      description: "Hand over numbered Gold, Silver, and Bronze tokens on stage. Transition interested teams to the management desk for written terms.",
+    },
+  ],
+
+  // 6-Step Command Map (Manual Page 2)
+  commandMap: [
+    {
+      step: "1",
+      action: "Observe a real gap",
+      detail: "Student or team identifies something useful they need help doing.",
+    },
+    {
+      step: "2",
+      action: "Show credible proof",
+      detail: "Actual examples, skills, live demos, and clear deliverables.",
+    },
+    {
+      step: "3",
+      action: "Qualify the need",
+      detail: "Team or individual? What will improve? Time commitment?",
+    },
+    {
+      step: "4",
+      action: "Recognise selectively",
+      detail: "Gold: judged places. Silver: chosen teams. Bronze: interested individuals.",
+    },
+    {
+      step: "5",
+      action: "Issue one offer",
+      detail: "Written scope, price, group/private format, validity, and signature.",
+    },
+    {
+      step: "6",
+      action: "Management closes",
+      detail: "Consent, authorized payment, receipt, scheduling, onboarding.",
+    },
+  ],
+
+  // 5-Question Diagnostic (Manual Page 12)
+  diagnosticQuestions: [
+    {
+      number: "01",
+      question: "What are you building?",
+      purpose: "Distinguishes a real project from a casual idea.",
+    },
+    {
+      number: "02",
+      question: "What have you done already?",
+      purpose: "Shows existing work, customer learning, or technical progress.",
+    },
+    {
+      number: "03",
+      question: "What is your biggest block?",
+      purpose: "Identifies whether consultancy can reasonably help.",
+    },
+    {
+      number: "04",
+      question: "What would success look like?",
+      purpose: "Defines a concrete deliverable rather than a vague transformation.",
+    },
+    {
+      number: "05",
+      question: "What time can you commit?",
+      purpose: "Tests implementation readiness and scheduling fit.",
+    },
+  ],
+
+  // Non-Negotiables Table (Manual Page 14)
+  nonNegotiables: {
+    approvedPractices: [
+      "Ask what the buyer wants to achieve.",
+      "Show the correct written scope and price.",
+      "Describe demonstrated skills and verified proof.",
+      "Explain team price for up to five.",
+      "Say Silver / Bronze require personal selection.",
+      "Use only approved card counts and terms.",
+      "Explain the calendar and delivery limits.",
+      "Let a buyer leave or think without pressure.",
+      "Collect via an authorized payment method.",
+      "Offer an official receipt and accurate follow-up.",
+    ],
+    prohibitedShortcuts: [
+      "Guarantee investment, placement, or wealth.",
+      "Say 'only one seat' if untrue (manufactured urgency).",
+      "Claim DSU or VC endorsement without proof.",
+      "Shame someone for declining.",
+      "Issue extra limited cards off-record.",
+      "Promise 'daily private hour' without capacity.",
+      "Move a private buyer into a group secretly.",
+      "Conceal taxes, refunds, or the service provider.",
+      "Imitate Anuj's signature or stamp blank pages.",
+      "Use personal payment collection off-ledger.",
+    ],
+  },
+
+  // 10 Core Quick Reference FAQs (Manual Page 20)
+  quickReferenceFaqs: [
+    {
+      q: "How much is a team?",
+      a: "₹15,000 total, up to five people, subject to the approved scope.",
+    },
+    {
+      q: "Is one person ₹3,000?",
+      a: "No. ₹3,000/head is only the effective rate for five people on the team offer.",
+    },
+    {
+      q: "Is Bronze a team prize?",
+      a: "No. Bronze is the individual-only recognition route.",
+    },
+    {
+      q: "Who receives Gold?",
+      a: "Exactly three judged places: first, second, and third.",
+    },
+    {
+      q: "Does my card guarantee a discount?",
+      a: "Only the specific written letter establishes an approved price; tokens carry no percentage.",
+    },
+    {
+      q: "Will Anuj personally teach every hour?",
+      a: "Only what is explicitly promised and schedulable in the accepted plan.",
+    },
+    {
+      q: "Who is collecting my payment?",
+      a: "The authorized management / company channel stated on the invoice or receipt.",
+    },
+    {
+      q: "Can I think about it?",
+      a: "Yes. Provide written terms and the actual offer validity, if any.",
+    },
+    {
+      q: "Can we join as a pair?",
+      a: "Yes, the total team package remains ₹15,000 for up to five.",
+    },
+    {
+      q: "Will investors or placements be guaranteed?",
+      a: "No. Do not guarantee any third-party outcome.",
+    },
+  ],
+};
+
+// 12 Showcase Items for Document and Stationery Showcase (Prompt Section 8)
+export const STATIONERY_SHOWCASE_ITEMS: StationeryShowcaseItem[] = [
+  {
+    id: "ivory-gold-letterhead",
+    title: "Ivory-and-Gold Letterhead",
+    category: "stationery",
+    headline: "Executive Corporate Stationery with Gold Border Piping",
+    description: "Printed on heavyweight 160gsm warm ivory tactile laid paper with fine antique gold perimeter rules and clean corporate typography.",
+    specifications: [
+      "Stock: 160gsm warm ivory lightly textured laid sheet",
+      "Print: Archival black ink with hot-stamped antique gold perimeter line",
+      "Typography: Playfair Display serif paired with Inter sans-serif",
+      "Layout: Generous margins with Archzos Technologies Pvt Ltd masthead",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Archzos Technologies ivory and gold letterhead with formal layout",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "black-executive-stationery",
+    title: "Black Executive Stationery",
+    category: "stationery",
+    headline: "Obsidian Black Formal Stationery with Gold-Foil Inscription",
+    description: "Deep obsidian matte cardstock with metallic gold letterpress typography, designed for confidential executive correspondence and premium engagements.",
+    specifications: [
+      "Stock: 300gsm obsidian dyed-through matte board",
+      "Print: Metallic gold foil block stamping",
+      "Accents: Gilt micro-beveled edging",
+      "Application: Reserved for high-tier advisory covenants",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Black executive stationery with metallic gold typography",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "offer-letter-concept",
+    title: "Offer-Letter Concept",
+    category: "agreement",
+    headline: "Structured 5-Field Personal Consultancy Offer Letter",
+    description: "Standardized formal offer layout featuring recipient name, card category, approved plan, exact price, format/sessions, validity date, and founder signature block.",
+    specifications: [
+      "Fields: Recipient, Category, Scope, Valid Until, Signatory",
+      "Rule: One real written offer: scope + price + format + validity",
+      "Security: Numbered serial slot linked to management register",
+      "Execution: Personal signature added in gold ink with dried ink seal",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Archzos formal consultancy offer letter layout with fields",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "gold-agreement-concept",
+    title: "Gold Agreement Concept",
+    category: "agreement",
+    headline: "Ceremonial Agreement on Textured Stock for Top Recognition",
+    description: "Formal agreement layout commemorating 1st, 2nd, and 3rd place judged podium finishes. Features blind emboss watermark and gold metallic signature treatment.",
+    specifications: [
+      "Stock: Heavyweight 350gsm warm ivory linen",
+      "Seal: Blind emboss with gold metallic foil accent",
+      "Signature: Personal handwritten signature in tested metallic gold ink",
+      "Serial: ARC-2026-XXXX registered on-site",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Gold agreement concept layout with gold foil and seal",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "black-agreement-concept",
+    title: "Black Agreement Concept",
+    category: "agreement",
+    headline: "Obsidian Presentation Document for Committed Advisory Tracks",
+    description: "Deep obsidian presentation document accented with warm gold calligraphy and official circular seal for committed team and anchor routes.",
+    specifications: [
+      "Stock: 350gsm obsidian buckram textured board",
+      "Typography: Metallic gold calligraphy and serial stamping",
+      "Format: Double-fold formal agreement",
+      "Insignia: Stamped Archzos circular company seal",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Black agreement concept with gold lettering and seal",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "branded-envelope",
+    title: "Branded Presentation Envelope",
+    category: "packaging",
+    headline: "C4 & C5 Ivory Envelopes with Thin Gold Rule and Clean Flap",
+    description: "Official presentation envelope featuring Archzos Technologies Pvt Ltd wordmark, thin gold rule edge, and triangular flap sealed with ceremonial wax.",
+    specifications: [
+      "Sizes: C4 for unfolded A4 / C5 for folded A4",
+      "Stock: 220gsm warm ivory matching letterhead paper",
+      "Closure: Clean triangular flap secured with embossed wax seal",
+      "Detail: Subtle gold rule piping along perimeter",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Branded ivory envelope with gold border and seal flap",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "presentation-folder",
+    title: "Presentation Folder",
+    category: "packaging",
+    headline: "Obsidian Heavy Folder with Metallic Gold Foil Stamping",
+    description: "Heavy 450gsm presentation folder with embossed Archzos emblem, circular brass tie closure, and dedicated internal sleeves for tokens and written agreements.",
+    specifications: [
+      "Stock: 450gsm obsidian buckram board",
+      "Hardware: Circular gold button with braided black tie cord",
+      "Internal: Die-cut slots for 85x55mm recognition token and A4 letter",
+      "Embossing: Deep-relief gold foil Archzos wordmark",
+    ],
+    imageSrc: "/images/archzos-offer-letter-stationery.jpg",
+    imageAlt: "Black presentation folder with gold button and string closure",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "gold-seal-concept",
+    title: "Gold Seal Concept",
+    category: "seal",
+    headline: "Metallic Gold Ink Circular Stamp with Approved Core Symbol",
+    description: "Outer ring: ARCHZOS TECHNOLOGIES PVT LTD. Core: original approved Veerbhogya SVG symbol. Stamped adjacent to founder signature on ivory paper.",
+    specifications: [
+      "Ink: Formulated metallic gold stamping ink",
+      "Diameter: 42mm circular corporate seal",
+      "Placement: Bottom-right corner adjacent to personal signature",
+      "Rule: Original approved V SVG inside the stamp only",
+    ],
+    imageSrc: "/images/archzos-official-seal-signing.jpg",
+    imageAlt: "Archzos circular gold ink seal stamp",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "blue-seal-concept",
+    title: "Blue Seal Concept",
+    category: "seal",
+    headline: "Midnight Blue Archive-Quality Ink Corporate Seal",
+    description: "Deep midnight blue corporate ink stamp for institutional documentation, campus filings, and high-fidelity archival scans.",
+    specifications: [
+      "Ink: Archive-quality water-resistant pigment blue ink",
+      "Advantage: Scans and photocopies with superior optical contrast",
+      "Application: University transcripts, institutional dockets, partner RFPs",
+      "Core: Original approved V SVG with outer company lettering",
+    ],
+    imageSrc: "/images/archzos-official-seal-signing.jpg",
+    imageAlt: "Archzos circular blue ink seal stamp",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "blind-emboss-concept",
+    title: "Blind Emboss Concept (Dry Seal)",
+    category: "seal",
+    headline: "Tactile Dimensional Relief Impression in Paper Fiber",
+    description: "Colorless dimensional relief impression pressed directly into paper stock, creating a subtle, unforgeable tactile watermark.",
+    specifications: [
+      "Method: Heavy brass male-female hand-press die",
+      "Effect: 3D paper deformation without ink",
+      "Placement: Centered or lower watermark zone",
+      "Security: Cannot be reproduced by color photocopiers",
+    ],
+    imageSrc: "/images/archzos-official-seal-signing.jpg",
+    imageAlt: "Blind emboss dry seal impression into paper stock",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "ceremonial-wax-seal-concept",
+    title: "Ceremonial Wax Seal Concept",
+    category: "seal",
+    headline: "Crimson Sealing Wax Stamped with Metallic Powder Detail",
+    description: "Deep crimson sealing wax stamped with the Archzos emblem and accented with gold metallic dusting, used to seal official presentation envelopes.",
+    specifications: [
+      "Material: Flexible non-brittle crimson sealing wax",
+      "Stamp: Solid brass engraved die with Archzos V insignia",
+      "Application: Securing rear envelope flap and presentation ribbons",
+      "Finish: Highlighted with subtle antique gold metallic powder",
+    ],
+    imageSrc: "/images/archzos-official-seal-signing.jpg",
+    imageAlt: "Ceremonial red wax seal with gold powder detail",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+  {
+    id: "signature-placement-concept",
+    title: "Signature Placement Concept",
+    category: "signing",
+    headline: "Tested Gold-Ink Fountain Pen & Founder Signing Protocol",
+    description: "Official signing protocol: Anuj signs personally with a tested gold-ink fountain pen after verifying recipient details, price, and scope. Staff must not imitate signature or pre-sign blank terms.",
+    specifications: [
+      "Instrument: Archzos Signature Edition gold fountain pen",
+      "Ink: Formulated metallic gold ink with dark archival backup",
+      "Protocol: Signature applied only when named offer letter is complete",
+      "Rule: Anuj signs personally; never stamped or pre-signed in blank",
+    ],
+    imageSrc: "/images/archzos-official-seal-signing.jpg",
+    imageAlt: "Gold fountain pen signing on Archzos official letterhead with seal",
+    notice: "Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.",
+  },
+];
+
 

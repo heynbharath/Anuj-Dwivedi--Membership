@@ -1,3 +1,49 @@
+export type OfferStatus = "draft" | "awaiting_approval" | "approved" | "hidden";
+
+export type BookingStatusState =
+  | "enquiry_submitted"
+  | "booking_requested"
+  | "booking_confirmed"
+  | "payment_completed";
+
+export type EnquiryCategory =
+  | "team_consultancy"
+  | "individual_engagement"
+  | "premium_mentorship"
+  | "institutional_enquiry"
+  | "speaking_judging"
+  | "recognition_enquiry"
+  | "general_enquiry";
+
+export interface UnifiedOffer {
+  id: string;
+  slug: string;
+  routeKey?: "route-a" | "route-b" | "route-c" | "consultancy-single" | "mentorship-4pack" | "institutional-programmes";
+  title: string;
+  badge: string;
+  eyebrow: string;
+  headline: string;
+  targetAudience: string;
+  description: string;
+  referencePriceINR: number | null;
+  priceDisplay: string;
+  perPersonEquivalentINR?: number | null;
+  teamMaxMembers?: number | null;
+  duration: string;
+  deliveryFormat: string;
+  focusAreas: string[];
+  inclusions: string[];
+  exclusions?: string[];
+  eligibilityNotice: string;
+  managementNote: string;
+  status: OfferStatus;
+  statusLabel: string;
+  sourceOrigin: string;
+  ctaText: string;
+  ctaLink: string;
+  featured?: boolean;
+}
+
 export interface ServiceOffer {
   id: string;
   slug: string;
@@ -13,6 +59,9 @@ export interface ServiceOffer {
   referencePriceINR: number | null;
   priceNote: string;
   priceStatus: "reference_unconfirmed" | "confirmed" | "custom_quote";
+  status: OfferStatus;
+  statusLabel: string;
+  sourceOrigin: string;
   duration: string;
   deliveryFormat: string;
   bookingRequirement: string;
@@ -106,7 +155,10 @@ export interface OfferPathway {
   focusAreas: string[];
   eligibilityNotice: string;
   managementNote: string;
-  approvalStatus: "proposed_infographic_v2" | "owner_review_required";
+  status: OfferStatus;
+  statusLabel: string;
+  sourceOrigin: string;
+  approvalStatus: "proposed_infographic_v2" | "owner_review_required" | "awaiting_approval";
   ctaText: string;
   badge: string;
 }
@@ -176,5 +228,17 @@ export interface SealDesign {
   application: string;
   colorHex: string;
   placementRule: string;
+}
+
+export interface StationeryShowcaseItem {
+  id: string;
+  title: string;
+  category: "stationery" | "agreement" | "packaging" | "seal" | "signing";
+  headline: string;
+  description: string;
+  specifications: string[];
+  imageSrc: string;
+  imageAlt: string;
+  notice: string;
 }
 

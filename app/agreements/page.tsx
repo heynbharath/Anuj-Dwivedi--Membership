@@ -6,6 +6,7 @@ import Link from "next/link";
 import {
   DOCUMENT_TEMPLATES,
   SEALS_AND_SIGNING_CONFIG,
+  STATIONERY_SHOWCASE_ITEMS,
   IMAGE_ASSETS,
   SITE_CONFIG,
 } from "@/lib/config";
@@ -24,9 +25,14 @@ import {
   Layers,
   ArrowRight,
   Sparkles,
+  Package,
+  Stamp,
+  CheckCircle2,
+  Lock,
 } from "lucide-react";
 
 export default function AgreementsPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [activeLightbox, setActiveLightbox] = useState<{
     isOpen: boolean;
     src: string;
@@ -55,6 +61,11 @@ export default function AgreementsPage() {
       caption,
     });
   };
+
+  const filteredShowcaseItems =
+    selectedCategory === "all"
+      ? STATIONERY_SHOWCASE_ITEMS
+      : STATIONERY_SHOWCASE_ITEMS.filter((item) => item.category === selectedCategory);
 
   return (
     <div className="bg-white text-navy-950 py-12 sm:py-20 space-y-16">
@@ -118,32 +129,136 @@ export default function AgreementsPage() {
           </div>
         </div>
 
-        {/* Legal & Status Notice */}
-        <div className="p-5 rounded-2xl bg-warmIvory/60 border border-gold-300 text-xs text-slate-700 leading-relaxed space-y-1.5 shadow-xs">
+        {/* Mandatory Governance Notice */}
+        <div className="p-5 rounded-2xl bg-warmIvory/70 border-2 border-gold-400 text-xs text-slate-800 leading-relaxed space-y-2 shadow-xs">
           <div className="flex items-center space-x-2 text-navy-950 font-bold text-sm">
             <ShieldCheck className="w-4 h-4 text-gold-700 shrink-0" />
             <span>Document Status & Authorisation Notice:</span>
           </div>
-          <p>
-            Document designs presented on this page are proposed brand identity
-            concepts based on user-supplied reference images. They do not constitute
-            legally registered corporate seals, officially executed commercial
-            contracts, or binding commitments until formally authorized by the
-            company and counter-signed by authorized representatives.
+          <p className="font-medium text-slate-900">
+            &ldquo;Illustrative design concept. Final terms, signatures, and company authorisation must be approved before any document is issued.&rdquo;
+          </p>
+          <p className="text-[11px] text-slate-600">
+            Document designs presented on this page are proposed brand identity concepts based on user-supplied reference materials. They do not constitute legally registered corporate seals, officially executed commercial contracts, or binding commitments until formally authorized by Archzos Technologies Pvt Ltd and signed by authorized company officers.
           </p>
         </div>
 
-        {/* Section 1: Interactive Document Previews */}
-        <section className="space-y-6">
+        {/* =========================================================
+            SECTION 1: THE 12-ITEM COMPLETE STATIONERY & BRAND GALLERY
+        ========================================================= */}
+        <section className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <SectionHeader
+              eyebrow="OFFICIAL REFERENCE SUITE"
+              title="12 Document & Stationery Artifacts"
+              subtitle="All 12 design items from the supplied reference materials, categorized by application with material specifications and high-resolution inspection."
+              className="mb-0"
+            />
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 shrink-0">
+              {[
+                { id: "all", label: "All 12 Items" },
+                { id: "stationery", label: "Stationery" },
+                { id: "agreement", label: "Agreements" },
+                { id: "packaging", label: "Packaging" },
+                { id: "seal", label: "Seals & Signing" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setSelectedCategory(tab.id)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
+                    selectedCategory === tab.id
+                      ? "bg-navy-950 text-white shadow-xs"
+                      : "text-slate-600 hover:text-navy-950 hover:bg-white"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredShowcaseItems.map((item) => (
+              <div
+                key={item.id}
+                className="rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-gold-400 transition-all flex flex-col justify-between overflow-hidden group"
+              >
+                <div className="p-6 space-y-4">
+                  {/* Category Chip & Lightbox Trigger */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-warmIvory text-gold-900 border border-gold-300">
+                      {item.category}
+                    </span>
+                    <button
+                      onClick={() =>
+                        openLightbox(
+                          item.imageSrc,
+                          item.imageAlt,
+                          item.title,
+                          `${item.headline} • ${item.notice}`
+                        )
+                      }
+                      className="p-1.5 rounded-lg bg-slate-50 hover:bg-gold-100 text-slate-500 hover:text-gold-900 transition-colors"
+                      title="Inspect Reference"
+                    >
+                      <ZoomIn className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-navy-950 group-hover:text-gold-700 transition-colors">
+                      {item.title}
+                    </h3>
+                    <div className="text-xs font-mono text-gold-800 font-bold mt-0.5">
+                      {item.headline}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
+
+                  {/* Craft Specifications */}
+                  <div className="space-y-1.5 pt-3 border-t border-slate-100 text-xs">
+                    <div className="text-[10px] font-mono uppercase font-bold text-slate-400">
+                      Craft Specifications:
+                    </div>
+                    <ul className="space-y-1 text-slate-600 text-[11px]">
+                      {item.specifications.map((spec, i) => (
+                        <li key={i} className="flex items-start space-x-1.5">
+                          <span className="text-gold-600 font-bold">•</span>
+                          <span>{spec}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Footer Notice */}
+                <div className="px-6 py-3 bg-slate-50 border-t border-slate-100 text-[10px] font-mono text-slate-500">
+                  Concept Reference • Requires Company Approval
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* =========================================================
+            SECTION 2: INTERACTIVE LIVE DOCUMENT PREVIEW & EDITOR
+        ========================================================= */}
+        <section className="space-y-6 border-t border-slate-200 pt-16">
           <SectionHeader
-            eyebrow="LIVE DOCUMENT PREVIEW"
+            eyebrow="LIVE DOCUMENT PREVIEW & CUSTOMIZATION"
             title="Interactive Agreement & Letter Suite"
-            subtitle="Switch between the Gold Agreement, Black Agreement, Formal Offer Letter, Branded Envelope, and Black Presentation Folder. Test live customization in real time."
+            subtitle="Switch between the Gold Agreement, Black Agreement, Formal Offer Letter, Branded Envelope, and Black Presentation Folder. Test live customization in real time with Anuj Dwivedi as company signatory."
           />
           <AgreementPreview />
         </section>
 
-        {/* Section 2: Seals & Signing System Gallery */}
+        {/* =========================================================
+            SECTION 3: THE 4-SEAL ARCHITECTURE
+        ========================================================= */}
         <section className="space-y-6 border-t border-slate-200 pt-16">
           <SectionHeader
             eyebrow="OFFICIAL SEAL & SIGNING SYSTEM"
@@ -153,80 +268,41 @@ export default function AgreementsPage() {
           <SealGallery />
         </section>
 
-        {/* Section 3: Document Suite Reference Cards */}
-        <section className="space-y-6 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="PHYSICAL CRAFT SPECIFICATIONS"
-            title="The 5 Document Formats"
-            subtitle="Detailed material, paper stock, and finish parameters for physical production."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {DOCUMENT_TEMPLATES.map((tmpl) => (
-              <div
-                key={tmpl.id}
-                className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-gold-400 transition-all space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-mono font-bold tracking-wider px-2 py-0.5 rounded bg-warmIvory text-gold-800 border border-gold-300">
-                      {tmpl.type.replace("_", " ")}
-                    </span>
-                    <span className="text-[10px] font-mono text-slate-400">
-                      Concept
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-xl font-bold text-navy-950">
-                    {tmpl.title}
-                  </h3>
-
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {tmpl.description}
-                  </p>
-
-                  <div className="space-y-2 pt-2 border-t border-slate-100 text-xs">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase text-slate-400 block">
-                        Paper Stock:
-                      </span>
-                      <span className="font-semibold text-navy-950">
-                        {tmpl.paperStock}
-                      </span>
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase text-slate-400 block">
-                        Seal Finish:
-                      </span>
-                      <span className="font-semibold text-navy-950">
-                        {tmpl.sealType}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-slate-100">
-                  <p className="text-[11px] text-slate-400 font-mono italic">
-                    Serial No. tracked via Circle13 registry.
-                  </p>
-                </div>
-              </div>
-            ))}
+        {/* =========================================================
+            SECTION 4: DIGITAL PDF ISSUANCE & LEGAL BOUNDARIES
+        ========================================================= */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-slate-200 pt-16">
+          <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-3">
+            <div className="flex items-center space-x-2 text-navy-950 font-bold text-sm">
+              <FileText className="w-4 h-4 text-gold-600" />
+              <span>Digital PDF Issuance Architecture Readiness</span>
+            </div>
+            <p className="leading-relaxed">
+              The platform architecture has been structured to support dynamic PDF
+              generation using modern SVG vector stamps and high-dpi typography.
+              Physical certificate generation and digital PDF downloads will be
+              unlocked upon formal authorization by Archzos Technologies Pvt Ltd.
+            </p>
+            <div className="text-[11px] font-mono text-slate-500">
+              Rendering engine: HTML-to-print vector pipeline with anti-counterfeit micro-rules.
+            </div>
           </div>
-        </section>
 
-        {/* Section 4: Future PDF Generation Architecture Note */}
-        <section className="p-8 rounded-3xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-2">
-          <div className="flex items-center space-x-2 text-navy-950 font-bold text-sm">
-            <FileText className="w-4 h-4 text-gold-600" />
-            <span>Digital PDF Issuance Architecture Readiness</span>
+          <div className="p-8 rounded-3xl bg-warmIvory/60 border border-gold-300 text-xs text-slate-700 space-y-3">
+            <div className="flex items-center space-x-2 text-navy-950 font-bold text-sm">
+              <Lock className="w-4 h-4 text-gold-700" />
+              <span>Signatory & Commercial Authorization Boundary</span>
+            </div>
+            <p className="leading-relaxed">
+              All commercial documents issued under the Archzos Technologies brand
+              are signed solely by Anuj Dwivedi (Founder). N. Bharath (CEO, Circle13)
+              oversees digital platform architecture and operational infrastructure,
+              and is not a legal signatory for Archzos corporate obligations.
+            </p>
+            <div className="text-[11px] font-mono text-gold-800 font-bold">
+              Archzos Technologies Pvt Ltd • Bangalore, India
+            </div>
           </div>
-          <p>
-            The platform architecture has been structured to support dynamic PDF
-            generation using modern SVG vector stamps and high-dpi typography.
-            Physical certificate generation and digital PDF downloads will be
-            unlocked upon formal authorization by Archzos Technologies Pvt Ltd.
-          </p>
         </section>
 
         {/* Booking CTA */}

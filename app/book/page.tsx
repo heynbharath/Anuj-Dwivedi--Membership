@@ -10,6 +10,7 @@ import {
 } from "@/lib/config";
 import { formatINR } from "@/lib/utils";
 import VerificationNotice from "@/components/VerificationNotice";
+import EnquiryForm from "@/components/EnquiryForm";
 import {
   Check,
   Calendar,
@@ -23,6 +24,8 @@ import {
   Award,
   Users,
   Building,
+  Layers,
+  Inbox,
 } from "lucide-react";
 
 function BookContent() {
@@ -148,6 +151,8 @@ function BookContent() {
     }
   };
 
+  const [intakeMode, setIntakeMode] = useState<"intake_desk" | "guided_builder">("intake_desk");
+
   return (
     <div className="bg-white text-navy-950 py-12 sm:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -166,8 +171,50 @@ function BookContent() {
           </p>
         </div>
 
-        {/* Multi-Step Indicator */}
-        <div className="flex items-center justify-between max-w-xl mx-auto border-b border-slate-200 pb-5 text-xs font-mono">
+        {/* Desk View Switcher */}
+        <div className="flex items-center justify-center">
+          <div className="inline-flex p-1.5 rounded-2xl bg-slate-100 border border-slate-200">
+            <button
+              onClick={() => setIntakeMode("intake_desk")}
+              className={`inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold transition-all ${
+                intakeMode === "intake_desk"
+                  ? "bg-navy-950 text-white shadow-md"
+                  : "text-slate-600 hover:text-navy-950"
+              }`}
+            >
+              <Inbox className="w-4 h-4 text-gold-400" />
+              <span>Commercial Intake Desk (7 Categories)</span>
+            </button>
+            <button
+              onClick={() => setIntakeMode("guided_builder")}
+              className={`inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold transition-all ${
+                intakeMode === "guided_builder"
+                  ? "bg-navy-950 text-white shadow-md"
+                  : "text-slate-600 hover:text-navy-950"
+              }`}
+            >
+              <Layers className="w-4 h-4 text-gold-400" />
+              <span>Guided Step-by-Step Builder</span>
+            </button>
+          </div>
+        </div>
+
+        {intakeMode === "intake_desk" ? (
+          <div className="animate-fadeIn">
+            <EnquiryForm
+              defaultRouteKey={
+                initialRouteParam === "route-b"
+                  ? "route-b"
+                  : initialRouteParam === "route-c"
+                  ? "route-c"
+                  : "route-a"
+              }
+            />
+          </div>
+        ) : (
+          <div className="space-y-10 animate-fadeIn">
+            {/* Multi-Step Indicator */}
+            <div className="flex items-center justify-between max-w-xl mx-auto border-b border-slate-200 pb-5 text-xs font-mono">
           <div
             className={`flex items-center space-x-2 ${
               step >= 1 ? "text-gold-700 font-bold" : "text-slate-400"
@@ -762,6 +809,8 @@ function BookContent() {
                 Message Management on WhatsApp
               </a>
             </div>
+          </div>
+        )}
           </div>
         )}
       </div>

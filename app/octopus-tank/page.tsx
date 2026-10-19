@@ -16,6 +16,7 @@ import {
   COMMERCIAL_OFFER_ROUTES,
   TOKEN_DESIGNS,
   IMAGE_ASSETS,
+  MASTER_MANUAL_CONFIG,
 } from "@/lib/config";
 import { formatINR } from "@/lib/utils";
 import {
@@ -33,9 +34,16 @@ import {
   HelpCircle,
   Layers,
   Scale,
+  Compass,
+  AlertTriangle,
+  XCircle,
+  Clock,
+  ListOrdered,
+  ChevronDown,
 } from "lucide-react";
 
 export default function OctopusTankPage() {
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [activeLightbox, setActiveLightbox] = useState<{
     isOpen: boolean;
     src: string;
@@ -276,8 +284,8 @@ export default function OctopusTankPage() {
                 Circle13 Management
               </h4>
               <p className="text-slate-600 leading-relaxed text-[11px]">
-                Managed by N Bharath & Akhil Vipin Nair. Handles bookings,
-                calendars, payment collection, and onboarding on Anuj&apos;s behalf.
+                Platform architecture & operational infrastructure. Coordinates
+                intake, bookings, and verified onboarding for advisory routes.
               </p>
             </div>
           </div>
@@ -290,7 +298,7 @@ export default function OctopusTankPage() {
           <SectionHeader
             eyebrow="SESSION ARCHITECTURE"
             title="The 3 Gates & The 2-Hour Intensive Session"
-            subtitle="The operational methodology from Image 1: Three criteria before proceeding, followed by a high-impact five-step live session."
+            subtitle="The operational methodology from the master manual: Three criteria before proceeding, followed by a high-impact five-step live session."
           />
 
           {/* The 3 Gates */}
@@ -301,11 +309,11 @@ export default function OctopusTankPage() {
                   Gate 1
                 </span>
                 <span className="text-[10px] font-mono text-slate-400 uppercase">
-                  Three Questions
+                  Psychology
                 </span>
               </div>
               <h4 className="font-serif text-xl font-bold text-navy-950">
-                1. Psychology
+                1. Expose Friction
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 <strong>&ldquo;Is there a real friction worth removing?&rdquo;</strong>
@@ -322,17 +330,17 @@ export default function OctopusTankPage() {
                   Gate 2
                 </span>
                 <span className="text-[10px] font-mono text-slate-400 uppercase">
-                  One Decision
+                  Economics
                 </span>
               </div>
               <h4 className="font-serif text-xl font-bold text-navy-950">
-                2. Economics
+                2. Positive Return
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 <strong>&ldquo;Does the return exceed the cost?&rdquo;</strong>
                 <br />
                 Offers must create net-positive contribution. Team routes lower
-                the per-head barrier (e.g. ₹3,000/head for 5 members) to make
+                the per-head barrier (flat ₹15,000 for up to 5 members; ₹3,000/head at 5) to make
                 guidance justifiable.
               </p>
             </div>
@@ -343,11 +351,11 @@ export default function OctopusTankPage() {
                   Gate 3
                 </span>
                 <span className="text-[10px] font-mono text-slate-400 uppercase">
-                  Signal Reach
+                  Distribution
                 </span>
               </div>
               <h4 className="font-serif text-xl font-bold text-navy-950">
-                3. Distribution
+                3. Widen Access
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 <strong>&ldquo;Can the signal reach more builders?&rdquo;</strong>
@@ -371,55 +379,139 @@ export default function OctopusTankPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 text-xs">
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                <span className="font-mono text-gold-400 font-bold">01</span>
-                <div className="font-serif text-sm font-bold text-white">
-                  Enter With Authority
+              {MASTER_MANUAL_CONFIG.sessionStages.map((stage) => (
+                <div key={stage.step} className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
+                  <span className="font-mono text-gold-400 font-bold">{stage.step}</span>
+                  <div className="font-serif text-sm font-bold text-white">
+                    {stage.title}
+                  </div>
+                  <div className="text-[10px] font-mono text-gold-300 uppercase">
+                    {stage.tagline}
+                  </div>
+                  <p className="text-slate-300 text-[11px] leading-relaxed">
+                    {stage.description}
+                  </p>
                 </div>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Command the room and establish deep technical credibility.
-                </p>
-              </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                <span className="font-mono text-gold-400 font-bold">02</span>
-                <div className="font-serif text-sm font-bold text-white">
-                  Expose The Friction
-                </div>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Reveal why most hobby projects fail to become viable software.
-                </p>
-              </div>
+        {/* =========================================================
+            6-STEP COMMAND MAP (Master Manual Page 2)
+        ========================================================= */}
+        <section className="space-y-6 border-t border-slate-200 pt-16">
+          <SectionHeader
+            eyebrow="OPERATIONAL DISCIPLINE"
+            title="The 6-Step Command Map"
+            subtitle="The structured protocol from page 2 of the management manual converting pitch scrutiny into signed commitments."
+          />
 
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                <span className="font-mono text-gold-400 font-bold">03</span>
-                <div className="font-serif text-sm font-bold text-white">
-                  Teach What Matters
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {MASTER_MANUAL_CONFIG.commandMap.map((cmd) => (
+              <div
+                key={cmd.step}
+                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-gold-400 transition-all space-y-2 flex flex-col justify-between"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="w-7 h-7 rounded-full bg-navy-950 text-gold-400 font-mono text-xs font-bold flex items-center justify-center">
+                      {cmd.step}
+                    </span>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                      Step {cmd.step} of 6
+                    </span>
+                  </div>
+                  <h4 className="font-serif text-base font-bold text-navy-950">
+                    {cmd.action}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {cmd.detail}
+                  </p>
                 </div>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Deliver practical system architecture and pitch defensibility frameworks.
-                </p>
               </div>
+            ))}
+          </div>
+        </section>
 
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                <span className="font-mono text-gold-400 font-bold">04</span>
-                <div className="font-serif text-sm font-bold text-white">
-                  Judge The Pitches
-                </div>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Evaluate live pitches with incisive, constructive critique.
-                </p>
-              </div>
+        {/* =========================================================
+            5-QUESTION DIAGNOSTIC (Master Manual Page 12)
+        ========================================================= */}
+        <section className="p-8 sm:p-10 rounded-3xl bg-warmIvory/60 border border-gold-300 space-y-6">
+          <div>
+            <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-gold-800">
+              QUALIFICATION PROTOCOL
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-navy-950 mt-1">
+              The 5-Question Diagnostic Framework
+            </h3>
+            <p className="text-xs text-slate-600 mt-1 max-w-2xl leading-relaxed">
+              Before an offer is proposed, Anuj and the management desk apply this five-step diagnostic
+              to separate real implementation appetite from casual interest:
+            </p>
+          </div>
 
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                <span className="font-mono text-gold-400 font-bold">05</span>
-                <div className="font-serif text-sm font-bold text-white">
-                  Reward & Convert
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {MASTER_MANUAL_CONFIG.diagnosticQuestions.map((diag) => (
+              <div
+                key={diag.number}
+                className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2"
+              >
+                <span className="font-mono text-xs font-bold text-gold-700 bg-gold-50 border border-gold-300 px-2 py-0.5 rounded">
+                  Q{diag.number}
+                </span>
+                <div className="font-serif font-bold text-sm text-navy-950">
+                  {diag.question}
                 </div>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Confer recognition tokens on stage and route to onboarding.
+                <p className="text-[11px] text-slate-500 leading-snug">
+                  {diag.purpose}
                 </p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* =========================================================
+            NON-NEGOTIABLES: APPROVED PRACTICES VS PROHIBITED SHORTCUTS
+        ========================================================= */}
+        <section className="space-y-6 border-t border-slate-200 pt-16">
+          <SectionHeader
+            eyebrow="OPERATIONAL GUARDRAILS"
+            title="The Non-Negotiables Table"
+            subtitle="Standard ethical, commercial, and legal guardrails from page 14 of the Octopus Tank manual."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Approved Practices */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-emerald-50/50 border border-emerald-300 space-y-4">
+              <div className="flex items-center space-x-2 text-emerald-900 font-bold font-serif text-lg">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span>10 Approved Practices</span>
+              </div>
+              <ul className="space-y-2 text-xs text-emerald-950">
+                {MASTER_MANUAL_CONFIG.nonNegotiables.approvedPractices.map((pra, idx) => (
+                  <li key={idx} className="flex items-start space-x-2">
+                    <span className="text-emerald-700 font-mono font-bold mt-0.5">✓</span>
+                    <span>{pra}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Prohibited Shortcuts */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-red-50/50 border border-red-300 space-y-4">
+              <div className="flex items-center space-x-2 text-red-900 font-serif text-lg font-bold">
+                <XCircle className="w-5 h-5 text-red-600 shrink-0" />
+                <span>10 Prohibited Shortcuts (Strictly Forbidden)</span>
+              </div>
+              <ul className="space-y-2 text-xs text-red-950">
+                {MASTER_MANUAL_CONFIG.nonNegotiables.prohibitedShortcuts.map((sho, idx) => (
+                  <li key={idx} className="flex items-start space-x-2">
+                    <span className="text-red-600 font-mono font-bold mt-0.5">✕</span>
+                    <span>{sho}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
@@ -530,123 +622,45 @@ export default function OctopusTankPage() {
           </div>
 
           <p className="text-xs text-slate-500 font-mono text-center">
-            Gold is rank-based. Silver is personally selected. Bronze is the individual-interest pathway.
+            Gold is rank-based (3 podium spots). Silver is personally selected. Bronze is the individual-interest pathway.
           </p>
         </section>
 
         {/* =========================================================
-            AGREEMENTS & SIGNATURE RITUAL (From Image 1 Infographic)
-        ========================================================= */}
-        <section className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200 space-y-6">
-          <div className="space-y-1">
-            <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-gold-700">
-              AGREEMENTS & SIGNATURE RITUAL
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-navy-950">
-              Cards Become Agreements
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed max-w-xl">
-              &ldquo;Recognition today. A real agreement tomorrow. The physical
-              agreement becomes a memorable symbol of earned access.&rdquo;
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-mono text-gold-700 font-bold uppercase">
-                Ritual 01
-              </span>
-              <div className="font-serif font-bold text-navy-950">
-                Team Writes Names
-              </div>
-              <p className="text-slate-600 text-[11px]">
-                Team members personally record their names on the agreement document.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-mono text-gold-700 font-bold uppercase">
-                Ritual 02
-              </span>
-              <div className="font-serif font-bold text-navy-950">
-                Gold-Ink Signature
-              </div>
-              <p className="text-slate-600 text-[11px]">
-                Anuj personally counter-signs selected agreements with a gold signature pen.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-mono text-gold-700 font-bold uppercase">
-                Ritual 03
-              </span>
-              <div className="font-serif font-bold text-navy-950">
-                Embossed Seal
-              </div>
-              <p className="text-slate-600 text-[11px]">
-                Document is authenticated with an embossed seal or ceremonial wax insignia.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-mono text-gold-700 font-bold uppercase">
-                Ritual 04
-              </span>
-              <div className="font-serif font-bold text-navy-950">
-                Photo Moment & Reveal
-              </div>
-              <p className="text-slate-600 text-[11px]">
-                Card + signed agreement captured together, delivered in a black presentation folder.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================
-            EVENT LEADERSHIP / CO-HOSTS
+            10 QUICK REFERENCE FAQS (Master Manual Page 20)
         ========================================================= */}
         <section className="space-y-6 border-t border-slate-200 pt-16">
           <SectionHeader
-            eyebrow="EVENT LEADERSHIP"
-            title="Co-Hosted by Circle13 & Tempete Club"
-            subtitle="Venture design, technical evaluation, and student innovation coalition."
+            eyebrow="COMMERCIAL CLARITY"
+            title="10 Core Reference Questions"
+            subtitle="Straight answers from page 20 of the management manual covering pricing, limits, and team rules."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {OCTOPUS_TANK_CONFIG.coHosts.map((host, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-2 shadow-sm"
-              >
-                <div className="w-12 h-12 rounded-full bg-gold-100 border border-gold-300 flex items-center justify-center text-gold-800 font-bold mx-auto text-base font-serif">
-                  {host.name[0]}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {MASTER_MANUAL_CONFIG.quickReferenceFaqs.map((faq, index) => {
+              const isOpen = activeFaq === index;
+              return (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-slate-200 bg-white p-5 space-y-2 hover:border-gold-400 transition-colors shadow-xs"
+                >
+                  <button
+                    onClick={() => setActiveFaq(isOpen ? null : index)}
+                    className="w-full text-left font-serif font-bold text-sm sm:text-base text-navy-950 flex items-center justify-between gap-2"
+                  >
+                    <span>{faq.q}</span>
+                    <span className="text-xs font-mono text-gold-700 shrink-0 font-bold">
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                    {faq.a}
+                  </p>
                 </div>
-                <h3 className="font-serif text-lg font-bold text-navy-950 pt-2">
-                  {host.name}
-                </h3>
-                <div className="text-xs font-mono text-gold-700 font-bold">
-                  {host.affiliation}
-                </div>
-                <p className="text-xs text-slate-500">{host.role}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
-
-        {/* =========================================================
-            FINAL LOGIC CALLOUT (Image 1 Section 8)
-        ========================================================= */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-navy-950 text-white border border-gold-500/60 shadow-2xl text-center space-y-4">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-gold-400 font-bold">
-            THE FINAL LOGIC
-          </span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold max-w-2xl mx-auto leading-tight">
-            Create desire. Judge performance. Reward access. Route through management. Convert recognition into commitment.
-          </h2>
-          <p className="text-xs text-slate-300 font-mono">
-            &ldquo;Psychology creates demand. Management converts demand. Agreements make the signal real.&rdquo;
-          </p>
-        </div>
 
         {/* Booking CTA */}
         <BookingCTA

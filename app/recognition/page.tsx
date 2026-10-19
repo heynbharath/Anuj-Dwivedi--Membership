@@ -8,6 +8,7 @@ import {
   SAMPLE_TOKEN_RECORDS,
   IMAGE_ASSETS,
   SITE_CONFIG,
+  RECOGNITION_RULES_CONFIG,
 } from "@/lib/config";
 import SectionHeader from "@/components/SectionHeader";
 import VerificationNotice from "@/components/VerificationNotice";
@@ -280,6 +281,87 @@ export default function RecognitionPage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            10-CARD PROGRAMME ALLOCATION & STRICT CAP (Section 6)
+        ========================================================= */}
+        <section className="p-8 rounded-3xl bg-slate-50 border border-slate-200 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-gold-700">
+                OFFICIAL RECOGNITION QUOTA
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-navy-950 mt-1">
+                Strict 10-Card Allocation Structure
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Each edition of Octopus Tank is capped at exactly {RECOGNITION_RULES_CONFIG.totalCardsPerEdition} physical cards to protect authentic scarcity.
+              </p>
+            </div>
+            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-gold-100 border border-gold-300 text-gold-900 font-mono text-xs font-bold">
+              <Award className="w-4 h-4 text-gold-700" />
+              <span>Strict Quota: Exactly 10 Cards</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div className="p-5 rounded-2xl bg-white border border-gold-300 space-y-2 shadow-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs font-bold text-gold-800 bg-gold-50 px-2 py-0.5 rounded border border-gold-300">
+                  {RECOGNITION_RULES_CONFIG.goldCount} Gold Cards
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">Podium Finishes</span>
+              </div>
+              <h4 className="font-serif font-bold text-navy-950 text-base">
+                1st, 2nd & 3rd Place Teams
+              </h4>
+              <p className="text-slate-600 leading-relaxed text-[11px]">
+                Awarded solely based on panel-judged stage competition. Strictly 3 cards per edition: 1st Place (Champion), 2nd Place (Finalist), and 3rd Place (Podium).
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-slate-300 space-y-2 shadow-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
+                  {RECOGNITION_RULES_CONFIG.silverCount} Silver Cards
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">Discretionary</span>
+              </div>
+              <h4 className="font-serif font-bold text-navy-950 text-base">
+                Selected By Anuj
+              </h4>
+              <p className="text-slate-600 leading-relaxed text-[11px]">
+                Conferred on standout teams or ideas Anuj personally finds compelling for architecture, curiosity, and defensible technology.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-amber-300 space-y-2 shadow-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-300">
+                  {RECOGNITION_RULES_CONFIG.bronzeCount} Bronze Cards
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">Individual Route</span>
+              </div>
+              <h4 className="font-serif font-bold text-navy-950 text-base">
+                Individual Interest Pass
+              </h4>
+              <p className="text-slate-600 leading-relaxed text-[11px]">
+                Reserved for high-appetite individual builders seeking architectural direction and private guidance.
+              </p>
+            </div>
+          </div>
+
+          {/* Non-guarantee notice */}
+          <div className="p-4 rounded-xl bg-warmIvory/60 border border-gold-300 text-xs text-slate-700 space-y-1">
+            <div className="flex items-center space-x-1.5 font-bold text-navy-950">
+              <ShieldCheck className="w-4 h-4 text-gold-700 shrink-0" />
+              <span>Commercial Independence & Non-Guarantee Boundary:</span>
+            </div>
+            <p className="text-[11px] text-slate-600 leading-relaxed">
+              Receiving a recognition token does not automatically guarantee venture capital funding, guaranteed commercial discounts, or mandatory paid engagement. Discounts and commercial terms are valid only when formally set out in a written offer issued by Archzos Technologies and accepted during Circle13 onboarding.
+            </p>
           </div>
         </section>
 
