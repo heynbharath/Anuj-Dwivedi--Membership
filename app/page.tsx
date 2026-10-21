@@ -49,7 +49,16 @@ export default function HomePage() {
               />
               <span className="font-semibold text-neutral-950">DSU School of Engg</span>
               <span className="text-neutral-300">×</span>
-              <span className="font-semibold text-neutral-950">Tempete Club</span>
+              <div className="inline-flex items-center gap-1.5">
+                <Image
+                  src="/images/tempete/tempete-icon-color.svg"
+                  alt="Tempête AI Club"
+                  width={14}
+                  height={14}
+                  className="object-contain rounded-[3px]"
+                />
+                <span className="font-semibold text-neutral-950">Tempête AI Club</span>
+              </div>
               <span className="text-neutral-300">×</span>
               <div className="inline-flex items-center gap-1.5">
                 <Image
@@ -88,7 +97,7 @@ export default function HomePage() {
 
           {/* Subheading */}
           <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            The flagship startup pitch competition for B.Tech &amp; M.Tech engineering students, presented by <strong className="text-neutral-950 font-semibold">Tempete Club</strong> &amp; <strong className="text-neutral-950 font-semibold">DSU School of Engineering</strong>, with keynote mentorship by <strong className="text-neutral-950 font-semibold">Archzos Technologies</strong> and venture platform architecture co-hosted by <strong className="text-neutral-950 font-semibold">Circle13</strong>.
+            The flagship startup pitch competition for B.Tech &amp; M.Tech engineering students, presented by <strong className="text-neutral-950 font-semibold">Tempête AI Club</strong> &amp; <strong className="text-neutral-950 font-semibold">DSU School of Engineering</strong>, with keynote mentorship by <strong className="text-neutral-950 font-semibold">Archzos Technologies</strong> and venture platform architecture co-hosted by <strong className="text-neutral-950 font-semibold">Circle13</strong>.
           </p>
 
           {/* Primary Action Buttons */}

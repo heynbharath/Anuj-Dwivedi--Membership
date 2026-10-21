@@ -548,8 +548,14 @@ export default function InfographicDomainsArena() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 border border-neutral-200 rounded-full px-3.5 py-1 text-[11px] font-mono text-neutral-800 bg-neutral-50 shadow-2xs">
-              <Sparkles className="w-3.5 h-3.5 text-neutral-900" />
-              <span>THE 8 ARMS · MASTER INFOGRAPHIC ARENA</span>
+              <img
+                src="/images/tempete/tempete-icon-color.svg"
+                alt="Tempête AI Club"
+                className="w-3.5 h-3.5 rounded-[2px]"
+              />
+              <span className="font-semibold text-neutral-950">TEMPÊTE AI CLUB</span>
+              <span className="text-neutral-300">×</span>
+              <span>8 ARENA FRONTIERS</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-sans font-semibold tracking-tight text-neutral-950">
               Eight Frontiers.
@@ -684,9 +690,13 @@ export default function InfographicDomainsArena() {
                     <span className="text-xs font-mono text-neutral-400 uppercase tracking-wider">
                       {selectedDomain.subtitle}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      OCTOPUS TANK ARENA
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[#4D7CFF] bg-[#121212] px-2.5 py-0.5 rounded border border-blue-900/50">
+                      <img
+                        src="/images/tempete/tempete-icon-reverse.svg"
+                        alt="Tempête"
+                        className="w-3 h-3 rounded-[2px]"
+                      />
+                      <span>OCTOPUS TANK ARENA</span>
                     </span>
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-sans font-bold tracking-tight text-white">

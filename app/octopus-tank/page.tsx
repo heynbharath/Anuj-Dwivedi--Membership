@@ -27,7 +27,14 @@ export default function OctopusTankPage() {
               />
               <span className="font-semibold text-neutral-900">DSU School of Engg</span>
               <span className="text-neutral-300">×</span>
-              <span className="font-semibold text-neutral-900">Tempete Club</span>
+              <div className="inline-flex items-center gap-1.5">
+                <img
+                  src="/images/tempete/tempete-icon-color.svg"
+                  alt="Tempête AI Club"
+                  className="w-3.5 h-3.5 object-contain rounded-[2px]"
+                />
+                <span className="font-semibold text-neutral-900">Tempête AI Club</span>
+              </div>
               <span className="text-neutral-300">×</span>
               <div className="inline-flex items-center gap-1.5">
                 <img

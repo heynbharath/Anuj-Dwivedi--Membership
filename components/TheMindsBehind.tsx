@@ -138,7 +138,7 @@ export default function TheMindsBehind() {
             <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
               Brought together by <strong className="text-neutral-950 font-semibold">Archzos Technologies</strong> and{" "}
               <strong className="text-neutral-950 font-semibold">Circle13</strong> in collaboration with{" "}
-              <strong className="text-neutral-950 font-semibold">Tempete Club</strong> &amp;{" "}
+              <strong className="text-neutral-950 font-semibold">Tempête AI Club</strong> &amp;{" "}
               <strong className="text-neutral-950 font-semibold">DSU School of Engineering</strong>.
             </p>
           </div>
@@ -360,13 +360,61 @@ export default function TheMindsBehind() {
             </div>
           </div>
 
-          {/* Institutional Endorsement Bar */}
-          <div className="pt-6 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Official Institutional Alliance: DSU School of Engg × Tempete Club × Archzos Technologies × Circle13</span>
+          {/* Institutional 4-Partner Alliance Bar */}
+          <div className="pt-6 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+                OFFICIAL INSTITUTIONAL ALLIANCE:
+              </span>
+              <div className="flex items-center gap-5">
+                {/* DSU */}
+                <div className="flex items-center gap-1.5" title="DSU School of Engineering">
+                  <img
+                    src="/octopus-assets/dsu-logo.png"
+                    alt="DSU Crest"
+                    className="w-5 h-5 rounded-full object-contain"
+                  />
+                  <span className="text-xs font-semibold text-neutral-900">DSU SOE</span>
+                </div>
+                <span className="text-neutral-300">×</span>
+
+                {/* Tempête AI Club */}
+                <div className="flex items-center gap-1.5" title="Tempête AI Club">
+                  <img
+                    src="/images/tempete/tempete-icon-color.svg"
+                    alt="Tempête AI Club"
+                    className="w-5 h-5 rounded object-contain"
+                  />
+                  <span className="text-xs font-semibold text-neutral-900">Tempête AI Club</span>
+                </div>
+                <span className="text-neutral-300">×</span>
+
+                {/* Archzos Technologies */}
+                <div className="flex items-center gap-1.5" title="Archzos Technologies">
+                  <img
+                    src="/images/archzos-logo.png"
+                    alt="Archzos Technologies"
+                    className="w-4 h-4 object-contain"
+                  />
+                  <span className="text-xs font-semibold text-neutral-900">Archzos</span>
+                </div>
+                <span className="text-neutral-300">×</span>
+
+                {/* Circle13 */}
+                <div className="flex items-center gap-1.5" title="Circle13 Platform">
+                  <img
+                    src="/images/circle13-logo-transparent.png"
+                    alt="Circle13 Platform"
+                    className="w-4 h-4 object-contain"
+                  />
+                  <span className="text-xs font-semibold text-neutral-900">Circle13</span>
+                </div>
+              </div>
             </div>
-            <span>Bangalore, Karnataka · 31 October 2026</span>
+            <div className="flex items-center gap-1.5 font-mono text-[11px] text-neutral-400">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Bangalore, Karnataka · 31 October 2026</span>
+            </div>
           </div>
         </div>
       </div>

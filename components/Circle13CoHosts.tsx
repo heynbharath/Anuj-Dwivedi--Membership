@@ -31,7 +31,7 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
               Co-Hosted by Circle13
             </h2>
             <p className="text-sm text-neutral-600 max-w-2xl leading-relaxed">
-              Circle13 drives the platform architecture, venture systems, and digital operational infrastructure for Octopus Tank 2026 alongside Tempete Club.
+              Circle13 drives the platform architecture, venture systems, and digital operational infrastructure for Octopus Tank 2026 alongside Tempête AI Club.
             </p>
           </div>
         </div>

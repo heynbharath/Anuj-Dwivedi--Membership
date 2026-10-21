@@ -502,6 +502,28 @@ export const ARCHZOS_CONFIG = {
   logo: "/images/archzos-logo.png",
 };
 
+// Tempête AI Club Brand Specifications
+export const TEMPETE_CONFIG = {
+  name: "Tempête AI Club",
+  shortName: "Tempête",
+  eyebrow: "Presented by Tempête AI Club × DSU School of Engineering",
+  tagline: "The Flagship AI & DeepTech Club of Dayananda Sagar University",
+  logo: "/images/tempete/tempete-primary-color.svg",
+  logoReverse: "/images/tempete/tempete-primary-reverse.svg",
+  icon: "/images/tempete/tempete-icon-color.svg",
+  iconReverse: "/images/tempete/tempete-icon-reverse.svg",
+  mark: "/images/tempete/tempete-mark-color.svg",
+  horizontal: "/images/tempete/tempete-horizontal-color.svg",
+  horizontalReverse: "/images/tempete/tempete-horizontal-reverse.svg",
+  brandSheet: "/images/tempete/tempete-brand-sheet.png",
+  colors: {
+    stormInk: "#121212",
+    paper: "#F4F1EA",
+    sparkBlue: "#2E5BFF",
+    sparkBlueDark: "#4D7CFF",
+  },
+};
+
 // Circle13 Co-Host & Platform Architecture Specifications
 export const CIRCLE13_CONFIG = {
   entity: "Circle13",

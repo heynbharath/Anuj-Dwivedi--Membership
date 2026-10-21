@@ -58,6 +58,14 @@ const FAQS: FAQItem[] = [
     ),
   },
   {
+    question: "What is Tempête AI Club's role in Octopus Tank 2026?",
+    answer: (
+      <p>
+        <strong className="text-neutral-900 font-semibold">Tempête AI Club</strong> is the flagship AI and deep-tech innovation club at Dayananda Sagar University School of Engineering. Tempête presents Octopus Tank 2026 alongside DSU SOE, partnering with Archzos Technologies (Anuj Dwivedi) for keynote evaluation and Circle13 (N Bharath &amp; Akhil Vipin Nair) for platform and venture architecture.
+      </p>
+    ),
+  },
+  {
     question: "How do we register our team?",
     answer: (
       <p>

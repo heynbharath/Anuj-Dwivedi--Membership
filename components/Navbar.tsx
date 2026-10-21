@@ -47,9 +47,19 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-sans text-sm font-semibold tracking-tight text-neutral-950 group-hover:text-neutral-700 transition-colors">
-                OCTOPUS TANK
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="font-sans text-sm font-semibold tracking-tight text-neutral-950 group-hover:text-neutral-700 transition-colors">
+                  OCTOPUS TANK
+                </span>
+                <span className="inline-flex items-center gap-1 text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-800 border border-neutral-200/90 shadow-2xs">
+                  <img
+                    src="/images/tempete/tempete-icon-color.svg"
+                    alt="Tempête"
+                    className="w-2.5 h-2.5 rounded-[1px]"
+                  />
+                  <span>Tempête AI</span>
+                </span>
+              </div>
               <span className="text-[10px] font-mono text-neutral-400 tracking-wider uppercase">
                 Think / Build / Execute
               </span>

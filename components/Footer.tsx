@@ -130,6 +130,19 @@ export default function Footer() {
             </h4>
             <div className="text-[13px] text-neutral-600 space-y-2">
               <div className="flex items-center gap-2">
+                <div className="w-5 h-5 relative rounded bg-neutral-950 border border-neutral-800 p-0.5 shrink-0 flex items-center justify-center">
+                  <img
+                    src="/images/tempete/tempete-icon-reverse.svg"
+                    alt="Tempête AI Club"
+                    className="w-3.5 h-3.5 object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="font-medium text-black block leading-none">Tempête AI Club</span>
+                  <span className="text-[10px] text-neutral-400 font-mono">Presenting Student Club</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
                 <div className="w-5 h-5 relative rounded bg-white border border-neutral-200 p-0.5 shrink-0 flex items-center justify-center">
                   <img
                     src="/images/circle13-logo-transparent.png"
@@ -167,7 +180,7 @@ export default function Footer() {
         {/* Bottom Legal / Minimal Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-400">
           <div>
-            © 2026 Octopus Tank. Presented by Tempete Club &amp; DSU School of Engineering · Co-Hosted by <Link href="/#cohosts" className="text-neutral-600 hover:text-black underline underline-offset-2">Circle13</Link> (N Bharath &amp; Akhil Vipin Nair) · Mentorship by Archzos Technologies.
+            © 2026 Octopus Tank. Presented by Tempête AI Club &amp; DSU School of Engineering · Co-Hosted by <Link href="/#leadership" className="text-neutral-600 hover:text-black underline underline-offset-2">Circle13</Link> (N Bharath &amp; Akhil Vipin Nair) · Mentorship by Archzos Technologies.
           </div>
           <div className="flex items-center space-x-6">
             <Link href="/terms" className="hover:text-black transition-colors">
