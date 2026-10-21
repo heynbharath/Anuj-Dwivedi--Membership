@@ -36,19 +36,37 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center space-y-6">
           {/* Institutional Eyebrow */}
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="inline-flex items-center gap-2 border border-neutral-200/90 rounded-full px-3 py-1 text-[11px] font-mono text-neutral-700 bg-neutral-50/80 shadow-2xs">
+            <div className="inline-flex items-center gap-2.5 border border-neutral-200/90 rounded-full px-4 py-1.5 text-[11px] font-mono text-neutral-800 bg-white shadow-2xs">
               <img
                 src="/octopus-assets/dsu-logo.png"
                 alt="DSU Crest"
                 className="w-4 h-4 rounded-full object-contain"
               />
-              <span className="font-semibold text-neutral-900">DSU School of Engineering</span>
-              <span className="text-neutral-400">×</span>
-              <span className="text-neutral-600">Archzos</span>
-              <span className="text-neutral-400">×</span>
-              <span className="font-semibold text-neutral-900">Circle13</span>
+              <span className="font-semibold text-neutral-900">DSU School of Engg</span>
+              <span className="text-neutral-300">×</span>
+              <div className="inline-flex items-center gap-1.5">
+                <Image
+                  src="/images/archzos-logo.png"
+                  alt="Archzos Logo"
+                  width={14}
+                  height={14}
+                  className="object-contain"
+                />
+                <span className="font-semibold text-neutral-900">Archzos</span>
+              </div>
+              <span className="text-neutral-300">×</span>
+              <div className="inline-flex items-center gap-1.5">
+                <Image
+                  src="/images/circle13-logo-transparent.png"
+                  alt="Circle13 Logo"
+                  width={14}
+                  height={14}
+                  className="object-contain"
+                />
+                <span className="font-semibold text-neutral-900">Circle13</span>
+              </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span>31 OCT 2026 · REGISTRATIONS OPEN</span>
             </div>
@@ -194,13 +212,24 @@ export default function HomePage() {
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-xs text-white text-[10px] font-mono font-medium">
                   Anuj Dwivedi
                 </div>
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-white/95 backdrop-blur-xs border border-neutral-200/80 shadow-xs space-y-0.5">
-                  <span className="block text-xs font-semibold text-neutral-950">
-                    Founder, Archzos Technologies Pvt Ltd
-                  </span>
-                  <span className="block text-[11px] text-neutral-500 font-mono">
-                    AI Systems • Pitching • Professional Presence
-                  </span>
+                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-white/95 backdrop-blur-xs border border-neutral-200/80 shadow-xs flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-md bg-white border border-neutral-200/90 p-1 shrink-0 flex items-center justify-center shadow-2xs">
+                    <Image
+                      src="/images/archzos-logo.png"
+                      alt="Archzos Logo"
+                      width={22}
+                      height={22}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="space-y-0.5">
+                    <span className="block text-xs font-semibold text-neutral-950">
+                      Founder, Archzos Technologies
+                    </span>
+                    <span className="block text-[11px] text-neutral-500 font-mono">
+                      AI Systems • Pitching • Professional Presence
+                    </span>
+                  </div>
                 </div>
               </div>
 

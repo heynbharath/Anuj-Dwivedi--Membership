@@ -124,16 +124,38 @@ export default function Footer() {
             <h4 className="text-[11px] font-mono font-medium text-neutral-400 uppercase tracking-widest">
               Co-Hosts &amp; Venue
             </h4>
-            <div className="text-[13px] text-neutral-600 space-y-1.5">
-              <div>
-                <span className="font-medium text-black block">Circle13</span>
-                <span className="text-[11px] text-neutral-500 font-mono">Platform Architecture</span>
+            <div className="text-[13px] text-neutral-600 space-y-2">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 relative rounded bg-white border border-neutral-200 p-0.5 shrink-0 flex items-center justify-center">
+                  <img
+                    src="/images/circle13-logo-transparent.png"
+                    alt="Circle13"
+                    className="w-3.5 h-3.5 object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="font-medium text-black block leading-none">Circle13</span>
+                  <span className="text-[10px] text-neutral-400 font-mono">Platform Architecture</span>
+                </div>
               </div>
-              <div>
-                <p className="font-medium text-black">DSU School of Engg</p>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 relative rounded bg-white border border-neutral-200 p-0.5 shrink-0 flex items-center justify-center">
+                  <img
+                    src="/images/archzos-logo.png"
+                    alt="Archzos"
+                    className="w-3.5 h-3.5 object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="font-medium text-black block leading-none">Archzos Tech</span>
+                  <span className="text-[10px] text-neutral-400 font-mono">AI &amp; Mentorship</span>
+                </div>
+              </div>
+              <div className="pt-1 border-t border-neutral-100">
+                <p className="font-medium text-black leading-tight">DSU School of Engg</p>
                 <p className="text-[11px] text-neutral-500">Dayananda Sagar University</p>
+                <p className="font-mono text-[10px] text-neutral-400">31 October 2026</p>
               </div>
-              <p className="font-mono text-[11px] text-neutral-400 pt-1">31 October 2026</p>
             </div>
           </div>
         </div>

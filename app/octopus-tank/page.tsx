@@ -16,20 +16,33 @@ export default function OctopusTankPage() {
       ========================================================= */}
       <section className="pt-8 sm:pt-14 pb-16 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          {/* Institution Header */}
-          <div className="flex items-center justify-center gap-3">
-            <img
-              src="/octopus-assets/dsu-logo.png"
-              alt="Dayananda Sagar University"
-              className="w-10 h-10 object-contain rounded-full shadow-2xs"
-            />
-            <div className="text-left">
-              <span className="block text-xs font-semibold text-neutral-900 leading-tight">
-                Dayananda Sagar University
-              </span>
-              <span className="block text-[11px] text-neutral-500 font-mono">
-                School of Engineering
-              </span>
+          {/* Institution & Partner Header */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-2.5 border border-neutral-200/90 rounded-full px-4 py-1.5 text-[11px] font-mono text-neutral-800 bg-white shadow-2xs">
+              <img
+                src="/octopus-assets/dsu-logo.png"
+                alt="Dayananda Sagar University Crest"
+                className="w-4 h-4 object-contain rounded-full"
+              />
+              <span className="font-semibold text-neutral-900">DSU School of Engg</span>
+              <span className="text-neutral-300">×</span>
+              <div className="inline-flex items-center gap-1.5">
+                <img
+                  src="/images/archzos-logo.png"
+                  alt="Archzos Logo"
+                  className="w-3.5 h-3.5 object-contain"
+                />
+                <span className="font-semibold text-neutral-900">Archzos</span>
+              </div>
+              <span className="text-neutral-300">×</span>
+              <div className="inline-flex items-center gap-1.5">
+                <img
+                  src="/images/circle13-logo-transparent.png"
+                  alt="Circle13 Logo"
+                  className="w-3.5 h-3.5 object-contain"
+                />
+                <span className="font-semibold text-neutral-900">Circle13</span>
+              </div>
             </div>
           </div>
 
@@ -503,9 +516,16 @@ export default function OctopusTankPage() {
                     alt="Anuj Dwivedi"
                     className="w-12 h-12 rounded-full object-cover object-center border border-neutral-200 shadow-2xs"
                   />
-                  <div>
+                  <div className="space-y-0.5">
                     <h4 className="font-semibold text-sm text-neutral-950">Anuj Dwivedi</h4>
-                    <span className="text-xs text-neutral-500 block">Founder, Archzos Technologies</span>
+                    <div className="flex items-center gap-1.5">
+                      <img
+                        src="/images/archzos-logo.png"
+                        alt="Archzos"
+                        className="w-3 h-3 object-contain"
+                      />
+                      <span className="text-xs text-neutral-500">Founder, Archzos Technologies</span>
+                    </div>
                   </div>
                 </div>
                 <p className="text-xs text-neutral-600 leading-relaxed pt-1">

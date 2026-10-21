@@ -494,6 +494,14 @@ export const OCTOPUS_TANK_CONFIG = {
   ],
 };
 
+// Archzos Brand Asset Specifications
+export const ARCHZOS_CONFIG = {
+  name: "Archzos Technologies Pvt Ltd",
+  shortName: "Archzos",
+  tagline: "Artificial Intelligence & Venture Engineering",
+  logo: "/images/archzos-logo.png",
+};
+
 // Circle13 Co-Host & Platform Architecture Specifications
 export const CIRCLE13_CONFIG = {
   entity: "Circle13",
@@ -501,6 +509,8 @@ export const CIRCLE13_CONFIG = {
   title: "Co-Hosted by Circle13",
   subtitle:
     "Circle13 is the platform architecture and venture systems partner co-hosting Octopus Tank 2026 alongside Tempete Club.",
+  logo: "/images/circle13-logo-transparent.png",
+  logoBadge: "/images/circle13-logo.png",
   groupPhoto: "/images/circle13-cohosts.jpg",
   founders: [
     {

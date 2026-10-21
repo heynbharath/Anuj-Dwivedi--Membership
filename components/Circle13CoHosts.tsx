@@ -16,15 +16,22 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 border border-neutral-200 rounded-full px-3 py-1 text-[11px] font-mono text-neutral-600 bg-white shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-              <span>{CIRCLE13_CONFIG.eyebrow}</span>
+            <div className="inline-flex items-center gap-2.5 border border-neutral-200/90 rounded-full px-3.5 py-1 text-[11px] font-mono text-neutral-800 bg-white shadow-2xs">
+              <div className="w-4 h-4 relative shrink-0">
+                <Image
+                  src="/images/circle13-logo-transparent.png"
+                  alt="Circle13 Mark"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-semibold">{CIRCLE13_CONFIG.eyebrow}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-sans font-semibold tracking-tight text-neutral-950">
               Co-Hosted by Circle13
             </h2>
             <p className="text-sm text-neutral-600 max-w-2xl leading-relaxed">
-              Circle13 drives the platform architecture, digital execution, and operational infrastructure for Octopus Tank 2026 alongside Tempete Club.
+              Circle13 drives the platform architecture, venture systems, and digital operational infrastructure for Octopus Tank 2026 alongside Tempete Club.
             </p>
           </div>
 
@@ -45,17 +52,45 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
 
         {/* Co-Hosts Team Showcase & Profiles */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column: Team Showcase Photo */}
-          <div className="lg:col-span-5 rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col justify-between space-y-6 shadow-2xs">
+          {/* Left Column: Team Showcase Photo & Entity Identity */}
+          <div className="lg:col-span-4 rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col justify-between space-y-6 shadow-2xs">
             <div className="space-y-4">
               <div className="flex items-center justify-between text-xs font-mono text-neutral-500">
-                <span className="inline-flex items-center gap-1.5 font-semibold text-neutral-900">
-                  <span className="w-2 h-2 rounded-full bg-black" />
-                  Circle13 Leadership
-                </span>
-                <span>Bangalore, India</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 relative rounded bg-white border border-neutral-200/80 p-0.5 flex items-center justify-center shadow-2xs">
+                    <Image
+                      src="/images/circle13-logo-transparent.png"
+                      alt="Circle13 Logo"
+                      fill
+                      className="object-contain p-0.5"
+                    />
+                  </div>
+                  <span className="font-semibold text-neutral-950">Circle13 Platform</span>
+                </div>
+                <span>Bangalore</span>
               </div>
 
+              {/* Circle13 Official Brand Card */}
+              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/80 flex items-center gap-3.5">
+                <div className="w-12 h-12 relative rounded-lg bg-white border border-neutral-200 p-1.5 shrink-0 shadow-2xs">
+                  <Image
+                    src="/images/circle13-logo-transparent.png"
+                    alt="Circle13 Official Logo"
+                    fill
+                    className="object-contain p-1"
+                  />
+                </div>
+                <div className="space-y-0.5">
+                  <span className="block text-xs font-semibold text-neutral-950">
+                    Circle13 Architecture
+                  </span>
+                  <span className="block text-[11px] text-neutral-500 font-mono">
+                    Official Co-Host &amp; Infrastructure Partner
+                  </span>
+                </div>
+              </div>
+
+              {/* Group Snapshot */}
               <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200/90 shadow-2xs">
                 <Image
                   src={CIRCLE13_CONFIG.groupPhoto}
@@ -64,12 +99,12 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
                   className="object-cover object-center hover:scale-[1.02] transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-4 right-4 text-white">
+                <div className="absolute bottom-3 left-3 right-3 text-white">
                   <span className="text-[10px] font-mono text-neutral-300 block uppercase tracking-wider">
-                    Official Co-Hosts
+                    Founders
                   </span>
-                  <span className="text-sm font-semibold">
-                    Circle13 Venture &amp; Platform Architecture
+                  <span className="text-xs font-semibold">
+                    N Bharath &amp; Akhil Vipin Nair
                   </span>
                 </div>
               </div>
@@ -77,7 +112,7 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
 
             <div className="pt-2 border-t border-neutral-100 space-y-2">
               <p className="text-xs text-neutral-600 leading-relaxed">
-                Building scalable developer infrastructure, hackathon platforms, and venture systems. Dedicated to supporting high-caliber student builders.
+                Building scalable developer infrastructure, autonomous agent systems, and venture platforms. Dedicated to supporting high-caliber student builders.
               </p>
               <div className="flex items-center gap-2 text-[11px] font-mono text-neutral-400">
                 <span>DSU School of Engineering</span>
@@ -88,40 +123,44 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
           </div>
 
           {/* Right Column: Dedicated Personal Profiles (Bharath & Akhil) */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {CIRCLE13_CONFIG.founders.map((founder, idx) => (
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {CIRCLE13_CONFIG.founders.map((founder) => (
               <div
                 key={founder.name}
                 className="rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col justify-between space-y-5 hover:border-neutral-300 transition-all shadow-2xs"
               >
                 <div className="space-y-4">
-                  {/* Founder Avatar & Badge */}
-                  <div className="flex items-start gap-4">
-                    <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-neutral-200 shrink-0 bg-neutral-100">
-                      <Image
-                        src={founder.image}
-                        alt={founder.name}
-                        fill
-                        className="object-cover object-center"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div className="inline-block px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-neutral-100 text-neutral-800">
-                        {founder.role}
-                      </div>
-                      <h3 className="text-base font-semibold text-neutral-950 leading-snug">
-                        {founder.name}
-                      </h3>
-                      <span className="block text-[11px] text-neutral-500 font-mono">
-                        {founder.title}
-                      </span>
+                  {/* Founder Authentic Photo Showcase */}
+                  <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-neutral-200/90 bg-neutral-100 shadow-2xs group">
+                    <Image
+                      src={founder.image}
+                      alt={founder.name}
+                      fill
+                      className="object-cover object-top hover:scale-[1.02] transition-transform duration-500"
+                      priority
+                    />
+                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/85 backdrop-blur-xs text-white text-[10px] font-mono font-medium">
+                      {founder.role}
                     </div>
                   </div>
 
-                  {/* Bio */}
-                  <p className="text-xs text-neutral-600 leading-relaxed">
-                    {founder.bio}
-                  </p>
+                  {/* Founder Details */}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-base font-semibold text-neutral-950 leading-snug">
+                        {founder.name}
+                      </h3>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 font-semibold">
+                        Circle13
+                      </span>
+                    </div>
+                    <span className="block text-[11px] text-neutral-500 font-mono">
+                      {founder.title}
+                    </span>
+                    <p className="text-xs text-neutral-600 leading-relaxed pt-1.5">
+                      {founder.bio}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Social & Contact Channels */}
