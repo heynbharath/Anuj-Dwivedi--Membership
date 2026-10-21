@@ -40,6 +40,30 @@ export default function AboutPage() {
           </p>
         </div>
 
+        {/* Visual Proof / Real Engagement Gallery */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-neutral-100">
+          <div className="rounded-xl overflow-hidden border border-neutral-200 bg-neutral-50 relative aspect-[16/10]">
+            <img
+              src="/images/anuj-keynote.png"
+              alt="Anuj Dwivedi Keynote"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-2.5 left-3 text-[10px] font-mono text-white/90 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
+              Live Keynote Address · AI Systems
+            </div>
+          </div>
+          <div className="rounded-xl overflow-hidden border border-neutral-200 bg-neutral-50 relative aspect-[16/10]">
+            <img
+              src="/images/anuj-workshop-event-opt.jpg"
+              alt="Anuj Dwivedi Student Workshop"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-2.5 left-3 text-[10px] font-mono text-white/90 bg-black/60 px-2 py-0.5 rounded backdrop-blur-xs">
+              Hands-On Campus Masterclasses
+            </div>
+          </div>
+        </div>
+
         {/* 4 Pillars Monospace Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-neutral-100">
           <div className="p-6 rounded-xl border border-neutral-200 bg-neutral-50/50 space-y-2">
