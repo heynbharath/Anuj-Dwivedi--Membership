@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,36 +6,33 @@
 
 :root {
   --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
   --font-playfair: 'Playfair Display', Georgia, Cambria, serif;
 
-  /* Reference Palette */
-  --color-warm-ivory: #F6F1E5;
-  --color-antique-gold: #C9A04A;
-  --color-light-gold: #E5C66E;
-  --color-obsidian-black: #101114;
-  --color-deep-navy: #0B1726;
-  --color-silver: #C7CBD1;
-  --color-bronze: #A96F43;
-  --color-muted-text: #65615A;
+  /* Minimalist Palette */
+  --bg-pure: #ffffff;
+  --bg-soft: #fafafa;
+  --bg-elevated: #f4f4f5;
+  --border-subtle: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --text-main: #000000;
+  --text-muted: #525252;
+  --text-faint: #a3a3a3;
 }
 
 @layer base {
   body {
-    background-color: #FFFFFF;
-    color: #101114;
+    background-color: #ffffff;
+    color: #171717;
     font-family: var(--font-inter);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: var(--font-playfair);
-  }
-
   /* Accessible focus indicators */
   :focus-visible {
-    outline: 2px solid #C9A04A;
+    outline: 2px solid #000000;
     outline-offset: 2px;
   }
 }

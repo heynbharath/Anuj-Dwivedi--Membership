@@ -338,11 +338,15 @@ export const MEMBERSHIP_TIERS: MembershipTier[] = [
 ];
 
 // Octopus Tank 2026 specifications
+export const OCTOPUS_TANK_GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScXj0aexIm8-gyGlIsGMidIrLl7A4kCuH8wdvsQWstfd_CS0Q/viewform?usp=dialog";
+
 export const OCTOPUS_TANK_CONFIG = {
   eventName: "OCTOPUS TANK 2026",
   tagline: "8 Arms. Infinite Ideas. Pitch. Compete. Launch.",
   dateText: "31 October 2026",
-  status: "Proposed / Subject to university confirmation",
+  googleFormUrl: OCTOPUS_TANK_GOOGLE_FORM_URL,
+  status: "Applications Open (Google Form)",
   institution: "Dayananda Sagar University (DSU) School of Engineering",
   targetAudience: "B.Tech & M.Tech students (DSU School of Engineering only)",
   teamFeeINR: 299,

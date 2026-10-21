@@ -50,9 +50,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-navy-900 antialiased selection:bg-gold-500 selection:text-white">
+      <body className="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-black selection:text-white font-sans">
         <Navbar />
-        <main className="flex-grow pt-20">{children}</main>
+        <main className="flex-grow pt-16">{children}</main>
         <Footer />
       </body>
     </html>

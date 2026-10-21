@@ -1,703 +1,575 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
-import SectionHeader from "@/components/SectionHeader";
-import VerificationNotice from "@/components/VerificationNotice";
-import RecognitionTokenCard from "@/components/RecognitionTokenCard";
-import InfographicOctopusArms from "@/components/InfographicOctopusArms";
-import InfographicProcessFlow from "@/components/InfographicProcessFlow";
-import ImageLightbox from "@/components/ImageLightbox";
-import BookingCTA from "@/components/BookingCTA";
-import OctopusTicket from "@/components/OctopusTicket";
-import VeerbhogyaLogo from "@/components/VeerbhogyaLogo";
-import {
-  OCTOPUS_TANK_CONFIG,
-  SITE_CONFIG,
-  COMMERCIAL_OFFER_ROUTES,
-  TOKEN_DESIGNS,
-  IMAGE_ASSETS,
-  MASTER_MANUAL_CONFIG,
-} from "@/lib/config";
-import { formatINR } from "@/lib/utils";
-import {
-  Calendar,
-  Users,
-  Award,
-  Sparkles,
-  ShieldCheck,
-  CheckCircle2,
-  ArrowRight,
-  ZoomIn,
-  Building,
-  Briefcase,
-  FileText,
-  HelpCircle,
-  Layers,
-  Scale,
-  Compass,
-  AlertTriangle,
-  XCircle,
-  Clock,
-  ListOrdered,
-  ChevronDown,
-} from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import OctopusStage from "@/components/OctopusStage";
+import { OCTOPUS_TANK_GOOGLE_FORM_URL, OCTOPUS_TANK_CONFIG } from "@/lib/config";
 
 export default function OctopusTankPage() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [activeLightbox, setActiveLightbox] = useState<{
-    isOpen: boolean;
-    src: string;
-    alt: string;
-    title: string;
-    caption: string;
-  }>({
-    isOpen: false,
-    src: "",
-    alt: "",
-    title: "",
-    caption: "",
-  });
-
-  const openLightbox = (
-    src: string,
-    alt: string,
-    title: string,
-    caption: string
-  ) => {
-    setActiveLightbox({
-      isOpen: true,
-      src,
-      alt,
-      title,
-      caption,
-    });
-  };
-
   return (
-    <div className="bg-white text-navy-950 py-12 sm:py-20 space-y-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* =========================================================
-            EVENT HERO & POSTER
-        ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 space-y-5">
-            <div className="flex flex-wrap items-center gap-2">
-              <VerificationNotice
-                status="supplied_proposal"
-                label="Event Concept & Proposal Docket"
-              />
-              <span className="text-[11px] font-mono text-gold-700 px-2.5 py-0.5 rounded-full bg-gold-50 border border-gold-300 font-bold">
-                {OCTOPUS_TANK_CONFIG.status}
+    <div className="bg-white text-neutral-900 selection:bg-neutral-900 selection:text-white">
+      {/* =========================================================
+          HERO SECTION
+      ========================================================= */}
+      <section className="pt-8 sm:pt-14 pb-16 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          {/* Institution Header */}
+          <div className="flex items-center justify-center gap-3">
+            <img
+              src="/octopus-assets/dsu-logo.png"
+              alt="Dayananda Sagar University"
+              className="w-10 h-10 object-contain rounded-full shadow-2xs"
+            />
+            <div className="text-left">
+              <span className="block text-xs font-semibold text-neutral-900 leading-tight">
+                Dayananda Sagar University
               </span>
-              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-navy-950 text-white text-[10px] font-mono font-bold border border-gold-500/40 shadow-xs">
-                <VeerbhogyaLogo variant="symbol_gold" width={16} height={11} />
-                <span className="text-gold-300 tracking-wider">VEERBHOGYA SECURED</span>
-              </div>
-            </div>
-
-            <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-navy-950 leading-[1.08]">
-              OCTOPUS <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-600 to-blue-600">
-                TANK 2026
+              <span className="block text-[11px] text-neutral-500 font-mono">
+                School of Engineering
               </span>
-            </h1>
-
-            <p className="text-base sm:text-lg font-serif text-gold-700 font-bold">
-              {OCTOPUS_TANK_CONFIG.tagline}
-            </p>
-
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-              A premier campus startup-pitching competition proposed for{" "}
-              <strong>{OCTOPUS_TANK_CONFIG.institution}</strong>. Combining an
-              intensive 2-hour pitch masterclass with live multi-domain pitching
-              across 8 innovation arms in front of industry judges.
-            </p>
-
-            {/* Quick Metrics from Poster */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-center text-xs">
-              <div className="p-3.5 rounded-2xl bg-warmIvory/60 border border-gold-300 space-y-0.5">
-                <span className="text-slate-500 text-[10px] uppercase font-mono font-bold">
-                  Target Date
-                </span>
-                <div className="font-bold text-navy-950">
-                  {OCTOPUS_TANK_CONFIG.dateText}
-                </div>
-              </div>
-              <div className="p-3.5 rounded-2xl bg-warmIvory/60 border border-gold-300 space-y-0.5">
-                <span className="text-slate-500 text-[10px] uppercase font-mono font-bold">
-                  Proposed Team Fee
-                </span>
-                <div className="font-bold text-gold-700">
-                  ₹{OCTOPUS_TANK_CONFIG.teamFeeINR}
-                </div>
-              </div>
-              <div className="p-3.5 rounded-2xl bg-warmIvory/60 border border-gold-300 space-y-0.5">
-                <span className="text-slate-500 text-[10px] uppercase font-mono font-bold">
-                  Team Size
-                </span>
-                <div className="font-bold text-navy-950">
-                  {OCTOPUS_TANK_CONFIG.teamSizeText}
-                </div>
-              </div>
-              <div className="p-3.5 rounded-2xl bg-warmIvory/60 border border-gold-300 space-y-0.5">
-                <span className="text-slate-500 text-[10px] uppercase font-mono font-bold">
-                  Capacity Target
-                </span>
-                <div className="font-bold text-navy-950">
-                  {OCTOPUS_TANK_CONFIG.teamTarget} Teams
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <Link
-                href="/book?route=route-a"
-                className="inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-bold px-7 py-3.5 rounded-xl bg-navy-950 text-white hover:bg-gold-500 hover:text-navy-950 transition-colors shadow-md"
-              >
-                <span>Enquire Regarding Event Pitching</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <button
-                onClick={() =>
-                  openLightbox(
-                    "/images/octopus-tank-2026.png",
-                    "Octopus Tank 2026 Official Concept Poster",
-                    "Octopus Tank 2026 Concept Poster",
-                    "Official concept poster prepared for Dayananda Sagar University School of Engineering."
-                  )
-                }
-                className="inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-bold px-6 py-3.5 rounded-xl border border-slate-300 text-navy-950 hover:bg-slate-50 transition-colors"
-              >
-                <ZoomIn className="w-4 h-4 text-slate-500" />
-                <span>Enlarge Poster</span>
-              </button>
             </div>
           </div>
 
-          {/* Official Poster Exhibit */}
-          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 p-3 shadow-xl">
-            <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-white">
-              <Image
-                src="/images/octopus-tank-2026.png"
-                alt="Octopus Tank 2026 Dayananda Sagar University School of Engineering Poster"
-                fill
-                className="object-contain"
-                priority
-              />
+          {/* Date & Campus Pill */}
+          <div className="inline-flex items-center gap-2 border border-neutral-200/90 rounded-full px-3.5 py-1 text-[11px] font-mono text-neutral-700 bg-neutral-50/70">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>31 OCT 2026 · DSU SCHOOL OF ENGINEERING</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-sans font-semibold tracking-tight text-neutral-950 leading-[1.05]">
+            Eight arms.
+            <br />
+            Infinite ideas.
+          </h1>
+
+          <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+            A startup pitch competition for B.Tech and M.Tech students at DSU School of Engineering. Learn how to pitch in an intensive two-hour workshop, then step on stage live.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <a
+              href={OCTOPUS_TANK_GOOGLE_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-black text-white text-sm font-semibold hover:bg-neutral-800 transition-all duration-150 shadow-xs"
+            >
+              <span>Apply to Pitch (Google Form)</span>
+              <ArrowUpRight className="w-4 h-4 opacity-70" />
+            </a>
+            <a
+              href="#details"
+              className="inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg border border-neutral-200 text-neutral-800 text-sm font-medium hover:bg-neutral-50 transition-all"
+            >
+              <span>Event Details</span>
+            </a>
+          </div>
+
+          <div className="pt-2 flex flex-col items-center gap-2">
+            <span className="font-mono text-xs text-neutral-400 tracking-[0.2em] uppercase">
+              Pitch. Compete. Launch.
+            </span>
+            <div className="flex w-24 h-0.5 rounded-full overflow-hidden">
+              <span className="flex-1 bg-blue-500" />
+              <span className="flex-1 bg-red-500" />
+              <span className="flex-1 bg-amber-400" />
+              <span className="flex-1 bg-emerald-500" />
             </div>
-            <div className="pt-2 flex items-center justify-between text-[10px] text-slate-500 font-mono px-1">
-              <span>Source: DSU Proposal Docket</span>
-              <button
-                onClick={() =>
-                  openLightbox(
-                    "/images/octopus-tank-2026.png",
-                    "Octopus Tank 2026 Poster",
-                    "Octopus Tank 2026 Poster",
-                    "Dayananda Sagar University School of Engineering proposal."
-                  )
-                }
-                className="text-gold-700 font-bold hover:underline"
-              >
-                Click to Enlarge
-              </button>
+          </div>
+
+          <div className="pt-4 max-w-xl mx-auto">
+            <OctopusStage clip="hero" />
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          STATS BAR
+      ========================================================= */}
+      <section className="border-b border-neutral-200 bg-neutral-50/50">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-neutral-200">
+          <div className="p-6 sm:p-8 flex flex-col justify-center">
+            <span className="font-mono text-2xl sm:text-3xl font-semibold text-neutral-950 tracking-tight">
+              31 OCT
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 mt-1">
+              Event Date, 2026
+            </span>
+          </div>
+          <div className="p-6 sm:p-8 flex flex-col justify-center">
+            <span className="font-mono text-2xl sm:text-3xl font-semibold text-neutral-950 tracking-tight">
+              8
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 mt-1">
+              Domains
+            </span>
+          </div>
+          <div className="p-6 sm:p-8 flex flex-col justify-center">
+            <span className="font-mono text-2xl sm:text-3xl font-semibold text-neutral-950 tracking-tight">
+              2–4
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 mt-1">
+              Members Per Team
+            </span>
+          </div>
+          <div className="p-6 sm:p-8 flex flex-col justify-center">
+            <span className="font-mono text-2xl sm:text-3xl font-semibold text-neutral-950 tracking-tight">
+              50
+            </span>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 mt-1">
+              Team Target
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          THE 8 DOMAINS SECTION
+      ========================================================= */}
+      <section id="domains" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="max-w-2xl space-y-3">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+              Domains
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-sans font-semibold tracking-tight text-neutral-950">
+              Pitch in any of eight domains
+            </h2>
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+              Ideas across domains, solutions for a brighter tomorrow. Each arm of the octopus is a domain. Pick the one your idea belongs to.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            {/* Left 4 Domains */}
+            <div className="lg:col-span-4 space-y-3">
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">AI &amp; Data</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  Intelligence for impact
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">Robotics &amp; IoT</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  Automate a brighter tomorrow
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">Sustainability</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  Solutions for a healthier planet
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">Business &amp; Legal Tech</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  Innovation beyond borders
+                </p>
+              </div>
+            </div>
+
+            {/* Middle Stage: Floating Octopus */}
+            <div className="lg:col-span-4 flex items-center justify-center py-4">
+              <div className="w-full max-w-[340px]">
+                <OctopusStage clip="float" />
+              </div>
+            </div>
+
+            {/* Right 4 Domains */}
+            <div className="lg:col-span-4 space-y-3">
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">Cybersecurity</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  A safer digital tomorrow
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">Engineering Design</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  From ideas to real impact
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">Aero &amp; Mobility</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  Higher ideas, further horizons
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
+                  <h3 className="text-sm font-semibold text-neutral-900">MedTech</h3>
+                </div>
+                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
+                  Tech for healthier lives
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* =========================================================
-            LEGAL & OPERATIONAL ENTITY SEPARATION (CRUCIAL REQUIREMENT)
-        ========================================================= */}
-        <section className="p-8 sm:p-10 rounded-3xl bg-warmIvory/60 border border-gold-300 space-y-6">
-          <div className="space-y-1">
-            <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-gold-800">
-              STRUCTURAL INTEGRITY & GOVERNANCE
+      {/* =========================================================
+          FORMAT & TIMELINE
+      ========================================================= */}
+      <section id="format" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-100 bg-neutral-50/30">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-3">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+                Format
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-sans font-semibold tracking-tight text-neutral-950">
+                Learn the pitch, then give it
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              <div className="grid grid-cols-[56px_1fr] gap-4 pt-4 border-t border-neutral-200">
+                <span className="font-mono text-xs text-neutral-400 font-medium pt-1">
+                  Step 1
+                </span>
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-neutral-900">
+                    Pitch workshop
+                  </h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    A two-hour session on how to present an idea clearly and defensibly before you step on stage.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-[56px_1fr] gap-4 pt-4 border-t border-neutral-200">
+                <span className="font-mono text-xs text-neutral-400 font-medium pt-1">
+                  Step 2
+                </span>
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-neutral-900">
+                    Live startup pitching
+                  </h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    Your team pitches live in the domain you picked before seasoned founders, judges, and industry engineers.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-[56px_1fr] gap-4 pt-4 border-t border-neutral-200">
+                <span className="font-mono text-xs text-neutral-400 font-medium pt-1">
+                  Step 3
+                </span>
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-neutral-900">
+                    Win and keep building
+                  </h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    Cash prizes, internship opportunities, mentorship, and startup guidance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-neutral-100 text-xs font-mono text-neutral-400">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-neutral-200" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-neutral-200" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-neutral-200" />
+                </div>
+                <span>octopus / live</span>
+              </div>
+
+              <div className="py-2">
+                <OctopusStage clip="wave" />
+              </div>
+
+              <div className="pt-3 border-t border-neutral-100 flex items-center justify-between text-xs font-mono text-neutral-500">
+                <span>8 domains</span>
+                <span>2-hour workshop</span>
+                <span>1 stage</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          PERKS SECTION
+      ========================================================= */}
+      <section id="perks" className="py-16 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="space-y-2">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+              Perks
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-navy-950">
-              Distinct Operational & Brand Entities
+            <h2 className="text-2xl sm:text-3xl font-sans font-semibold tracking-tight text-neutral-950">
+              What teams take away
             </h2>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              To maintain academic, commercial, and operational clarity, the
-              initiatives presented on this platform are distinctly defined and
-              not merged into a single commercial or legal entity:
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 text-xs">
-            {/* Entity A */}
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-full bg-red-100 text-red-800 border border-red-300 flex items-center justify-center font-bold font-mono text-[11px]">
-                A
-              </span>
-              <h4 className="font-serif font-bold text-navy-950 text-sm">
-                Student Pitching Competition
-              </h4>
-              <p className="text-slate-600 leading-relaxed text-[11px]">
-                Octopus Tank 2026: Campus event for Dayananda Sagar University
-                students testing multidisciplinary engineering and pitches.
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-6 rounded-xl border border-neutral-200 bg-neutral-50/50 space-y-3">
+              <span className="font-mono text-xs text-neutral-400">01</span>
+              <h3 className="text-base font-semibold text-neutral-950">Cash prizes</h3>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                Direct monetary backing to propel your prototype into execution.
               </p>
             </div>
 
-            {/* Entity B */}
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-full bg-gold-100 text-gold-900 border border-gold-300 flex items-center justify-center font-bold font-mono text-[11px]">
-                B
-              </span>
-              <h4 className="font-serif font-bold text-navy-950 text-sm">
-                Recognition-Token Programme
-              </h4>
-              <p className="text-slate-600 leading-relaxed text-[11px]">
-                The 10-card architecture (3 Gold, multiple Silver/Bronze)
-                awarding merit and unlocking defined advisory gateways.
+            <div className="p-6 rounded-xl border border-neutral-200 bg-neutral-50/50 space-y-3">
+              <span className="font-mono text-xs text-neutral-400">02</span>
+              <h3 className="text-base font-semibold text-neutral-950">Internship opportunities</h3>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                Connect directly with participating engineering and startup teams.
               </p>
             </div>
 
-            {/* Entity C */}
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-900 border border-blue-300 flex items-center justify-center font-bold font-mono text-[11px]">
-                C
-              </span>
-              <h4 className="font-serif font-bold text-navy-950 text-sm">
-                Personal Advisory & Mentorship
-              </h4>
-              <p className="text-slate-600 leading-relaxed text-[11px]">
-                Anuj Dwivedi&apos;s independent technical consultancy and 30-day
-                premium mentorship engagements (Routes A, B, and C).
+            <div className="p-6 rounded-xl border border-neutral-200 bg-neutral-50/50 space-y-3">
+              <span className="font-mono text-xs text-neutral-400">03</span>
+              <h3 className="text-base font-semibold text-neutral-950">Mentorship</h3>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                Ongoing advisory sessions to stress-test your system design.
               </p>
             </div>
 
-            {/* Entity D */}
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-900 border border-amber-300 flex items-center justify-center font-bold font-mono text-[11px]">
-                D
-              </span>
-              <h4 className="font-serif font-bold text-navy-950 text-sm">
-                Archzos Technologies Branding
-              </h4>
-              <p className="text-slate-600 leading-relaxed text-[11px]">
-                Corporate identity, formal offer letters, agreements, stationery,
-                and seal concepts as visual design proposals.
-              </p>
-            </div>
-
-            {/* Entity E */}
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-              <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 flex items-center justify-center font-bold font-mono text-[11px]">
-                E
-              </span>
-              <h4 className="font-serif font-bold text-navy-950 text-sm">
-                Circle13 Management
-              </h4>
-              <p className="text-slate-600 leading-relaxed text-[11px]">
-                Platform architecture & operational infrastructure. Coordinates
-                intake, bookings, and verified onboarding for advisory routes.
+            <div className="p-6 rounded-xl border border-neutral-200 bg-neutral-50/50 space-y-3">
+              <span className="font-mono text-xs text-neutral-400">04</span>
+              <h3 className="text-base font-semibold text-neutral-950">Startup guidance</h3>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                Navigate product roadmap, entity setup, and initial market validation.
               </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* =========================================================
-            THE 3 GATES & 2-HOUR SESSION LOGIC (Image 1 Infographic)
-        ========================================================= */}
-        <section className="space-y-8 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="SESSION ARCHITECTURE"
-            title="The 3 Gates & The 2-Hour Intensive Session"
-            subtitle="The operational methodology from the master manual: Three criteria before proceeding, followed by a high-impact five-step live session."
-          />
-
-          {/* The 3 Gates */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-gold-700 bg-gold-50 px-2 py-0.5 rounded border border-gold-300">
-                  Gate 1
-                </span>
-                <span className="text-[10px] font-mono text-slate-400 uppercase">
-                  Psychology
-                </span>
-              </div>
-              <h4 className="font-serif text-xl font-bold text-navy-950">
-                1. Expose Friction
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                <strong>&ldquo;Is there a real friction worth removing?&rdquo;</strong>
-                <br />
-                Builders often feel ungrounded in pitch presence and business
-                clarity. The session exposes the real gap and creates demand for
-                rigorous execution.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-gold-700 bg-gold-50 px-2 py-0.5 rounded border border-gold-300">
-                  Gate 2
-                </span>
-                <span className="text-[10px] font-mono text-slate-400 uppercase">
-                  Economics
-                </span>
-              </div>
-              <h4 className="font-serif text-xl font-bold text-navy-950">
-                2. Positive Return
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                <strong>&ldquo;Does the return exceed the cost?&rdquo;</strong>
-                <br />
-                Offers must create net-positive contribution. Team routes lower
-                the per-head barrier (flat ₹15,000 for up to 5 members; ₹3,000/head at 5) to make
-                guidance justifiable.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-gold-700 bg-gold-50 px-2 py-0.5 rounded border border-gold-300">
-                  Gate 3
-                </span>
-                <span className="text-[10px] font-mono text-slate-400 uppercase">
-                  Distribution
-                </span>
-              </div>
-              <h4 className="font-serif text-xl font-bold text-navy-950">
-                3. Widen Access
-              </h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                <strong>&ldquo;Can the signal reach more builders?&rdquo;</strong>
-                <br />
-                Cards create earned scarcity, while individual and team routes
-                widen distribution. Circle13 management converts access into
-                structured onboarding.
-              </p>
-            </div>
-          </div>
-
-          {/* 5-Step Session Flow */}
-          <div className="p-7 rounded-3xl bg-navy-950 text-white border border-gold-500/40 shadow-xl space-y-6">
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-gold-400 font-bold">
-                THE 2-HOUR SESSION BLUEPRINT
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-white mt-1">
-                Five Sequential Room Stages
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 text-xs">
-              {MASTER_MANUAL_CONFIG.sessionStages.map((stage) => (
-                <div key={stage.step} className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
-                  <span className="font-mono text-gold-400 font-bold">{stage.step}</span>
-                  <div className="font-serif text-sm font-bold text-white">
-                    {stage.title}
-                  </div>
-                  <div className="text-[10px] font-mono text-gold-300 uppercase">
-                    {stage.tagline}
-                  </div>
-                  <p className="text-slate-300 text-[11px] leading-relaxed">
-                    {stage.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================
-            6-STEP COMMAND MAP (Master Manual Page 2)
-        ========================================================= */}
-        <section className="space-y-6 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="OPERATIONAL DISCIPLINE"
-            title="The 6-Step Command Map"
-            subtitle="The structured protocol from page 2 of the management manual converting pitch scrutiny into signed commitments."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {MASTER_MANUAL_CONFIG.commandMap.map((cmd) => (
-              <div
-                key={cmd.step}
-                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-gold-400 transition-all space-y-2 flex flex-col justify-between"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="w-7 h-7 rounded-full bg-navy-950 text-gold-400 font-mono text-xs font-bold flex items-center justify-center">
-                      {cmd.step}
-                    </span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                      Step {cmd.step} of 6
-                    </span>
-                  </div>
-                  <h4 className="font-serif text-base font-bold text-navy-950">
-                    {cmd.action}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {cmd.detail}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* =========================================================
-            5-QUESTION DIAGNOSTIC (Master Manual Page 12)
-        ========================================================= */}
-        <section className="p-8 sm:p-10 rounded-3xl bg-warmIvory/60 border border-gold-300 space-y-6">
-          <div>
-            <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-gold-800">
-              QUALIFICATION PROTOCOL
+      {/* =========================================================
+          EVENT DETAILS TABLE
+      ========================================================= */}
+      <section id="details" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-100 bg-neutral-50/30">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="space-y-2">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+              Details
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-navy-950 mt-1">
-              The 5-Question Diagnostic Framework
-            </h3>
-            <p className="text-xs text-slate-600 mt-1 max-w-2xl leading-relaxed">
-              Before an offer is proposed, Anuj and the management desk apply this five-step diagnostic
-              to separate real implementation appetite from casual interest:
-            </p>
+            <h2 className="text-2xl sm:text-3xl font-sans font-semibold tracking-tight text-neutral-950">
+              Event overview
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            {MASTER_MANUAL_CONFIG.diagnosticQuestions.map((diag) => (
-              <div
-                key={diag.number}
-                className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2"
-              >
-                <span className="font-mono text-xs font-bold text-gold-700 bg-gold-50 border border-gold-300 px-2 py-0.5 rounded">
-                  Q{diag.number}
-                </span>
-                <div className="font-serif font-bold text-sm text-navy-950">
-                  {diag.question}
-                </div>
-                <p className="text-[11px] text-slate-500 leading-snug">
-                  {diag.purpose}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* =========================================================
-            NON-NEGOTIABLES: APPROVED PRACTICES VS PROHIBITED SHORTCUTS
-        ========================================================= */}
-        <section className="space-y-6 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="OPERATIONAL GUARDRAILS"
-            title="The Non-Negotiables Table"
-            subtitle="Standard ethical, commercial, and legal guardrails from page 14 of the Octopus Tank manual."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Approved Practices */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-emerald-50/50 border border-emerald-300 space-y-4">
-              <div className="flex items-center space-x-2 text-emerald-900 font-bold font-serif text-lg">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span>10 Approved Practices</span>
-              </div>
-              <ul className="space-y-2 text-xs text-emerald-950">
-                {MASTER_MANUAL_CONFIG.nonNegotiables.approvedPractices.map((pra, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-emerald-700 font-mono font-bold mt-0.5">✓</span>
-                    <span>{pra}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="rounded-xl border border-neutral-200 overflow-hidden bg-white text-xs sm:text-sm font-mono divide-y divide-neutral-200">
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4 bg-neutral-50/50">
+              <span className="text-neutral-500 font-medium">Event</span>
+              <span className="sm:col-span-2 text-neutral-950 font-sans font-semibold">Octopus Tank 2026</span>
             </div>
-
-            {/* Prohibited Shortcuts */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-red-50/50 border border-red-300 space-y-4">
-              <div className="flex items-center space-x-2 text-red-900 font-serif text-lg font-bold">
-                <XCircle className="w-5 h-5 text-red-600 shrink-0" />
-                <span>10 Prohibited Shortcuts (Strictly Forbidden)</span>
-              </div>
-              <ul className="space-y-2 text-xs text-red-950">
-                {MASTER_MANUAL_CONFIG.nonNegotiables.prohibitedShortcuts.map((sho, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-red-600 font-mono font-bold mt-0.5">✕</span>
-                    <span>{sho}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4">
+              <span className="text-neutral-500 font-medium">Date</span>
+              <span className="sm:col-span-2 text-neutral-900">31 October 2026</span>
             </div>
-          </div>
-        </section>
-
-        {/* =========================================================
-            8 THEMATIC ARMS
-        ========================================================= */}
-        <section className="space-y-6 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="CROSS-DOMAIN INNOVATION"
-            title="The 8 Innovation Arms"
-            subtitle="Thematic challenges testing multidisciplinary engineering, AI pipelines, and commercial viability."
-          />
-          <InfographicOctopusArms />
-        </section>
-
-        {/* =========================================================
-            THE 10-CARD RECOGNITION ARCHITECTURE & TABLE
-        ========================================================= */}
-        <section className="space-y-8 border-t border-slate-200 pt-16">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <SectionHeader
-              eyebrow="RECOGNITION ARCHITECTURE"
-              title="The 10 Recognition Cards Breakdown"
-              subtitle="Exactly 3 Gold Cards and 7 Silver/Bronze Cards from the master infographic."
-              className="mb-0"
-            />
-            <button
-              onClick={() =>
-                openLightbox(
-                  IMAGE_ASSETS.offerStructure.src,
-                  IMAGE_ASSETS.offerStructure.alt,
-                  IMAGE_ASSETS.offerStructure.title,
-                  IMAGE_ASSETS.offerStructure.caption
-                )
-              }
-              className="inline-flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider px-4 py-2 rounded-xl bg-warmIvory border border-gold-400 text-gold-900 hover:bg-gold-100 transition-colors shrink-0 shadow-xs"
-            >
-              <ZoomIn className="w-3.5 h-3.5 text-gold-700" />
-              <span>Inspect Image 1 Infographic</span>
-            </button>
-          </div>
-
-          {/* Infographic Table from Image 1 */}
-          <div className="overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-md">
-            <table className="w-full text-left border-collapse text-xs">
-              <thead>
-                <tr className="bg-navy-950 text-white font-mono text-[11px] uppercase tracking-wider">
-                  <th className="p-4">Card Category</th>
-                  <th className="p-4">Who Gets It</th>
-                  <th className="p-4">Discount</th>
-                  <th className="p-4">Payable Fee</th>
-                  <th className="p-4">Applicable Route</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 font-mono text-slate-700">
-                <tr className="bg-gold-50/50 hover:bg-gold-50">
-                  <td className="p-4 font-bold text-gold-900">Gold Card #1</td>
-                  <td className="p-4">1st Place Champion</td>
-                  <td className="p-4 font-bold text-emerald-700">80% Off</td>
-                  <td className="p-4 font-serif font-bold text-navy-950 text-sm">
-                    ₹15,000
-                  </td>
-                  <td className="p-4">Team Route / 30-Day Mentorship</td>
-                </tr>
-                <tr className="bg-gold-50/30 hover:bg-gold-50">
-                  <td className="p-4 font-bold text-gold-900">Gold Card #2</td>
-                  <td className="p-4">2nd Place Finalist</td>
-                  <td className="p-4 font-bold text-emerald-700">70% Off</td>
-                  <td className="p-4 font-serif font-bold text-navy-950 text-sm">
-                    ₹22,500
-                  </td>
-                  <td className="p-4">Team Route / 30-Day Mentorship</td>
-                </tr>
-                <tr className="bg-gold-50/10 hover:bg-gold-50">
-                  <td className="p-4 font-bold text-gold-900">Gold Card #3</td>
-                  <td className="p-4">3rd Place Podium</td>
-                  <td className="p-4 font-bold text-emerald-700">60% Off</td>
-                  <td className="p-4 font-serif font-bold text-navy-950 text-sm">
-                    ₹30,000
-                  </td>
-                  <td className="p-4">Team Route / 30-Day Mentorship</td>
-                </tr>
-                <tr className="hover:bg-slate-50">
-                  <td className="p-4 font-bold text-slate-800">
-                    Silver Cards (Multiple)
-                  </td>
-                  <td className="p-4">Standout ideas Anuj personally likes</td>
-                  <td className="p-4 font-bold text-slate-700">50% or 40% Off</td>
-                  <td className="p-4 font-serif font-bold text-navy-950 text-sm">
-                    ₹37,500 or ₹45,000
-                  </td>
-                  <td className="p-4">Team Route</td>
-                </tr>
-                <tr className="hover:bg-slate-50">
-                  <td className="p-4 font-bold text-amber-900">
-                    Bronze Cards (Multiple)
-                  </td>
-                  <td className="p-4">Highly interested individual builders</td>
-                  <td className="p-4 font-bold text-amber-800">30% or 20% Off</td>
-                  <td className="p-4 font-serif font-bold text-navy-950 text-sm">
-                    ₹8,400 or ₹9,600
-                  </td>
-                  <td className="p-4">Individual Route (based on ₹12,000 route)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className="text-xs text-slate-500 font-mono text-center">
-            Gold is rank-based (3 podium spots). Silver is personally selected. Bronze is the individual-interest pathway.
-          </p>
-        </section>
-
-        {/* =========================================================
-            STAGE PITCH PASS & ADMISSION TICKET (Veerbhogya Seal)
-        ========================================================= */}
-        <section className="space-y-8 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="EVENT CREDENTIALING"
-            title="Stage Pitch Pass & Official Admission Ticket"
-            subtitle="The physical-digital credential for participating student teams and podium finalists, secured with the authentic Veerbhogya gold seal and gate barcode."
-          />
-          <OctopusTicket />
-        </section>
-
-        {/* =========================================================
-            10 QUICK REFERENCE FAQS (Master Manual Page 20)
-        ========================================================= */}
-        <section className="space-y-6 border-t border-slate-200 pt-16">
-          <SectionHeader
-            eyebrow="COMMERCIAL CLARITY"
-            title="10 Core Reference Questions"
-            subtitle="Straight answers from page 20 of the management manual covering pricing, limits, and team rules."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {MASTER_MANUAL_CONFIG.quickReferenceFaqs.map((faq, index) => {
-              const isOpen = activeFaq === index;
-              return (
-                <div
-                  key={index}
-                  className="rounded-2xl border border-slate-200 bg-white p-5 space-y-2 hover:border-gold-400 transition-colors shadow-xs"
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4 bg-neutral-50/50">
+              <span className="text-neutral-500 font-medium">Team Size</span>
+              <span className="sm:col-span-2 text-neutral-900">2–4 members</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4">
+              <span className="text-neutral-500 font-medium">Target</span>
+              <span className="sm:col-span-2 text-neutral-900">50 teams</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4 bg-neutral-50/50">
+              <span className="text-neutral-500 font-medium">Eligibility</span>
+              <span className="sm:col-span-2 text-neutral-900">DSU School of Engineering only (B.Tech &amp; M.Tech)</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4">
+              <span className="text-neutral-500 font-medium">Format</span>
+              <span className="sm:col-span-2 text-neutral-900">2-hour pitch workshop + live startup pitching</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4 bg-neutral-50/50">
+              <span className="text-neutral-500 font-medium">RSVP Fee</span>
+              <span className="sm:col-span-2 text-neutral-900">₹299 per team (asked inside registration form)</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 p-4">
+              <span className="text-neutral-500 font-medium">Registration</span>
+              <span className="sm:col-span-2">
+                <a
+                  href={OCTOPUS_TANK_GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans font-semibold text-black underline underline-offset-4 inline-flex items-center gap-1"
                 >
-                  <button
-                    onClick={() => setActiveFaq(isOpen ? null : index)}
-                    className="w-full text-left font-serif font-bold text-sm sm:text-base text-navy-950 flex items-center justify-between gap-2"
-                  >
-                    <span>{faq.q}</span>
-                    <span className="text-xs font-mono text-gold-700 shrink-0 font-bold">
-                      {isOpen ? "−" : "+"}
-                    </span>
-                  </button>
-                  <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                    {faq.a}
-                  </p>
-                </div>
-              );
-            })}
+                  <span>Open Official Application Form</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </span>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Booking CTA */}
-        <BookingCTA
-          headline="Ready to participate in Octopus Tank?"
-          supportingText="Submit an enquiry regarding team participation, sponsorship, or institutional hosting with Circle13 management."
-        />
-      </div>
+      {/* =========================================================
+          CLOSING REGISTRATION SECTION
+      ========================================================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
+        <div className="max-w-5xl mx-auto">
+          <div className="rounded-2xl border border-neutral-200 bg-neutral-50/60 p-8 sm:p-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-5 flex justify-center">
+              <div className="w-full max-w-[280px]">
+                <OctopusStage clip="eyes" />
+              </div>
+            </div>
 
-      {/* Lightbox Modal */}
-      <ImageLightbox
-        isOpen={activeLightbox.isOpen}
-        onClose={() =>
-          setActiveLightbox((prev) => ({ ...prev, isOpen: false }))
-        }
-        imageSrc={activeLightbox.src}
-        imageAlt={activeLightbox.alt}
-        title={activeLightbox.title}
-        caption={activeLightbox.caption}
-      />
+            <div className="md:col-span-7 space-y-5">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+                Registration
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-sans font-semibold tracking-tight text-neutral-950">
+                Register your team
+              </h2>
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+                Teams register through one short form, and the ₹299 RSVP fee is requested there. Open exclusively to DSU School of Engineering students. Think through your idea, coordinate with your team, and apply.
+              </p>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href={OCTOPUS_TANK_GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg bg-black text-white text-sm font-semibold hover:bg-neutral-800 transition-all shadow-xs"
+                >
+                  <span>Register Your Team (Google Form)</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-70" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          FAQ
+      ========================================================= */}
+      <section id="faq" className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <div className="space-y-2">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
+              Questions
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-sans font-semibold tracking-tight text-neutral-950">
+              Quick answers
+            </h2>
+          </div>
+
+          <div className="border-t border-neutral-200 divide-y divide-neutral-200 text-sm">
+            <details className="group py-4.5">
+              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
+                <span>Who can take part?</span>
+                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
+                Students of Dayananda Sagar University School of Engineering only, across all B.Tech and M.Tech programmes.
+              </p>
+            </details>
+
+            <details className="group py-4.5">
+              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
+                <span>How big is a team?</span>
+                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
+                Two to four members per team.
+              </p>
+            </details>
+
+            <details className="group py-4.5">
+              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
+                <span>What does it cost?</span>
+                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
+                There is a per-team RSVP fee of ₹299, requested directly inside the registration form.
+              </p>
+            </details>
+
+            <details className="group py-4.5">
+              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
+                <span>When is it?</span>
+                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
+                31 October 2026. The day begins with a two-hour pitch workshop, followed by live startup pitching.
+              </p>
+            </details>
+
+            <details className="group py-4.5">
+              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
+                <span>Which domains can we pitch in?</span>
+                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
+                AI &amp; Data, Robotics &amp; IoT, Sustainability, Business &amp; Legal Tech, Cybersecurity, Engineering Design, Aero &amp; Mobility, and MedTech.
+              </p>
+            </details>
+
+            <details className="group py-4.5">
+              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
+                <span>How do we register?</span>
+                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
+                Submit your team information directly through the{" "}
+                <a
+                  href={OCTOPUS_TANK_GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-black underline underline-offset-2"
+                >
+                  official Google Form application link
+                </a>
+                .
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -2,29 +2,16 @@
 
 import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import SectionHeader from "@/components/SectionHeader";
-import VerificationNotice from "@/components/VerificationNotice";
-import { SITE_CONFIG } from "@/lib/config";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Linkedin,
-  Github,
-  Instagram,
-  Send,
-  CheckCircle2,
-  ShieldCheck,
-} from "lucide-react";
+import { Mail, Linkedin, Github, ArrowRight, Check } from "lucide-react";
+import { SITE_CONFIG, OCTOPUS_TANK_GOOGLE_FORM_URL } from "@/lib/config";
 
 function ContactContent() {
   const searchParams = useSearchParams();
-  const initialType = searchParams.get("type") || "general";
+  const initialType = searchParams.get("type") || "advisory";
 
   const [inquiryType, setInquiryType] = useState(initialType);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,20 +20,18 @@ function ContactContent() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await fetch("/app/api/enquiry", {
+      await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           formType: inquiryType,
           name,
           email,
-          phone,
           message,
         }),
       });
       setSubmitted(true);
-    } catch (err) {
-      console.error(err);
+    } catch {
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -54,188 +39,159 @@ function ContactContent() {
   };
 
   return (
-    <div className="bg-white text-navy-950 py-12 sm:py-20 space-y-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Header */}
-        <div className="max-w-3xl space-y-2">
-          <VerificationNotice
-            status="supplied_proposal"
-            label="Direct Advisory & Operational Desk"
-          />
-          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08]">
-            Contact & Coordination.
+    <div className="bg-white text-neutral-900 selection:bg-neutral-900 selection:text-white py-12 sm:py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="space-y-4">
+          <div className="inline-flex items-center gap-2 border border-neutral-200 rounded-full px-3 py-0.5 text-[11px] font-mono text-neutral-600 bg-neutral-50">
+            <span className="w-1.5 h-1.5 rounded-full bg-black" />
+            <span>COMMUNICATIONS</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-sans font-semibold tracking-tight text-neutral-950 leading-[1.05]">
+            Get in touch.
           </h1>
-          <p className="text-base text-slate-600 font-light">
-            Inquiries, speaking invitations, or institutional RFPs coordinated by {SITE_CONFIG.management.entity}.
+          <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
+            Inquiries regarding advisory, keynote engagements, or membership. For Octopus Tank 2026, please use the dedicated registration form.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Cards */}
-          <div className="space-y-6">
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-5">
-              <h3 className="font-serif text-xl font-bold text-navy-950">
-                Direct Channels
-              </h3>
-
-              <div className="space-y-4 text-xs">
-                <div className="flex items-start space-x-3 text-slate-700">
-                  <MapPin className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-navy-950 block font-bold">Location</strong>
-                    <span>{SITE_CONFIG.contact.location}</span>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Quick Channels */}
+          <div className="md:col-span-5 space-y-4">
+            <div className="p-6 rounded-2xl border border-neutral-200 bg-neutral-50/50 space-y-4">
+              <span className="font-mono text-xs text-neutral-400 uppercase">Channels</span>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <span className="block text-xs font-medium text-neutral-500">Email</span>
+                  <a href={`mailto:${SITE_CONFIG.contact.email}`} className="font-medium text-black hover:underline">
+                    {SITE_CONFIG.contact.email}
+                  </a>
                 </div>
-
-                <div className="flex items-start space-x-3 text-slate-700">
-                  <Mail className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-navy-950 block font-bold">Email</strong>
-                    <a
-                      href={`mailto:${SITE_CONFIG.contact.email}`}
-                      className="text-gold-700 hover:underline"
-                    >
-                      {SITE_CONFIG.contact.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3 text-slate-700">
-                  <Phone className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-navy-950 block font-bold">WhatsApp / Phone</strong>
-                    <a
-                      href={SITE_CONFIG.contact.whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gold-700 hover:underline"
-                    >
-                      {SITE_CONFIG.contact.phone}
-                    </a>
-                  </div>
+                <div>
+                  <span className="block text-xs font-medium text-neutral-500">Location</span>
+                  <span className="text-neutral-800">Bangalore, India</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-200 text-xs text-slate-500 space-y-1">
-                <strong>Management Desk:</strong>
-                <p>{SITE_CONFIG.management.entity} ({SITE_CONFIG.management.partners.join(", ")})</p>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-3">
-              <h4 className="font-serif text-base font-bold text-navy-950">
-                Verified Socials
-              </h4>
-              <div className="flex flex-col space-y-2 text-xs text-slate-600">
+              <div className="pt-3 border-t border-neutral-200 flex items-center gap-3">
                 <a
                   href={SITE_CONFIG.contact.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gold-700 flex items-center space-x-2"
+                  className="w-8 h-8 rounded-md border border-neutral-200 flex items-center justify-center text-neutral-600 hover:text-black hover:border-black transition-colors"
+                  aria-label="LinkedIn"
                 >
-                  <Linkedin className="w-4 h-4 text-gold-600" />
-                  <span>LinkedIn Profile</span>
+                  <Linkedin className="w-4 h-4" />
                 </a>
                 <a
                   href={SITE_CONFIG.contact.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gold-700 flex items-center space-x-2"
+                  className="w-8 h-8 rounded-md border border-neutral-200 flex items-center justify-center text-neutral-600 hover:text-black hover:border-black transition-colors"
+                  aria-label="GitHub"
                 >
-                  <Github className="w-4 h-4 text-gold-600" />
-                  <span>GitHub Repositories</span>
+                  <Github className="w-4 h-4" />
                 </a>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-neutral-200 bg-white space-y-2">
+              <span className="font-mono text-xs text-neutral-400 uppercase">Octopus Tank 2026</span>
+              <p className="text-xs text-neutral-600">
+                Are you looking to apply for Octopus Tank? Do not use this contact form; register directly via Google Form.
+              </p>
+              <div className="pt-2">
                 <a
-                  href={SITE_CONFIG.contact.instagramUrl}
+                  href={OCTOPUS_TANK_GOOGLE_FORM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gold-700 flex items-center space-x-2"
+                  className="text-xs font-semibold text-black underline underline-offset-4"
                 >
-                  <Instagram className="w-4 h-4 text-gold-600" />
-                  <span>Instagram</span>
+                  Open Application Form →
                 </a>
               </div>
             </div>
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-2">
-            <div className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200 space-y-6 shadow-sm">
-              <h3 className="font-serif text-2xl font-bold text-navy-950">
-                Send a Message
-              </h3>
-
+          <div className="md:col-span-7">
+            <div className="rounded-2xl border border-neutral-200 bg-white p-7 sm:p-8 space-y-6">
               {submitted ? (
-                <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
-                  <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
-                  <h4 className="font-serif text-xl font-bold text-navy-950">
-                    Message Dispatched
-                  </h4>
-                  <p className="text-xs text-slate-600">
-                    Circle13 management will review your message within 24-48 business hours.
+                <div className="text-center py-10 space-y-3">
+                  <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center mx-auto text-black">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-neutral-950">Inquiry Received</h3>
+                  <p className="text-xs text-neutral-600 max-w-xs mx-auto">
+                    We will review your submission and reply to the provided email address within 24-48 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700">Inquiry Type</label>
+                  <div>
+                    <label className="block text-xs font-medium text-neutral-700 mb-1">
+                      Inquiry Category
+                    </label>
                     <select
                       value={inquiryType}
                       onChange={(e) => setInquiryType(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
+                      className="w-full h-10 px-3 rounded-lg border border-neutral-200 bg-white text-xs text-neutral-800 focus:border-black focus:outline-hidden"
                     >
-                      <option value="general">General Inquiry</option>
-                      <option value="consultancy">Personal Consultancy</option>
-                      <option value="mentorship">Mentorship Programme (4-Session or 30-Day)</option>
-                      <option value="institutional">Institutional Workshop / Keynote</option>
-                      <option value="judging">Hackathon / Pitch Judging</option>
-                      <option value="octopus_tank">Octopus Tank 2026 Collaboration</option>
+                      <option value="advisory">Advisory &amp; Sprints</option>
+                      <option value="membership">Membership Cohorts</option>
+                      <option value="institutional">Campus Masterclasses &amp; Hackathons</option>
+                      <option value="general">General Inquiries</option>
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-neutral-700 mb-1">
+                      Full Name
+                    </label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Your Full Name *"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
+                      placeholder="Your full name"
+                      className="w-full h-10 px-3.5 rounded-lg border border-neutral-200 bg-white text-sm focus:border-black focus:outline-hidden"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium text-neutral-700 mb-1">
+                      Email Address
+                    </label>
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email Address *"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
+                      placeholder="you@example.com"
+                      className="w-full h-10 px-3.5 rounded-lg border border-neutral-200 bg-white text-sm focus:border-black focus:outline-hidden"
                     />
                   </div>
 
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Phone / WhatsApp Number"
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
-                  />
-
-                  <textarea
-                    required
-                    rows={3}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Brief description of your project or inquiry..."
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
-                  />
+                  <div>
+                    <label className="block text-xs font-medium text-neutral-700 mb-1">
+                      Brief Message
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Describe what you are working on or the objective of your engagement..."
+                      className="w-full p-3 rounded-lg border border-neutral-200 bg-white text-sm focus:border-black focus:outline-hidden"
+                    />
+                  </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-bold px-8 py-3.5 rounded-xl bg-navy-950 text-white hover:bg-gold-500 hover:text-navy-950 transition-colors shadow-md"
+                    className="w-full h-11 rounded-lg bg-black text-white text-xs font-semibold hover:bg-neutral-800 transition-all flex items-center justify-center gap-2"
                   >
-                    <span>{isSubmitting ? "Transmitting..." : "Send Message"}</span>
-                    <Send className="w-3.5 h-3.5" />
+                    <span>{isSubmitting ? "Sending..." : "Send Inquiry"}</span>
+                    <ArrowRight className="w-4 h-4 opacity-70" />
                   </button>
                 </form>
               )}
@@ -249,13 +205,7 @@ function ContactContent() {
 
 export default function ContactPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="max-w-4xl mx-auto px-4 py-20 text-center text-slate-500 text-sm">
-          Loading contact desk...
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
       <ContactContent />
     </Suspense>
   );

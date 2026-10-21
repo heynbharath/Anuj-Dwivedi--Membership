@@ -1,277 +1,320 @@
 "use client";
 
 import React, { useState } from "react";
-import SectionHeader from "@/components/SectionHeader";
-import VerificationNotice from "@/components/VerificationNotice";
-import { MEMBERSHIP_TIERS } from "@/lib/config";
-import {
-  Check,
-  X as CloseIcon,
-  Sparkles,
-  ArrowRight,
-  ShieldCheck,
-  Send,
-} from "lucide-react";
+import { Check, ArrowRight, ShieldCheck, Sparkles, Send } from "lucide-react";
 
 export default function MembershipPage() {
   const [selectedTier, setSelectedTier] = useState<string>("the-builder");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [learningGoals, setLearningGoals] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [note, setNote] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setLoading(true);
 
     try {
-      await fetch("/app/api/enquiry", {
+      await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           formType: "membership",
           name: fullName,
           email,
-          message: learningGoals,
+          message: note,
           selectedTier,
         }),
       });
-      setFormSubmitted(true);
-    } catch (err) {
-      console.error(err);
-      setFormSubmitted(true);
+      setSubmitted(true);
+    } catch {
+      setSubmitted(true);
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="bg-white text-navy-950 py-12 sm:py-20 space-y-16">
+    <div className="bg-white text-neutral-900 selection:bg-neutral-900 selection:text-white py-12 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Header */}
-        <div className="max-w-3xl space-y-3">
-          <VerificationNotice
-            status="proposed_copy"
-            label="Membership Model"
-          />
-          <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight leading-[1.08]">
-            Stay close to the work.
+        <div className="max-w-3xl space-y-4">
+          <div className="inline-flex items-center gap-2 border border-neutral-200 rounded-full px-3 py-0.5 text-[11px] font-mono text-neutral-600 bg-neutral-50">
+            <span className="w-1.5 h-1.5 rounded-full bg-black" />
+            <span>MEMBERSHIP TIERS</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-sans font-semibold tracking-tight text-neutral-950 leading-[1.05]">
+            Stay close to the frontier.
           </h1>
-          <p className="text-base text-slate-600 font-light">
-            Continuous access to curated educational repositories, framework updates, practical templates, and community pathways.
+          <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
+            Continuous access to production AI blueprints, architectural reviews, live teardowns, and high-signal builder networks.
           </p>
         </div>
 
-        {/* Psychological Comparison Bar (Least Text, High Infographics) */}
+        {/* The 3 Tiers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-            <span className="text-gold-700 font-mono font-bold text-[10px] uppercase">
-              1. One-Time Advisory
-            </span>
-            <h3 className="font-serif text-base font-bold text-navy-950">
-              Personal Consultancy
-            </h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Targeted single-objective evaluation session to resolve an immediate engineering or pitch dilemma.
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white border-2 border-gold-400 shadow-md space-y-2">
-            <span className="text-gold-700 font-mono font-bold text-[10px] uppercase">
-              2. Recurring Relationship
-            </span>
-            <h3 className="font-serif text-base font-bold text-navy-950">
-              Membership Tiers
-            </h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Ongoing access to selected technical learning material, roadmaps, and eligible member updates.
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-navy-950 text-white border border-slate-800 space-y-2">
-            <span className="text-gold-400 font-mono font-bold text-[10px] uppercase">
-              3. High-Touch Sprint
-            </span>
-            <h3 className="font-serif text-base font-bold text-white">
-              Premium Mentorship
-            </h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              4-session or 30-day intensive cohort partnership focused on launch readiness and deep execution accountability.
-            </p>
-          </div>
-        </div>
+          {/* Tier 1 */}
+          <div
+            id="the-library"
+            className={`rounded-2xl border p-8 flex flex-col justify-between space-y-6 transition-all ${
+              selectedTier === "the-library"
+                ? "border-black bg-neutral-50/40 shadow-xs"
+                : "border-neutral-200 bg-white hover:border-neutral-300"
+            }`}
+          >
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+                  Tier 01
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-neutral-100 text-neutral-700">
+                  Foundations
+                </span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-neutral-950">The Library</h3>
+                <p className="text-xs text-neutral-500 mt-1">
+                  Curated technical architectures &amp; digests.
+                </p>
+              </div>
 
-        {/* Tiers Grid on White */}
-        <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-navy-950">
-              Membership Tiers (In Finalisation)
-            </h2>
-            <span className="text-xs font-mono text-gold-700 font-bold">
-              * Pricing & benefits being finalised with Anuj
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {MEMBERSHIP_TIERS.map((tier) => {
-              const isFeatured = tier.tierLevel === 2;
-
-              return (
-                <div
-                  key={tier.id}
-                  className={`rounded-3xl p-7 flex flex-col justify-between border transition-all ${
-                    isFeatured
-                      ? "bg-slate-50 border-2 border-gold-500 shadow-lg"
-                      : "bg-white border-slate-200 shadow-sm"
-                  }`}
-                >
-                  <div className="space-y-5">
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono text-gold-700 uppercase tracking-widest font-bold">
-                          LEVEL 0{tier.tierLevel}
-                        </span>
-                        {tier.badge && (
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gold-100 text-gold-900 border border-gold-300">
-                            {tier.badge}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="font-serif text-2xl font-bold text-navy-950 mt-1">
-                        {tier.name}
-                      </h3>
-                      <p className="text-xs text-slate-500 mt-0.5">
-                        {tier.tagline}
-                      </p>
-                    </div>
-
-                    <div className="p-3.5 rounded-2xl bg-white border border-slate-200 text-xs space-y-0.5">
-                      <span className="text-slate-400 uppercase font-mono text-[10px]">
-                        Pricing Status
-                      </span>
-                      <div className="text-sm font-bold text-gold-700">
-                        Details Being Finalised
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {tier.positioning}
-                    </p>
-
-                    <div className="space-y-2">
-                      <h4 className="text-[10px] uppercase font-bold tracking-wider text-emerald-700">
-                        Included In Tier
-                      </h4>
-                      <ul className="space-y-1.5 text-xs text-slate-600">
-                        {tier.includedBenefits.map((inc, i) => (
-                          <li key={i} className="flex items-start space-x-2">
-                            <Check className="w-3.5 h-3.5 text-gold-600 shrink-0 mt-0.5" />
-                            <span>{inc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-slate-200">
-                    <button
-                      onClick={() => {
-                        setSelectedTier(tier.id);
-                        document.getElementById("membership-form")?.scrollIntoView({ behavior: "smooth" });
-                      }}
-                      className={`w-full py-3 px-4 rounded-xl text-xs uppercase tracking-wider font-bold transition-colors ${
-                        isFeatured
-                          ? "bg-navy-950 text-white hover:bg-gold-500 hover:text-navy-950"
-                          : "border border-slate-300 text-navy-950 hover:bg-slate-100"
-                      }`}
-                    >
-                      Register Tier Interest
-                    </button>
-                  </div>
+              <div className="pt-3 border-t border-neutral-100 space-y-3 text-xs text-neutral-600">
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Curated technical notes &amp; model inference breakdowns</span>
                 </div>
-              );
-            })}
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Problem validation and pitch preparation worksheets</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Private release digests of AI engineering tools</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Eligible community open releases and updates</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setSelectedTier("the-library")}
+              className={`w-full py-2.5 rounded-lg text-xs font-semibold transition-all ${
+                selectedTier === "the-library"
+                  ? "bg-black text-white"
+                  : "border border-neutral-200 text-neutral-800 hover:bg-neutral-50"
+              }`}
+            >
+              {selectedTier === "the-library" ? "Selected Tier" : "Select The Library"}
+            </button>
+          </div>
+
+          {/* Tier 2: The Builder (Anchor) */}
+          <div
+            id="the-builder"
+            className={`rounded-2xl border-2 p-8 flex flex-col justify-between space-y-6 transition-all ${
+              selectedTier === "the-builder"
+                ? "border-black bg-white shadow-md ring-1 ring-black/5"
+                : "border-black/70 bg-white"
+            }`}
+          >
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+                  Tier 02
+                </span>
+                <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-black text-white">
+                  Most Popular
+                </span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-neutral-950">The Builder</h3>
+                <p className="text-xs text-neutral-500 mt-1">
+                  Structured learning &amp; closed-door teardowns.
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-neutral-100 space-y-3 text-xs text-neutral-600">
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span className="font-medium text-neutral-900">Everything in The Library</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Structured roadmaps across AI frameworks and agents</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Monthly closed-door group system teardowns</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Access to builder discussion threads &amp; project critique</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Preferential seating for special masterclasses</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setSelectedTier("the-builder")}
+              className={`w-full py-2.5 rounded-lg text-xs font-semibold transition-all ${
+                selectedTier === "the-builder"
+                  ? "bg-black text-white"
+                  : "border border-neutral-200 text-neutral-800 hover:bg-neutral-50"
+              }`}
+            >
+              {selectedTier === "the-builder" ? "Selected Tier" : "Select The Builder"}
+            </button>
+          </div>
+
+          {/* Tier 3: Inner Circle */}
+          <div
+            id="the-inner-circle"
+            className={`rounded-2xl border p-8 flex flex-col justify-between space-y-6 transition-all ${
+              selectedTier === "the-inner-circle"
+                ? "border-black bg-neutral-50/40 shadow-xs"
+                : "border-neutral-200 bg-white hover:border-neutral-300"
+            }`}
+          >
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+                  Tier 03
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-neutral-100 text-neutral-700">
+                  Selective
+                </span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-neutral-950">The Inner Circle</h3>
+                <p className="text-xs text-neutral-500 mt-1">
+                  High strategic proximity &amp; 1:1 advisory.
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-neutral-100 space-y-3 text-xs text-neutral-600">
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span className="font-medium text-neutral-900">Everything in The Builder</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>1:1 private system architecture stress-testing</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Direct pitch narrative critique and positioning audit</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Closed-door roundtable reviews with lead advisors</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Strictly capped cohort size by application</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setSelectedTier("the-inner-circle")}
+              className={`w-full py-2.5 rounded-lg text-xs font-semibold transition-all ${
+                selectedTier === "the-inner-circle"
+                  ? "bg-black text-white"
+                  : "border border-neutral-200 text-neutral-800 hover:bg-neutral-50"
+              }`}
+            >
+              {selectedTier === "the-inner-circle" ? "Selected Tier" : "Select Inner Circle"}
+            </button>
           </div>
         </div>
 
-        {/* Interest Form */}
-        <section
-          id="membership-form"
-          className="rounded-3xl p-8 sm:p-10 bg-slate-50 border border-slate-200 space-y-6 scroll-mt-28"
-        >
-          <div className="max-w-xl space-y-1.5">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-gold-700 font-bold">
-              EARLY ACCESS
+        {/* Minimalist Interest Registration */}
+        <div className="max-w-2xl mx-auto rounded-2xl border border-neutral-200 bg-neutral-50/50 p-8 space-y-6">
+          <div className="space-y-1">
+            <span className="font-mono text-xs text-neutral-400 uppercase tracking-wider">
+              Enrolment Inquiry
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-navy-950">
-              Register Early Interest
+            <h2 className="text-2xl font-semibold text-neutral-950">
+              Apply for {selectedTier === "the-library" ? "The Library" : selectedTier === "the-builder" ? "The Builder" : "The Inner Circle"}
             </h2>
-            <p className="text-xs text-slate-500">
-              Receive founding member notification when curriculum access and member cohorts open.
+            <p className="text-xs text-neutral-500">
+              Submit your details to request cohort availability or register priority interest.
             </p>
           </div>
 
-          {formSubmitted ? (
-            <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
-              <Check className="w-8 h-8 text-emerald-600 mx-auto" />
-              <h3 className="font-serif text-xl font-bold text-navy-950">
-                Interest Registered
-              </h3>
-              <p className="text-xs text-slate-600">
-                Circle13 management will contact you at <strong>{email}</strong> once admissions open.
+          {submitted ? (
+            <div className="p-6 rounded-xl bg-white border border-neutral-200 text-center space-y-2">
+              <span className="font-mono text-xs font-semibold text-black uppercase tracking-wider">
+                Application Received
+              </span>
+              <p className="text-sm text-neutral-600">
+                Thank you. We have logged your interest for this tier. You will receive next steps and cohort updates directly via email.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  placeholder="Your Name *"
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
-                />
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email Address *"
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
+                <div>
+                  <label className="block text-xs font-medium text-neutral-700 mb-1">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder="Your name"
+                    className="w-full h-10 px-3.5 rounded-lg border border-neutral-200 bg-white text-sm focus:border-black focus:outline-hidden"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-neutral-700 mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full h-10 px-3.5 rounded-lg border border-neutral-200 bg-white text-sm focus:border-black focus:outline-hidden"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-neutral-700 mb-1">
+                  What are you currently building or aiming to learn? (Optional)
+                </label>
+                <textarea
+                  rows={3}
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  placeholder="Brief note about your background, project, or goals..."
+                  className="w-full p-3 rounded-lg border border-neutral-200 bg-white text-sm focus:border-black focus:outline-hidden"
                 />
               </div>
 
-              <select
-                value={selectedTier}
-                onChange={(e) => setSelectedTier(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
-              >
-                {MEMBERSHIP_TIERS.map((tier) => (
-                  <option key={tier.id} value={tier.id}>
-                    Level {tier.tierLevel}: {tier.name} — {tier.tagline}
-                  </option>
-                ))}
-              </select>
-
-              <textarea
-                rows={2}
-                value={learningGoals}
-                onChange={(e) => setLearningGoals(e.target.value)}
-                placeholder="What are you currently building or learning?"
-                className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-navy-950 text-xs focus:outline-none focus:border-gold-500"
-              />
-
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-bold px-7 py-3.5 rounded-xl bg-navy-950 text-white hover:bg-gold-500 hover:text-navy-950 transition-colors shadow-md"
+                disabled={loading}
+                className="w-full h-11 rounded-lg bg-black text-white text-sm font-semibold hover:bg-neutral-800 transition-all flex items-center justify-center gap-2"
               >
-                <span>{isSubmitting ? "Registering..." : "Submit Interest Registration"}</span>
-                <Send className="w-3.5 h-3.5" />
+                <span>{loading ? "Submitting..." : "Submit Registration of Interest"}</span>
+                <ArrowRight className="w-4 h-4 opacity-70" />
               </button>
             </form>
           )}
-        </section>
+        </div>
       </div>
     </div>
   );
