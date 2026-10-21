@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ArrowRight, ArrowUpRight, Sparkles, ShieldCheck, Clock, Award } from "lucide-react";
-import { OCTOPUS_TANK_GOOGLE_FORM_URL, WINNERS_MENTORSHIP_CONFIG } from "@/lib/config";
+import { Check, ArrowRight, ArrowUpRight, Award, ShieldCheck, Clock } from "lucide-react";
+import FAQSection from "@/components/FAQSection";
+import { OCTOPUS_TANK_GOOGLE_FORM_URL } from "@/lib/config";
 
 export default function MembershipPage() {
-  const [activePlan, setActivePlan] = useState<"first-place" | "second-place" | "standard">("first-place");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
@@ -22,11 +22,10 @@ export default function MembershipPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          formType: "mentorship_membership",
+          formType: "direct_mentorship_enrollment",
           name: fullName,
           email,
           message: note,
-          plan: activePlan,
         }),
       });
       setSubmitted(true);
@@ -44,7 +43,7 @@ export default function MembershipPage() {
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 border border-neutral-200 rounded-full px-3 py-0.5 text-[11px] font-mono text-neutral-600 bg-neutral-50 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-black" />
-            <span>CONFIRMED PROGRAMME &amp; SUBSIDY SCHEDULE</span>
+            <span>OFFICIAL MENTORSHIP &amp; SUBSIDY SCHEDULE</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-sans font-semibold tracking-tight text-neutral-950 leading-[1.04]">
             30 Days of Mentorship.
@@ -52,19 +51,20 @@ export default function MembershipPage() {
             1 Hour Daily.
           </h1>
           <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
-            Led by <strong className="text-neutral-900 font-semibold">Anuj Dwivedi</strong> (Founder, Archzos Technologies Pvt Ltd). An immersive 30-day intensive covering artificial intelligence architectures, venture pitching, and professional executive presence.
+            Led by <strong className="text-neutral-900 font-semibold">Anuj Dwivedi</strong> (Founder, Archzos Technologies Pvt Ltd). An intensive 30-day cohort covering artificial intelligence system architecture, startup pitching, and executive presence.
           </p>
         </div>
 
         {/* Mentor Profile Banner (YC Product Credibility Style) */}
-        <div className="rounded-2xl border border-neutral-200 bg-neutral-50/60 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded-3xl border border-neutral-200 bg-neutral-50/60 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-5">
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0 bg-neutral-100">
               <Image
-                src="/images/anuj-prof-3.png"
-                alt="Anuj Dwivedi"
+                src="/images/anuj-headshot.png"
+                alt="Anuj Dwivedi - Founder, Archzos Technologies"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-center"
+                priority
               />
             </div>
             <div className="space-y-1">
@@ -90,230 +90,219 @@ export default function MembershipPage() {
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto">
-            <div className="p-3 rounded-xl bg-white border border-neutral-200 text-xs font-mono text-neutral-700 space-y-0.5 w-full md:w-auto">
+            <div className="p-4 rounded-xl bg-white border border-neutral-200 text-xs font-mono text-neutral-700 space-y-1 w-full md:w-auto shadow-2xs">
               <span className="text-[10px] uppercase text-neutral-400 block font-semibold">
                 Daily Format
               </span>
-              <span className="font-semibold text-neutral-950">1 Hour Daily (30 Days)</span>
-              <span className="text-neutral-500 block text-[10px]">Online or offline by arrangement</span>
+              <span className="font-semibold text-neutral-950 block text-sm">1 Hour Daily (30 Days)</span>
+              <span className="text-neutral-500 block text-[11px]">Online or offline in Bangalore by arrangement</span>
             </div>
           </div>
         </div>
 
-        {/* The 3 Core Pricing Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {/* Tier 1: 1st Place Winner */}
-          <div
-            onClick={() => setActivePlan("first-place")}
-            className={`cursor-pointer rounded-2xl border-2 p-7 flex flex-col justify-between space-y-6 transition-all relative overflow-hidden ${
-              activePlan === "first-place"
-                ? "border-blue-600 bg-white shadow-md ring-2 ring-blue-600/10"
-                : "border-neutral-200 bg-white hover:border-neutral-300"
-            }`}
-          >
-            <div className="absolute top-0 right-0 bg-blue-600 text-white font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-              1st Place Award
-            </div>
+        {/* The Two Structured Pathways (Competition Subsidized vs Direct) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Track A: Octopus Tank Competition Subsidies */}
+          <div className="lg:col-span-7 rounded-3xl border-2 border-black bg-neutral-50/50 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-sm">
+            <div className="space-y-6">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-black text-white uppercase tracking-wider">
+                  Competition Track · Octopus Tank
+                </span>
+                <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">
+                  Up to 80% Sponsored Subsidies
+                </span>
+              </div>
 
-            <div className="space-y-5 pt-1">
               <div>
-                <span className="font-mono text-xs uppercase text-blue-600 font-bold tracking-wider">
-                  80% Subsidy
-                </span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
-                    ₹15,000
-                  </span>
-                  <span className="text-sm text-neutral-400 line-through font-mono">
-                    ₹75,000
-                  </span>
-                </div>
-                <span className="inline-block font-mono text-xs text-emerald-600 font-medium mt-1">
-                  Save ₹60,000
-                </span>
+                <h3 className="text-2xl font-semibold text-neutral-950">
+                  Earn Mentorship by Winning Octopus Tank
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-600 mt-1.5 leading-relaxed">
+                  Teams pitching on 31 October 2026 at DSU School of Engineering compete for sponsored 30-day mentorship subsidies awarded upon live judging.
+                </p>
               </div>
 
-              <div className="pt-3 border-t border-neutral-100 space-y-2.5 text-xs text-neutral-700">
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span className="font-semibold text-neutral-900">
-                    30 Days of 1:1 Mentorship with Anuj Dwivedi
-                  </span>
+              {/* Subsidies Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                {/* 1st Place Box */}
+                <div className="p-5 rounded-2xl bg-white border border-blue-200 shadow-2xs space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-blue-600 uppercase">
+                      1st Place Award
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold">
+                      80% OFF
+                    </span>
+                  </div>
+                  <div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-sans text-3xl font-bold text-neutral-950">
+                        ₹15,000
+                      </span>
+                      <span className="text-xs text-neutral-400 line-through font-mono">
+                        ₹75,000
+                      </span>
+                    </div>
+                    <span className="block text-[11px] font-mono text-emerald-600 mt-0.5">
+                      Save ₹60,000 upon win
+                    </span>
+                  </div>
+                  <ul className="text-xs text-neutral-600 space-y-1.5 pt-2 border-t border-neutral-100">
+                    <li className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <span>30 Days of 1:1 Mentorship</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <span>1 hr daily (online/offline)</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <span>Separate cash prize eligible</span>
+                    </li>
+                  </ul>
                 </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>1 hour daily sessions (online or offline by agreement)</span>
+
+                {/* 2nd Place Box */}
+                <div className="p-5 rounded-2xl bg-white border border-red-200 shadow-2xs space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-red-600 uppercase">
+                      2nd Place Award
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-50 text-red-700 font-bold">
+                      70% OFF
+                    </span>
+                  </div>
+                  <div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-sans text-3xl font-bold text-neutral-950">
+                        ₹22,500
+                      </span>
+                      <span className="text-xs text-neutral-400 line-through font-mono">
+                        ₹75,000
+                      </span>
+                    </div>
+                    <span className="block text-[11px] font-mono text-emerald-600 mt-0.5">
+                      Save ₹52,500 upon win
+                    </span>
+                  </div>
+                  <ul className="text-xs text-neutral-600 space-y-1.5 pt-2 border-t border-neutral-100">
+                    <li className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                      <span>30 Days of 1:1 Mentorship</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                      <span>1 hr daily (online/offline)</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                      <span>Separate cash prize eligible</span>
+                    </li>
+                  </ul>
                 </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>AI Architecture review, LLM pipelines &amp; inference</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Pitch deck stress-testing &amp; venture defensibility</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Redeemable anytime; separate cash prize eligible</span>
-                </div>
+              </div>
+
+              <div className="text-[11px] font-mono text-neutral-500 pt-1">
+                * 3rd Place offer to be announced on Demo Day. Optional paid mentorship; cash prizes awarded separately.
               </div>
             </div>
 
-            <a
-              href={OCTOPUS_TANK_GOOGLE_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-center text-xs font-semibold transition-all shadow-xs inline-flex items-center justify-center gap-1"
-            >
-              <span>Apply for Octopus Tank</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+            {/* The Working Google Form CTA Button */}
+            <div className="pt-2 space-y-2">
+              <a
+                href={OCTOPUS_TANK_GOOGLE_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-12 rounded-xl bg-black hover:bg-neutral-800 text-white flex items-center justify-center gap-2 font-semibold text-xs transition-all shadow-xs"
+              >
+                <span>Apply for Octopus Tank 2026 (Google Form)</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <span className="block text-center text-[11px] font-mono text-neutral-500">
+                ₹299 RSVP fee per team · 2–4 members · DSU School of Engineering
+              </span>
+            </div>
           </div>
 
-          {/* Tier 2: 2nd Place Winner */}
-          <div
-            onClick={() => setActivePlan("second-place")}
-            className={`cursor-pointer rounded-2xl border-2 p-7 flex flex-col justify-between space-y-6 transition-all relative overflow-hidden ${
-              activePlan === "second-place"
-                ? "border-red-500 bg-white shadow-md ring-2 ring-red-500/10"
-                : "border-neutral-200 bg-white hover:border-neutral-300"
-            }`}
-          >
-            <div className="absolute top-0 right-0 bg-red-500 text-white font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-              2nd Place Award
-            </div>
-
-            <div className="space-y-5 pt-1">
-              <div>
-                <span className="font-mono text-xs uppercase text-red-600 font-bold tracking-wider">
-                  70% Subsidy
+          {/* Track B: Direct Cohort Enrollment (Standard Rate) */}
+          <div className="lg:col-span-5 rounded-3xl border border-neutral-200 bg-white p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-xs">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-neutral-100 text-neutral-700 uppercase tracking-wider">
+                  Direct Cohort Rate
                 </span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
-                    ₹22,500
-                  </span>
-                  <span className="text-sm text-neutral-400 line-through font-mono">
-                    ₹75,000
-                  </span>
-                </div>
-                <span className="inline-block font-mono text-xs text-emerald-600 font-medium mt-1">
-                  Save ₹52,500
-                </span>
+                <span className="text-xs font-mono text-neutral-400">Non-Competition</span>
               </div>
 
-              <div className="pt-3 border-t border-neutral-100 space-y-2.5 text-xs text-neutral-700">
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <span className="font-semibold text-neutral-900">
-                    30 Days of 1:1 Mentorship with Anuj Dwivedi
-                  </span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <span>1 hour daily sessions (online or offline by agreement)</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <span>Executive presence &amp; startup storytelling</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <span>Full technical roadmap &amp; launch checkpoints</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <span>Redeemable anytime; separate cash prize eligible</span>
-                </div>
-              </div>
-            </div>
-
-            <a
-              href={OCTOPUS_TANK_GOOGLE_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-center text-xs font-semibold transition-all shadow-xs inline-flex items-center justify-center gap-1"
-            >
-              <span>Apply for Octopus Tank</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          {/* Tier 3: Standard Direct Rate */}
-          <div
-            onClick={() => setActivePlan("standard")}
-            className={`cursor-pointer rounded-2xl border-2 p-7 flex flex-col justify-between space-y-6 transition-all ${
-              activePlan === "standard"
-                ? "border-black bg-white shadow-md ring-2 ring-black/10"
-                : "border-neutral-200 bg-neutral-50/50 hover:border-neutral-300"
-            }`}
-          >
-            <div className="space-y-5">
               <div>
-                <span className="font-mono text-xs uppercase text-neutral-500 font-bold tracking-wider">
-                  Direct Enrollment
+                <h3 className="text-2xl font-semibold text-neutral-950">
+                  Direct Cohort Enrollment
+                </h3>
+                <p className="text-xs text-neutral-500 mt-1">
+                  For builders wanting immediate 1:1 advisory without competing.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80 space-y-1">
+                <span className="text-[10px] font-mono uppercase text-neutral-400 block font-semibold">
+                  Standard Programme Fee
                 </span>
-                <div className="flex items-baseline gap-2 mt-2">
-                  <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-sans text-4xl font-bold text-neutral-950">
                     ₹75,000
                   </span>
                   <span className="text-xs text-neutral-500 font-mono">/ 30 days</span>
                 </div>
-                <span className="inline-block font-mono text-xs text-neutral-500 mt-1">
-                  Standard programme fee
+                <span className="text-[11px] text-neutral-500 block">
+                  30 daily sessions • Online or offline in Bangalore
                 </span>
               </div>
 
-              <div className="pt-3 border-t border-neutral-200 space-y-2.5 text-xs text-neutral-700">
+              <div className="space-y-2.5 text-xs text-neutral-700">
                 <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-                  <span className="font-semibold text-neutral-900">
-                    Full 30-Day Intensive Cohort
-                  </span>
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Daily 1-hour session directly with Anuj Dwivedi</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-                  <span>1 hour daily direct guidance with Anuj</span>
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>AI architecture audit, latency &amp; model inference review</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-                  <span>Custom engineering curriculum for your startup</span>
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Pitch deck narrative stress-testing &amp; storytelling</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-                  <span>Weekly milestone tracking &amp; code reviews</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-                  <span>Scheduled by mutual calendar availability</span>
+                  <Check className="w-4 h-4 text-black shrink-0 mt-0.5" />
+                  <span>Executive presence, tone, and professional polish</span>
                 </div>
               </div>
             </div>
 
-            <button
-              type="button"
-              className="w-full py-2.5 rounded-lg bg-black text-white text-center text-xs font-semibold hover:bg-neutral-800 transition-all shadow-xs"
-            >
-              Inquire for Cohort Booking
-            </button>
+            <div className="pt-2">
+              <a
+                href="#direct-enrollment-form"
+                className="w-full h-12 rounded-xl border border-neutral-300 bg-white hover:bg-neutral-50 text-neutral-900 flex items-center justify-center gap-2 font-semibold text-xs transition-all shadow-2xs"
+              >
+                <span>Inquire for Direct Cohort Enrollment</span>
+                <ArrowRight className="w-3.5 h-3.5 text-neutral-500" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Cohort Application / Booking Form */}
-        <div className="max-w-2xl mx-auto rounded-2xl border border-neutral-200 bg-neutral-50/60 p-8 space-y-6">
+        {/* Direct Cohort Booking Form */}
+        <div id="direct-enrollment-form" className="max-w-2xl mx-auto rounded-3xl border border-neutral-200 bg-neutral-50/60 p-8 sm:p-10 space-y-6">
           <div className="space-y-1">
             <span className="font-mono text-xs text-neutral-400 uppercase tracking-wider">
-              Selected:{" "}
-              {activePlan === "first-place"
-                ? "1st Place Winner Subsidy (₹15,000)"
-                : activePlan === "second-place"
-                ? "2nd Place Winner Subsidy (₹22,500)"
-                : "Standard Direct Enrollment (₹75,000)"}
+              Direct Cohort Intake
             </span>
             <h2 className="text-2xl font-semibold text-neutral-950">
-              Apply or Inquire for 30-Day Mentorship
+              Inquire for 30-Day Mentorship
             </h2>
             <p className="text-xs text-neutral-500">
-              Submit your inquiry to lock calendar scheduling or confirm competition award redemption.
+              Submit your inquiry to lock calendar scheduling for the 30-Day Mentorship with Anuj Dwivedi.
             </p>
           </div>
 
@@ -381,6 +370,9 @@ export default function MembershipPage() {
             </form>
           )}
         </div>
+
+        {/* Polished YC-Style FAQ Accordion */}
+        <FAQSection />
       </div>
     </div>
   );

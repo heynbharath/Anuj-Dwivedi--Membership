@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import OctopusStage from "@/components/OctopusStage";
+import FAQSection from "@/components/FAQSection";
 import { OCTOPUS_TANK_GOOGLE_FORM_URL, OCTOPUS_TANK_CONFIG } from "@/lib/config";
 
 export default function OctopusTankPage() {
@@ -404,11 +405,11 @@ export default function OctopusTankPage() {
             {/* 1st Place Card */}
             <div className="lg:col-span-4 rounded-2xl border-2 border-blue-600 bg-white p-7 flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-blue-600 text-white font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase">
-                1st Place
+                1st Place Award
               </div>
               <div className="space-y-4">
                 <span className="font-mono text-xs uppercase text-blue-600 font-bold">
-                  80% OFF
+                  80% Subsidy
                 </span>
                 <div className="flex items-baseline gap-2">
                   <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
@@ -441,25 +442,19 @@ export default function OctopusTankPage() {
                 </div>
               </div>
 
-              <a
-                href={OCTOPUS_TANK_GOOGLE_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-center text-xs font-semibold transition-all inline-flex items-center justify-center gap-1"
-              >
-                <span>Compete for 1st Place</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+              <div className="pt-2 text-xs font-mono text-blue-700 font-medium">
+                Awarded to 1st Place Winner
+              </div>
             </div>
 
             {/* 2nd Place Card */}
             <div className="lg:col-span-4 rounded-2xl border-2 border-red-500 bg-white p-7 flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-red-500 text-white font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase">
-                2nd Place
+                2nd Place Award
               </div>
               <div className="space-y-4">
                 <span className="font-mono text-xs uppercase text-red-600 font-bold">
-                  70% OFF
+                  70% Subsidy
                 </span>
                 <div className="flex items-baseline gap-2">
                   <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
@@ -492,15 +487,9 @@ export default function OctopusTankPage() {
                 </div>
               </div>
 
-              <a
-                href={OCTOPUS_TANK_GOOGLE_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-center text-xs font-semibold transition-all inline-flex items-center justify-center gap-1"
-              >
-                <span>Compete for 2nd Place</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+              <div className="pt-2 text-xs font-mono text-red-700 font-medium">
+                Awarded to 2nd Place Winner
+              </div>
             </div>
 
             {/* Mentor Profile Preview */}
@@ -509,9 +498,9 @@ export default function OctopusTankPage() {
                 <span className="font-mono text-xs text-neutral-400 uppercase">Mentorship Lead</span>
                 <div className="flex items-center gap-3">
                   <img
-                    src="/images/anuj-prof-3.png"
+                    src="/images/anuj-headshot.png"
                     alt="Anuj Dwivedi"
-                    className="w-12 h-12 rounded-full object-cover object-top border border-neutral-200 shadow-2xs"
+                    className="w-12 h-12 rounded-full object-cover object-center border border-neutral-200 shadow-2xs"
                   />
                   <div>
                     <h4 className="font-semibold text-sm text-neutral-950">Anuj Dwivedi</h4>
@@ -519,7 +508,7 @@ export default function OctopusTankPage() {
                   </div>
                 </div>
                 <p className="text-xs text-neutral-600 leading-relaxed pt-1">
-                  &ldquo;Optional paid mentorship for winning teams who want disciplined accountability, architecture audits, and pitch defensibility.&rdquo;
+                  &ldquo;Mentorship provided by Archzos Technologies for winning teams who want disciplined accountability, architecture audits, and pitch defensibility.&rdquo;
                 </p>
               </div>
 
@@ -633,103 +622,9 @@ export default function OctopusTankPage() {
       </section>
 
       {/* =========================================================
-          FAQ
+          FAQ ACCORDION
       ========================================================= */}
-      <section id="faq" className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="space-y-2">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
-              Questions
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-sans font-semibold tracking-tight text-neutral-950">
-              Quick answers
-            </h2>
-          </div>
-
-          <div className="border-t border-neutral-200 divide-y divide-neutral-200 text-sm">
-            <details className="group py-4.5">
-              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
-                <span>Who can take part?</span>
-                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
-                Students of Dayananda Sagar University School of Engineering only, across all B.Tech and M.Tech programmes.
-              </p>
-            </details>
-
-            <details className="group py-4.5">
-              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
-                <span>How big is a team?</span>
-                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
-                Two to four members per team.
-              </p>
-            </details>
-
-            <details className="group py-4.5">
-              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
-                <span>What does it cost?</span>
-                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
-                There is a per-team RSVP fee of ₹299, requested directly inside the registration form.
-              </p>
-            </details>
-
-            <details className="group py-4.5">
-              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
-                <span>When is it?</span>
-                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
-                31 October 2026. The day begins with a two-hour pitch workshop, followed by live startup pitching.
-              </p>
-            </details>
-
-            <details className="group py-4.5">
-              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
-                <span>Which domains can we pitch in?</span>
-                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
-                AI &amp; Data, Robotics &amp; IoT, Sustainability, Business &amp; Legal Tech, Cybersecurity, Engineering Design, Aero &amp; Mobility, and MedTech.
-              </p>
-            </details>
-
-            <details className="group py-4.5">
-              <summary className="list-none cursor-pointer flex justify-between items-center font-medium text-neutral-900 group-hover:text-black">
-                <span>How do we register?</span>
-                <span className="font-mono text-neutral-400 group-open:rotate-45 transition-transform text-lg leading-none">
-                  +
-                </span>
-              </summary>
-              <p className="mt-3 text-neutral-600 text-xs sm:text-sm leading-relaxed pr-6">
-                Submit your team information directly through the{" "}
-                <a
-                  href={OCTOPUS_TANK_GOOGLE_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-black underline underline-offset-2"
-                >
-                  official Google Form application link
-                </a>
-                .
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
     </div>
   );
 }
