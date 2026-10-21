@@ -21,9 +21,9 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/octopus-tank", label: "Octopus Tank" },
-    { href: "/#cohosts", label: "Circle13" },
+    { href: "/#domains", label: "8 Domains" },
+    { href: "/#leadership", label: "Leadership" },
     { href: "/membership", label: "Membership" },
-    { href: "/mentorship", label: "Advisory" },
     { href: "/about", label: "About" },
   ];
 
@@ -79,10 +79,10 @@ export default function Navbar() {
           {/* Clean Primary Actions */}
           <div className="hidden sm:flex items-center space-x-3">
             <Link
-              href="/membership"
+              href="/#domains"
               className="text-[13px] font-medium text-neutral-600 hover:text-black px-3 py-1.5 transition-colors"
             >
-              Explore Tiers
+              8 Domains
             </Link>
             <a
               href={OCTOPUS_TANK_GOOGLE_FORM_URL}

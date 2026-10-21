@@ -5,7 +5,8 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import OctopusStage from "@/components/OctopusStage";
 import FAQSection from "@/components/FAQSection";
-import Circle13CoHosts from "@/components/Circle13CoHosts";
+import InfographicDomainsArena from "@/components/InfographicDomainsArena";
+import TheMindsBehind from "@/components/TheMindsBehind";
 import { OCTOPUS_TANK_GOOGLE_FORM_URL, OCTOPUS_TANK_CONFIG } from "@/lib/config";
 
 export default function OctopusTankPage() {
@@ -141,118 +142,9 @@ export default function OctopusTankPage() {
       </section>
 
       {/* =========================================================
-          THE 8 DOMAINS SECTION
+          MASTER INFOGRAPHIC ARENA: ALL 8 DOMAINS & BLUEPRINTS
       ========================================================= */}
-      <section id="domains" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="max-w-2xl space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-400 font-medium">
-              Domains
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-sans font-semibold tracking-tight text-neutral-950">
-              Pitch in any of eight domains
-            </h2>
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
-              Ideas across domains, solutions for a brighter tomorrow. Each arm of the octopus is a domain. Pick the one your idea belongs to.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            {/* Left 4 Domains */}
-            <div className="lg:col-span-4 space-y-3">
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">AI &amp; Data</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  Intelligence for impact
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">Robotics &amp; IoT</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  Automate a brighter tomorrow
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">Sustainability</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  Solutions for a healthier planet
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">Business &amp; Legal Tech</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  Innovation beyond borders
-                </p>
-              </div>
-            </div>
-
-            {/* Middle Stage: Floating Octopus */}
-            <div className="lg:col-span-4 flex items-center justify-center py-4">
-              <div className="w-full max-w-[340px]">
-                <OctopusStage clip="float" />
-              </div>
-            </div>
-
-            {/* Right 4 Domains */}
-            <div className="lg:col-span-4 space-y-3">
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">Cybersecurity</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  A safer digital tomorrow
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">Engineering Design</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  From ideas to real impact
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">Aero &amp; Mobility</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  Higher ideas, further horizons
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl border border-neutral-200/80 bg-neutral-50/40 hover:bg-white hover:border-neutral-300 transition-all">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
-                  <h3 className="text-sm font-semibold text-neutral-900">MedTech</h3>
-                </div>
-                <p className="text-xs text-neutral-500 mt-1 pl-4.5">
-                  Tech for healthier lives
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <InfographicDomainsArena />
 
       {/* =========================================================
           FORMAT & TIMELINE
@@ -374,7 +266,7 @@ export default function OctopusTankPage() {
               <span className="font-mono text-xs text-neutral-400">03</span>
               <h3 className="text-base font-semibold text-neutral-950">30-Day Mentorship</h3>
               <p className="text-xs text-neutral-600 leading-relaxed">
-                Daily 1-hour direct advisory with Anuj Dwivedi (Founder, Archzos Technologies). Up to 80% subsidized.
+                Daily 1-hour direct advisory with Anuj Dwivedi (Founder, Archzos Technologies) and Circle13 venture incubation.
               </p>
             </div>
 
@@ -390,7 +282,7 @@ export default function OctopusTankPage() {
       </section>
 
       {/* =========================================================
-          WINNERS' MENTORSHIP OFFER (Official Poster Details)
+          WINNERS' MENTORSHIP & INCUBATION AWARDS
       ========================================================= */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-neutral-100 bg-neutral-50/40">
         <div className="max-w-7xl mx-auto space-y-12">
@@ -398,22 +290,22 @@ export default function OctopusTankPage() {
             <div className="space-y-3 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-50 text-blue-800 border border-blue-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                <span>OFFICIAL WINNERS' MENTORSHIP OFFER</span>
+                <span>OFFICIAL COMPETITION HONORS &amp; INCUBATION</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-sans font-semibold tracking-tight text-neutral-950">
-                30 Days of Mentorship.
+                30 Days of 1:1 Mentorship.
                 <br />
-                Up to 80% Subsidized.
+                Venture Platform Incubation.
               </h2>
               <p className="text-sm text-neutral-600 leading-relaxed">
-                Mentorship provided directly by <strong className="text-neutral-900 font-semibold">Archzos Technologies Pvt Ltd</strong> (Anuj Dwivedi, Founder). 1 hour daily across AI systems, startup pitching, and professional executive presence.
+                Direct advisory led by <strong className="text-neutral-900 font-semibold">Archzos Technologies Pvt Ltd</strong> (Anuj Dwivedi, Founder) in collaboration with <strong className="text-neutral-900 font-semibold">Circle13</strong> (N Bharath &amp; Akhil Vipin Nair). 1 hour daily across AI systems, startup pitching, and enterprise systems.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-white border border-neutral-200 text-xs font-mono text-neutral-600 space-y-1 shadow-2xs">
-              <span className="text-neutral-400 block uppercase font-medium text-[10px]">Standard Programme Fee</span>
-              <span className="text-2xl font-bold font-sans text-neutral-950">₹75,000</span>
-              <span className="block text-neutral-500 text-[11px]">1 hour daily • Online or offline by arrangement</span>
+              <span className="text-neutral-400 block uppercase font-medium text-[10px]">Cohort Track</span>
+              <span className="text-2xl font-bold font-sans text-neutral-950">Campus Honors</span>
+              <span className="block text-neutral-500 text-[11px]">1 hour daily • Online or offline in Bangalore</span>
             </div>
           </div>
 
@@ -421,23 +313,20 @@ export default function OctopusTankPage() {
             {/* 1st Place Card */}
             <div className="lg:col-span-4 rounded-2xl border-2 border-blue-600 bg-white p-7 flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-blue-600 text-white font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase">
-                1st Place Award
+                1st Place Champion
               </div>
               <div className="space-y-4">
                 <span className="font-mono text-xs uppercase text-blue-600 font-bold">
-                  80% Subsidy
+                  Grand Winner Fellowship
                 </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
-                    ₹15,000
-                  </span>
-                  <span className="text-sm text-neutral-400 line-through font-mono">
-                    ₹75,000
+                <div>
+                  <h3 className="font-sans text-2xl font-bold text-neutral-950">
+                    Grand Champion Fellowship
+                  </h3>
+                  <span className="inline-block font-mono text-xs text-blue-600 font-medium mt-1">
+                    Full 30-Day Mentorship &amp; Platform Backing
                   </span>
                 </div>
-                <span className="inline-block font-mono text-xs text-emerald-600 font-medium">
-                  Save ₹60,000
-                </span>
                 <div className="pt-3 border-t border-neutral-100 space-y-2 text-xs text-neutral-700">
                   <div className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
@@ -445,15 +334,15 @@ export default function OctopusTankPage() {
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
-                    <span>1 hour daily (online or offline by agreement)</span>
+                    <span>1 hour daily directly with Anuj Dwivedi</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
-                    <span>AI • Pitching • Professional Presence</span>
+                    <span>Circle13 platform architecture &amp; seed incubation</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold">✓</span>
-                    <span>Cash prizes awarded separately</span>
+                    <span>Official Gold Recognition Trophy &amp; Awards</span>
                   </div>
                 </div>
               </div>
@@ -466,23 +355,20 @@ export default function OctopusTankPage() {
             {/* 2nd Place Card */}
             <div className="lg:col-span-4 rounded-2xl border-2 border-red-500 bg-white p-7 flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-red-500 text-white font-mono text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase">
-                2nd Place Award
+                2nd Place Runner-Up
               </div>
               <div className="space-y-4">
                 <span className="font-mono text-xs uppercase text-red-600 font-bold">
-                  70% Subsidy
+                  Runner-Up Fellowship
                 </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-sans text-4xl sm:text-5xl font-bold text-neutral-950">
-                    ₹22,500
-                  </span>
-                  <span className="text-sm text-neutral-400 line-through font-mono">
-                    ₹75,000
+                <div>
+                  <h3 className="font-sans text-2xl font-bold text-neutral-950">
+                    Venture Runner-Up Track
+                  </h3>
+                  <span className="inline-block font-mono text-xs text-red-600 font-medium mt-1">
+                    Archzos Mentorship &amp; Cloud Review
                   </span>
                 </div>
-                <span className="inline-block font-mono text-xs text-emerald-600 font-medium">
-                  Save ₹52,500
-                </span>
                 <div className="pt-3 border-t border-neutral-100 space-y-2 text-xs text-neutral-700">
                   <div className="flex items-start gap-2">
                     <span className="text-red-500 font-bold">✓</span>
@@ -498,7 +384,7 @@ export default function OctopusTankPage() {
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-red-500 font-bold">✓</span>
-                    <span>Cash prizes awarded separately</span>
+                    <span>Official Silver Recognition Citation</span>
                   </div>
                 </div>
               </div>
@@ -645,9 +531,9 @@ export default function OctopusTankPage() {
       </section>
 
       {/* =========================================================
-          CO-HOSTED BY CIRCLE13
+          THE MINDS BEHIND OCTOPUS TANK: ANUJ, BHARATH & AKHIL
       ========================================================= */}
-      <Circle13CoHosts />
+      <TheMindsBehind />
 
       {/* =========================================================
           FAQ ACCORDION

@@ -32,15 +32,12 @@ const FAQS: FAQItem[] = [
     ),
   },
   {
-    question: "How do the 80% and 70% mentorship subsidies work?",
+    question: "What mentorship and incubation do winners receive at Octopus Tank?",
     answer: (
       <p>
-        The standard fee for the 30-Day Mentorship Programme with Anuj Dwivedi (Founder, Archzos Technologies) is{" "}
-        <strong className="text-neutral-900 font-semibold">₹75,000</strong>. Teams that win{" "}
-        <strong className="text-blue-600 font-semibold">1st Place</strong> in Octopus Tank earn an{" "}
-        <strong className="text-blue-600 font-semibold">80% subsidy</strong>, paying only ₹15,000 (saving ₹60,000). The{" "}
-        <strong className="text-red-600 font-semibold">2nd Place</strong> team earns a{" "}
-        <strong className="text-red-600 font-semibold">70% subsidy</strong>, paying only ₹22,500 (saving ₹52,500). Cash prizes are awarded separately and can be used towards the mentorship.
+        Top-performing teams receive direct, intensive 1:1 advisory and mentorship from{" "}
+        <strong className="text-neutral-900 font-semibold">Anuj Dwivedi</strong> (Founder, Archzos Technologies) alongside platform architecture and venture systems incubation from{" "}
+        <strong className="text-neutral-900 font-semibold">Circle13</strong> (N Bharath &amp; Akhil Vipin Nair). Winners unlock technical code audits, AI latency optimizations, pitch deck stress-testing, and incubation backing. Official merit awards and prizes are presented live on stage.
       </p>
     ),
   },
