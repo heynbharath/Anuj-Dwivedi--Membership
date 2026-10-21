@@ -11,15 +11,19 @@ export default function Footer() {
           {/* Brand & Ethos Column */}
           <div className="md:col-span-5 space-y-4">
             <Link href="/" className="inline-flex items-center space-x-2.5">
-              <div className="w-6 h-6 rounded bg-black text-white flex items-center justify-center font-mono text-[11px] font-semibold">
-                AD
+              <div className="w-7 h-7 rounded-lg bg-neutral-100 border border-neutral-200/90 flex items-center justify-center p-0.5 shadow-2xs">
+                <img
+                  src="/octopus-assets/octopus.png"
+                  alt="Octopus Tank"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="font-sans text-sm font-semibold tracking-tight text-neutral-950">
-                ANUJ DWIVEDI
+                OCTOPUS TANK
               </span>
             </Link>
             <p className="text-sm text-neutral-500 max-w-sm leading-relaxed">
-              Think Clearly. Build Intentionally. Independent practice spanning generative AI systems, high-leverage advisory, and the Octopus Tank arena.
+              Think Clearly. Build Intentionally. The premier engineering startup pitch competition and structured mentorship programme.
             </p>
             <div className="flex items-center space-x-3 pt-2">
               <a
@@ -163,7 +167,7 @@ export default function Footer() {
         {/* Bottom Legal / Minimal Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-400">
           <div>
-            © 2026 Anuj Dwivedi. Co-Hosted by <Link href="/#cohosts" className="text-neutral-600 hover:text-black underline underline-offset-2">Circle13</Link> (N Bharath, CEO &amp; Akhil Vipin Nair, CTO).
+            © 2026 Octopus Tank. Presented by Tempete Club &amp; DSU School of Engineering · Co-Hosted by <Link href="/#cohosts" className="text-neutral-600 hover:text-black underline underline-offset-2">Circle13</Link> (N Bharath &amp; Akhil Vipin Nair) · Mentorship by Archzos Technologies.
           </div>
           <div className="flex items-center space-x-6">
             <Link href="/terms" className="hover:text-black transition-colors">

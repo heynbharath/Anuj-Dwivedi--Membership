@@ -26,6 +26,8 @@ export default function OctopusTankPage() {
               />
               <span className="font-semibold text-neutral-900">DSU School of Engg</span>
               <span className="text-neutral-300">×</span>
+              <span className="font-semibold text-neutral-900">Tempete Club</span>
+              <span className="text-neutral-300">×</span>
               <div className="inline-flex items-center gap-1.5">
                 <img
                   src="/images/archzos-logo.png"

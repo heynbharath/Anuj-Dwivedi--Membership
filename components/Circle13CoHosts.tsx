@@ -34,20 +34,6 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
               Circle13 drives the platform architecture, venture systems, and digital operational infrastructure for Octopus Tank 2026 alongside Tempete Club.
             </p>
           </div>
-
-          {/* Quick Direct WhatsApp CTA for Anuj */}
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={SITE_CONFIG.contact.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-colors"
-            >
-              <MessageCircle className="w-3.5 h-3.5 fill-current" />
-              <span>Chat with Anuj on WhatsApp</span>
-              <ArrowUpRight className="w-3 h-3 opacity-80" />
-            </a>
-          </div>
         </div>
 
         {/* Co-Hosts Team Showcase & Profiles */}
@@ -251,13 +237,14 @@ export default function Circle13CoHosts({ compact = false }: Circle13CoHostsProp
               <ArrowUpRight className="w-3 h-3 opacity-75" />
             </a>
 
-            {/* Circle13 WhatsApp */}
+            {/* Circle13 Desk WhatsApp */}
             <a
-              href="https://api.whatsapp.com/send?phone=919019458974"
+              href="https://api.whatsapp.com/send?phone=918618698941"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-lg border border-neutral-200 bg-neutral-50 hover:bg-neutral-100 text-neutral-800 text-xs font-medium transition-all"
             >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600 fill-current" />
               <span>Circle13 Desk</span>
               <ArrowUpRight className="w-3 h-3 text-neutral-400" />
             </a>

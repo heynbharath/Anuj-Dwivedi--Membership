@@ -37,14 +37,18 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Minimalist Brand Wordmark */}
+          {/* Minimalist Brand Wordmark - OCTOPUS TANK */}
           <Link href="/" className="group flex items-center space-x-3">
-            <div className="w-7 h-7 rounded-md bg-black text-white flex items-center justify-center font-mono text-xs font-semibold tracking-tighter shadow-xs">
-              AD
+            <div className="w-8 h-8 rounded-lg bg-white border border-neutral-200/90 flex items-center justify-center p-1 shadow-2xs group-hover:border-neutral-400 transition-colors">
+              <img
+                src="/octopus-assets/octopus.png"
+                alt="Octopus Tank"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-sans text-sm font-semibold tracking-tight text-neutral-950 group-hover:text-neutral-700 transition-colors">
-                ANUJ DWIVEDI
+                OCTOPUS TANK
               </span>
               <span className="text-[10px] font-mono text-neutral-400 tracking-wider uppercase">
                 Think / Build / Execute

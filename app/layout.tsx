@@ -6,37 +6,39 @@ import { SITE_CONFIG } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: {
-    default: "Anuj Dwivedi | AI Engineering, Advisory & Mentorship",
-    template: "%s | Anuj Dwivedi",
+    default: "Octopus Tank 2026 | Flagship Startup Pitch & Mentorship",
+    template: "%s | Octopus Tank 2026",
   },
   description:
-    "Practical guidance across AI engineering, startup pitching, and execution discipline with Anuj Dwivedi. Advisory, 1:1 mentorship, and institutional programmes.",
+    "Octopus Tank 2026 — The flagship startup pitch competition for B.Tech & M.Tech students at DSU School of Engineering. Presented by Tempete Club & DSU, co-hosted by Circle13, with 30-day 1:1 mentorship by Archzos Technologies.",
   keywords: [
-    "Anuj Dwivedi",
-    "AI Engineer",
-    "Generative AI Specialist",
-    "Startup Pitching",
-    "Technical Mentorship",
+    "Octopus Tank",
     "Octopus Tank 2026",
-    "Circle13 Management",
+    "Tempete Club",
+    "DSU School of Engineering",
+    "Archzos Technologies",
+    "Circle13",
+    "Anuj Dwivedi",
+    "Startup Pitch",
+    "Technical Mentorship",
   ],
-  authors: [{ name: "Anuj Dwivedi" }],
+  authors: [{ name: "Octopus Tank & Circle13" }],
   creator: "Circle13 Platform Architecture",
   metadataBase: new URL("https://anujdwivedi.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://anujdwivedi.com",
-    title: "Anuj Dwivedi | Think Clearly. Build Intentionally.",
+    title: "Octopus Tank 2026 | Eight arms. Infinite ideas.",
     description:
-      "A digital commercial platform around Anuj Dwivedi's engineering, consultancy, mentorship, and institutional engagements.",
-    siteName: "Anuj Dwivedi Platform",
+      "Eight arms. Infinite ideas. The flagship startup pitch competition and structured mentorship programme presented by Tempete Club, DSU School of Engineering, Archzos Technologies, and Circle13.",
+    siteName: "Octopus Tank 2026",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anuj Dwivedi | Think Clearly. Build Intentionally.",
+    title: "Octopus Tank 2026 | Eight arms. Infinite ideas.",
     description:
-      "Advisory, structured mentorship, and engineering programmes by Anuj Dwivedi.",
+      "Eight arms. Infinite ideas. Flagship startup pitch competition & 30-day 1:1 mentorship.",
   },
 };
 

@@ -44,6 +44,8 @@ export default function HomePage() {
               />
               <span className="font-semibold text-neutral-900">DSU School of Engg</span>
               <span className="text-neutral-300">×</span>
+              <span className="font-semibold text-neutral-900">Tempete Club</span>
+              <span className="text-neutral-300">×</span>
               <div className="inline-flex items-center gap-1.5">
                 <Image
                   src="/images/archzos-logo.png"
@@ -81,7 +83,7 @@ export default function HomePage() {
 
           {/* Subheading */}
           <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            The flagship startup pitch competition for B.Tech &amp; M.Tech engineering students. Learn to pitch defensible products in a 2-hour masterclass, then compete live for <strong className="text-neutral-950 font-semibold">30 days of daily 1:1 mentorship</strong> by Archzos Technologies. Co-hosted by Circle13.
+            The flagship startup pitch competition for B.Tech &amp; M.Tech engineering students, presented by <strong className="text-neutral-950 font-semibold">Tempete Club</strong> &amp; <strong className="text-neutral-950 font-semibold">DSU School of Engineering</strong>, with keynote mentorship by <strong className="text-neutral-950 font-semibold">Archzos Technologies</strong> and platform architecture co-hosted by <strong className="text-neutral-950 font-semibold">Circle13</strong>.
           </p>
 
           {/* Primary Action Buttons */}
@@ -101,16 +103,6 @@ export default function HomePage() {
             >
               <span>Explore 30-Day Mentorship &amp; Tiers</span>
               <ArrowRight className="w-3.5 h-3.5 text-neutral-400" />
-            </a>
-            <a
-              href={SITE_CONFIG.contact.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 h-11 px-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 hover:border-emerald-300 transition-all"
-            >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" />
-              <span>Chat with Anuj (WhatsApp)</span>
-              <ArrowUpRight className="w-3 h-3 opacity-70" />
             </a>
           </div>
 
