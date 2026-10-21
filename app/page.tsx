@@ -15,12 +15,15 @@ import {
   Clock,
   ShieldCheck,
   TrendingUp,
+  MessageCircle,
 } from "lucide-react";
 import OctopusStage from "@/components/OctopusStage";
 import FAQSection from "@/components/FAQSection";
+import Circle13CoHosts from "@/components/Circle13CoHosts";
 import {
   OCTOPUS_TANK_GOOGLE_FORM_URL,
   WINNERS_MENTORSHIP_CONFIG,
+  SITE_CONFIG,
 } from "@/lib/config";
 
 export default function HomePage() {
@@ -41,7 +44,9 @@ export default function HomePage() {
               />
               <span className="font-semibold text-neutral-900">DSU School of Engineering</span>
               <span className="text-neutral-400">×</span>
-              <span className="text-neutral-600">Archzos Technologies</span>
+              <span className="text-neutral-600">Archzos</span>
+              <span className="text-neutral-400">×</span>
+              <span className="font-semibold text-neutral-900">Circle13</span>
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -58,7 +63,7 @@ export default function HomePage() {
 
           {/* Subheading */}
           <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            The flagship startup pitch competition for B.Tech &amp; M.Tech engineering students. Learn to pitch defensible products in a 2-hour masterclass, then compete live for <strong className="text-neutral-950 font-semibold">30 days of daily 1:1 mentorship</strong> by Archzos Technologies.
+            The flagship startup pitch competition for B.Tech &amp; M.Tech engineering students. Learn to pitch defensible products in a 2-hour masterclass, then compete live for <strong className="text-neutral-950 font-semibold">30 days of daily 1:1 mentorship</strong> by Archzos Technologies. Co-hosted by Circle13.
           </p>
 
           {/* Primary Action Buttons */}
@@ -78,6 +83,16 @@ export default function HomePage() {
             >
               <span>Explore 30-Day Mentorship &amp; Tiers</span>
               <ArrowRight className="w-3.5 h-3.5 text-neutral-400" />
+            </a>
+            <a
+              href={SITE_CONFIG.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1.5 h-11 px-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 hover:border-emerald-300 transition-all"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" />
+              <span>Chat with Anuj (WhatsApp)</span>
+              <ArrowUpRight className="w-3 h-3 opacity-70" />
             </a>
           </div>
 
@@ -166,9 +181,9 @@ export default function HomePage() {
 
           {/* Visual Showcase: High-Res Portrait + Real Stage Proof */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-            {/* Main Portrait Card (Clipped from Official Poster) */}
-            <div className="md:col-span-5 rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 flex flex-col justify-between space-y-6">
-              <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200/80">
+            {/* Main Portrait Card (Official Portrait) */}
+            <div className="md:col-span-5 rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col justify-between space-y-6 shadow-2xs">
+              <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200/90 shadow-2xs">
                 <Image
                   src="/images/anuj-portrait.png"
                   alt="Anuj Dwivedi - Founder, Archzos Technologies"
@@ -196,6 +211,20 @@ export default function HomePage() {
                 <p className="text-[11px] text-neutral-500 leading-relaxed">
                   Through Archzos Technologies and Octopus Tank, Anuj works 1:1 with ambitious engineering teams to validate AI pipelines, refine pitch defensibility, and build launch-ready products.
                 </p>
+
+                {/* Direct WhatsApp CTA Button for Anuj */}
+                <div className="pt-2">
+                  <a
+                    href={SITE_CONFIG.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 h-9 px-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                    <span>Chat with Anuj on WhatsApp</span>
+                    <ArrowUpRight className="w-3 h-3 opacity-80" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -589,6 +618,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* =========================================================
+          CO-HOSTED BY CIRCLE13 (Co-Founders & Architecture)
+      ========================================================= */}
+      <Circle13CoHosts />
 
       {/* =========================================================
           APPLICATION ARENA (Eyes Animation)

@@ -394,17 +394,44 @@ export const OCTOPUS_TANK_CONFIG = {
     {
       name: "N Bharath",
       affiliation: "Circle13",
-      role: "Co-host & Management Partner",
+      role: "CEO & Co-founder, Circle13",
+      title: "Chief Executive Officer & Co-founder",
+      image: "/images/bharath-square.jpg",
+      bio: "Spearheading venture systems, platform architecture, and strategic growth for high-impact engineering ventures.",
+      links: {
+        github: "https://github.com/heynbharath",
+        linkedin: "https://www.linkedin.com/in/heynbharath",
+        email: "heynbharath@gmail.com",
+        whatsapp: "https://api.whatsapp.com/send?phone=919019458974",
+      },
     },
     {
       name: "Akhil Vipin Nair",
       affiliation: "Circle13",
-      role: "Co-host & Operations Partner",
+      role: "CTO & Co-founder, Circle13",
+      title: "Chief Technology Officer & Co-founder",
+      image: "/images/akhil-square.jpg",
+      bio: "Leading engineering infrastructure, scalable systems architecture, and technical execution across digital platforms.",
+      links: {
+        github: "https://github.com/akhilvipinnair",
+        linkedin: "https://www.linkedin.com/in/akhil-vipin-nair",
+        email: "akhilvipinnair@gmail.com",
+        whatsapp: "https://api.whatsapp.com/send?phone=919019458974",
+      },
     },
     {
       name: "Anuj Dwivedi",
-      affiliation: "Founder, Tempete Club",
-      role: "Keynote Educator, Judge & Lead Advisor",
+      affiliation: "Founder, Archzos Technologies & Tempete Club",
+      role: "Lead Mentor, Keynote Educator & Lead Advisor",
+      title: "Founder, Archzos Technologies Pvt Ltd",
+      image: "/images/anuj-portrait.png",
+      bio: "Artificial intelligence engineering, defensible venture pitching, and structured 1:1 mentorship.",
+      links: {
+        github: "https://github.com/ANUJDWIVDI",
+        linkedin: "https://www.linkedin.com/in/anuj-dwivedi-1352831b1",
+        email: "anujd0009@gmail.com",
+        whatsapp: "https://api.whatsapp.com/send?phone=919019458974",
+      },
     },
   ],
   thematicArms: [
@@ -465,6 +492,52 @@ export const OCTOPUS_TANK_CONFIG = {
       description: "Biomedical sensing, clinical workflow automation, assistive devices, and diagnostic tools.",
     },
   ],
+};
+
+// Circle13 Co-Host & Platform Architecture Specifications
+export const CIRCLE13_CONFIG = {
+  entity: "Circle13",
+  eyebrow: "Co-Hosted by Circle13 × Tempete Club",
+  title: "Co-Hosted by Circle13",
+  subtitle:
+    "Circle13 is the platform architecture and venture systems partner co-hosting Octopus Tank 2026 alongside Tempete Club.",
+  groupPhoto: "/images/circle13-cohosts.jpg",
+  founders: [
+    {
+      name: "N Bharath",
+      role: "CEO & Co-founder, Circle13",
+      title: "Chief Executive Officer & Co-founder",
+      affiliation: "Circle13",
+      image: "/images/bharath-square.jpg",
+      bio: "Spearheading venture systems, platform architecture, and strategic growth for engineering ventures.",
+      links: {
+        github: "https://github.com/heynbharath",
+        linkedin: "https://www.linkedin.com/in/heynbharath",
+        email: "heynbharath@gmail.com",
+        whatsapp: "https://api.whatsapp.com/send?phone=919019458974",
+      },
+    },
+    {
+      name: "Akhil Vipin Nair",
+      role: "CTO & Co-founder, Circle13",
+      title: "Chief Technology Officer & Co-founder",
+      affiliation: "Circle13",
+      image: "/images/akhil-square.jpg",
+      bio: "Leading scalable platform infrastructure, distributed systems architecture, and technical execution.",
+      links: {
+        github: "https://github.com/akhilvipinnair",
+        linkedin: "https://www.linkedin.com/in/akhil-vipin-nair",
+        email: "akhilvipinnair@gmail.com",
+        whatsapp: "https://api.whatsapp.com/send?phone=919019458974",
+      },
+    },
+  ],
+  anujWhatsApp: {
+    name: "Anuj Dwivedi",
+    phone: "+91 9019458974",
+    url: "https://api.whatsapp.com/send?phone=919019458974",
+    label: "Chat with Anuj on WhatsApp",
+  },
 };
 
 // 10 Recognition Cards System (from Infographic)

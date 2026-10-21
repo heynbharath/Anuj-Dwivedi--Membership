@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import OctopusStage from "@/components/OctopusStage";
 import FAQSection from "@/components/FAQSection";
+import Circle13CoHosts from "@/components/Circle13CoHosts";
 import { OCTOPUS_TANK_GOOGLE_FORM_URL, OCTOPUS_TANK_CONFIG } from "@/lib/config";
 
 export default function OctopusTankPage() {
@@ -620,6 +621,11 @@ export default function OctopusTankPage() {
           </div>
         </div>
       </section>
+
+      {/* =========================================================
+          CO-HOSTED BY CIRCLE13
+      ========================================================= */}
+      <Circle13CoHosts />
 
       {/* =========================================================
           FAQ ACCORDION

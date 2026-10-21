@@ -122,12 +122,18 @@ export default function Footer() {
           {/* Venue & Presence Column */}
           <div className="md:col-span-2 space-y-3">
             <h4 className="text-[11px] font-mono font-medium text-neutral-400 uppercase tracking-widest">
-              Flagship Stage
+              Co-Hosts &amp; Venue
             </h4>
-            <div className="text-[13px] text-neutral-600 space-y-1">
-              <p className="font-medium text-black">DSU School of Engineering</p>
-              <p className="text-neutral-500">Dayananda Sagar University</p>
-              <p className="font-mono text-xs text-neutral-400 pt-1">31 October 2026</p>
+            <div className="text-[13px] text-neutral-600 space-y-1.5">
+              <div>
+                <span className="font-medium text-black block">Circle13</span>
+                <span className="text-[11px] text-neutral-500 font-mono">Platform Architecture</span>
+              </div>
+              <div>
+                <p className="font-medium text-black">DSU School of Engg</p>
+                <p className="text-[11px] text-neutral-500">Dayananda Sagar University</p>
+              </div>
+              <p className="font-mono text-[11px] text-neutral-400 pt-1">31 October 2026</p>
             </div>
           </div>
         </div>
@@ -135,7 +141,7 @@ export default function Footer() {
         {/* Bottom Legal / Minimal Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-400">
           <div>
-            © 2026 Anuj Dwivedi. Think Clearly. Build Intentionally.
+            © 2026 Anuj Dwivedi. Co-Hosted by <Link href="/#cohosts" className="text-neutral-600 hover:text-black underline underline-offset-2">Circle13</Link> (N Bharath, CEO &amp; Akhil Vipin Nair, CTO).
           </div>
           <div className="flex items-center space-x-6">
             <Link href="/terms" className="hover:text-black transition-colors">
@@ -145,10 +151,18 @@ export default function Footer() {
               Privacy
             </Link>
             <a
+              href="https://api.whatsapp.com/send?phone=919019458974"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-700 hover:text-emerald-800 font-medium transition-colors"
+            >
+              WhatsApp
+            </a>
+            <a
               href="mailto:anujd0009@gmail.com"
               className="hover:text-black transition-colors"
             >
-              Contact
+              Email
             </a>
           </div>
         </div>

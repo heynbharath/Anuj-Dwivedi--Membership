@@ -21,6 +21,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/octopus-tank", label: "Octopus Tank" },
+    { href: "/#cohosts", label: "Circle13" },
     { href: "/membership", label: "Membership" },
     { href: "/mentorship", label: "Advisory" },
     { href: "/about", label: "About" },
