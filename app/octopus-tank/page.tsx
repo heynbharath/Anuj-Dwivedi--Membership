@@ -18,38 +18,40 @@ export default function OctopusTankPage() {
       <section className="pt-8 sm:pt-14 pb-16 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           {/* Institution & Partner Header */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="inline-flex items-center gap-2.5 border border-neutral-200/90 rounded-full px-4 py-1.5 text-[11px] font-mono text-neutral-800 bg-white shadow-2xs">
-              <img
-                src="/octopus-assets/dsu-logo.png"
-                alt="Dayananda Sagar University Crest"
-                className="w-4 h-4 object-contain rounded-full"
-              />
-              <span className="font-semibold text-neutral-900">DSU School of Engg</span>
-              <span className="text-neutral-300">×</span>
-              <div className="inline-flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
+            <div className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-4 border border-neutral-200/90 rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-mono text-neutral-800 bg-white/95 backdrop-blur-xs shadow-xs hover:border-neutral-300 transition-all">
+              <div className="inline-flex items-center gap-2">
+                <img
+                  src="/octopus-assets/dsu-logo.png"
+                  alt="Dayananda Sagar University Crest"
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain rounded-full shrink-0"
+                />
+                <span className="font-semibold text-neutral-900">DSU School of Engg</span>
+              </div>
+              <span className="text-neutral-300 font-light">×</span>
+              <div className="inline-flex items-center gap-2">
                 <img
                   src="/images/tempete/tempete-icon-color.svg"
                   alt="Tempête AI Club"
-                  className="w-3.5 h-3.5 object-contain rounded-[2px]"
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain rounded-md shrink-0 shadow-2xs"
                 />
                 <span className="font-semibold text-neutral-900">Tempête AI Club</span>
               </div>
-              <span className="text-neutral-300">×</span>
-              <div className="inline-flex items-center gap-1.5">
+              <span className="text-neutral-300 font-light">×</span>
+              <div className="inline-flex items-center gap-2">
                 <img
                   src="/images/archzos-logo.png"
                   alt="Archzos Logo"
-                  className="w-3.5 h-3.5 object-contain"
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0"
                 />
                 <span className="font-semibold text-neutral-900">Archzos</span>
               </div>
-              <span className="text-neutral-300">×</span>
-              <div className="inline-flex items-center gap-1.5">
+              <span className="text-neutral-300 font-light">×</span>
+              <div className="inline-flex items-center gap-2">
                 <img
                   src="/images/circle13-logo-transparent.png"
                   alt="Circle13 Logo"
-                  className="w-3.5 h-3.5 object-contain"
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0"
                 />
                 <span className="font-semibold text-neutral-900">Circle13</span>
               </div>

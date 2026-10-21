@@ -39,51 +39,65 @@ export default function HomePage() {
       ========================================================= */}
       <section className="pt-10 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 border-b border-neutral-100">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          {/* Institutional Eyebrow */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="inline-flex items-center gap-2.5 border border-neutral-200/90 rounded-full px-4 py-1.5 text-[11px] font-mono text-neutral-800 bg-white shadow-2xs">
-              <img
-                src="/octopus-assets/dsu-logo.png"
-                alt="DSU Crest"
-                className="w-4 h-4 rounded-full object-contain"
-              />
-              <span className="font-semibold text-neutral-950">DSU School of Engg</span>
-              <span className="text-neutral-300">×</span>
-              <div className="inline-flex items-center gap-1.5">
+          {/* Institutional Eyebrow & Live Registration Badge */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <div className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-4 border border-neutral-200/90 rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-mono text-neutral-800 bg-white/95 backdrop-blur-xs shadow-xs hover:border-neutral-300 transition-all">
+              {/* DSU SOE */}
+              <div className="inline-flex items-center gap-2">
+                <img
+                  src="/octopus-assets/dsu-logo.png"
+                  alt="DSU Crest"
+                  className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-contain shrink-0"
+                />
+                <span className="font-semibold text-neutral-950">DSU School of Engg</span>
+              </div>
+
+              <span className="text-neutral-300 font-light">×</span>
+
+              {/* Tempête AI Club */}
+              <div className="inline-flex items-center gap-2">
                 <Image
                   src="/images/tempete/tempete-icon-color.svg"
                   alt="Tempête AI Club"
-                  width={14}
-                  height={14}
-                  className="object-contain rounded-[3px]"
+                  width={28}
+                  height={28}
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain rounded-md shrink-0 shadow-2xs"
                 />
                 <span className="font-semibold text-neutral-950">Tempête AI Club</span>
               </div>
-              <span className="text-neutral-300">×</span>
-              <div className="inline-flex items-center gap-1.5">
+
+              <span className="text-neutral-300 font-light">×</span>
+
+              {/* Archzos Technologies */}
+              <div className="inline-flex items-center gap-2">
                 <Image
                   src="/images/archzos-logo.png"
                   alt="Archzos Logo"
-                  width={14}
-                  height={14}
-                  className="object-contain"
+                  width={28}
+                  height={28}
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0"
                 />
                 <span className="font-semibold text-neutral-950">Archzos</span>
               </div>
-              <span className="text-neutral-300">×</span>
-              <div className="inline-flex items-center gap-1.5">
+
+              <span className="text-neutral-300 font-light">×</span>
+
+              {/* Circle13 Platform */}
+              <div className="inline-flex items-center gap-2">
                 <Image
                   src="/images/circle13-logo-transparent.png"
                   alt="Circle13 Logo"
-                  width={14}
-                  height={14}
-                  className="object-contain"
+                  width={28}
+                  height={28}
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0"
                 />
                 <span className="font-semibold text-neutral-950">Circle13</span>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+
+            {/* Date Badge */}
+            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200/90 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>31 OCT 2026 · REGISTRATIONS OPEN</span>
             </div>
           </div>
